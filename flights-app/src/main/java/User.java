@@ -1,7 +1,12 @@
+import java.sql.*;
+
 public abstract class User {
     private String firstName, lastName, mi, ssn, username, password;
 
     public boolean login(String inputUsername, String inputPassword) {
+        String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";
+        String dbUser = "cis3270db";
+        String dbPass = "Administrator!";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             String query = "SELECT * FROM users WHERE username = ? AND password = ?"; // ? is filled with user's input
@@ -26,6 +31,10 @@ public abstract class User {
     }
 
     public void searchFlights(String departureCity, String destinationCity, String date) {
+        String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";
+        String dbUser = "cis3270db";
+        String dbPass = "Administrator!";
+
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             String query = "SELECT * FROM flights WHERE departure_city = ? AND destination_city = ? AND departure_date = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -49,6 +58,8 @@ public abstract class User {
             if (!found) {
                 System.out.println("No flights found for the given criteria.");
             }
+        } catch (SQLException e) {
+            System.out.println("Error searching flights: " + e.getMessage());
         }
     }
 
