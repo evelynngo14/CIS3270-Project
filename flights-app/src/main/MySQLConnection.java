@@ -5,8 +5,8 @@ import java.sql.SQLException;
 public class MySQLConnection {
     public static void main(String[] args) {
         String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p;
-        String user = "cis3270db";
-        String password = "Administrator!";
+        String dbUser = "cis3270db";
+        String dbPass = "Administrator!";
 
         try (Connection connection = DriverManager.getConnection(url, user, password)) {
             System.out.println("Connection to MySQL established successfully!");

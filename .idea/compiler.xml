@@ -9,8 +9,5 @@
         <module name="cis3270-project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="cis3270-project" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>
