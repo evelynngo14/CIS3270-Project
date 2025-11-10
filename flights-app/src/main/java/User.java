@@ -2,12 +2,32 @@ public abstract class User {
     private String firstName, lastName, mi, ssn, securityQuestion, username, password;
 
     public boolean login(String inputUsername, String inputPassword) {
-        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "SELECT * FROM users WHERE username = ? " AND password = "?";
+        String url = "jdbc:mysql://localhost:3306/airline_db";
+        String dbUser = "root";
+        String dbPass = "your_db_password";
 
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, inputUsername);
+            stmt.setString(2, inputPassword);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                this.username = rs.getString("username");
+                this.password = rs.getString("password");
+                this.role = rs.getString("role");
+                System.out.println("Login successful as " + role);
+                return true;
+            } else {
+                System.out.println("Invalid credentials.");
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println("Login error: " + e.getMessage());
+            return false;
         }
     }
-
 
     public String getFirstName() {
         return firstName;
