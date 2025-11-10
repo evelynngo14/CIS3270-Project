@@ -1,3 +1,6 @@
-public class Admin {
-    private String username, password;
+public class Admin extends User {
+
+    public void searchFlights(String fromCity, String toCity, String date) {
+
+    }
 }

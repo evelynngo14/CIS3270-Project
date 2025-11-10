@@ -1,5 +1,13 @@
-public class User {
+public abstract class User {
     private String firstName, lastName, mi, ssn, securityQuestion, username, password;
+
+    public boolean login(String inputUsername, String inputPassword) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "SELECT * FROM users WHERE username = ? " AND password = "?";
+
+        }
+    }
+
 
     public String getFirstName() {
         return firstName;
@@ -56,5 +64,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
 
