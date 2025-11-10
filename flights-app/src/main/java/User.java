@@ -1,23 +1,19 @@
 public abstract class User {
-    private String firstName, lastName, mi, ssn, securityQuestion, username, password;
+    private String firstName, lastName, mi, ssn, username, password;
 
     public boolean login(String inputUsername, String inputPassword) {
-        String url = "jdbc:mysql://localhost:3306/airline_db";
-        String dbUser = "root";
-        String dbPass = "your_db_password";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "SELECT * FROM users WHERE username = ? AND password = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, inputUsername);
+            String query = "SELECT * FROM users WHERE username = ? AND password = ?"; // ? is filled with user's input
+            PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
+            stmt.setString(1, inputUsername); // corresponds to ? according to parameter index
             stmt.setString(2, inputPassword);
 
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
             if (rs.next()) {
                 this.username = rs.getString("username");
                 this.password = rs.getString("password");
-                this.role = rs.getString("role");
-                System.out.println("Login successful as " + role);
+                System.out.println("Login successful");
                 return true;
             } else {
                 System.out.println("Invalid credentials.");
@@ -26,6 +22,33 @@ public abstract class User {
         } catch (SQLException e) {
             System.out.println("Login error: " + e.getMessage());
             return false;
+        }
+    }
+
+    public void searchFlights(String departureCity, String destinationCity, String date) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "SELECT * FROM flights WHERE departure_city = ? AND destination_city = ? AND departure_date = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, departureCity);
+            stmt.setString(2, destinationCity);
+            stmt.setString(3, date); // Format: "YYYY-MM-DD"
+
+            ResultSet rs = stmt.executeQuery();
+
+            boolean found = false;
+            while (rs.next()) {
+                found = true;
+                System.out.println("Flight ID: " + rs.getInt("flight_id"));
+                System.out.println("From: " + rs.getString("departure_city"));
+                System.out.println("To: " + rs.getString("destination_city"));
+                System.out.println("Departure: " + rs.getString("departure_time"));
+                System.out.println("Arrival: " + rs.getString("arrival_time"));
+                System.out.println("Seats Available: " + (rs.getInt("capacity") - rs.getInt("booked_seats")));
+            }
+
+            if (!found) {
+                System.out.println("No flights found for the given criteria.");
+            }
         }
     }
 
@@ -59,14 +82,6 @@ public abstract class User {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
-    }
-
-    public String getSecurityQuestion() {
-        return securityQuestion;
-    }
-
-    public void setSecurityQuestion(String securityQuestion) {
-        this.securityQuestion = securityQuestion;
     }
 
     public String getUsername() {
