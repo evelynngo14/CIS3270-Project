@@ -1,11 +1,10 @@
 import java.sql.*;
 
 public abstract class User {
-    private String firstName, lastName, mi, ssn, username, password;
+    protected String firstName, lastName, mi, ssn, username, password;
 
     public boolean login(String inputUsername, String inputPassword) {
-        String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";
-        String dbUser = "cis3270db";
+        String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";        String dbUser = "cis3270db";
         String dbPass = "Administrator!";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
@@ -61,6 +60,10 @@ public abstract class User {
         } catch (SQLException e) {
             System.out.println("Error searching flights: " + e.getMessage());
         }
+    }
+
+    public void retrievePassword() {
+        //
     }
 
     public String getFirstName() {
