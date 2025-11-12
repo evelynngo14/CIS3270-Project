@@ -1,3 +1,5 @@
+package model;
+
 public class Customer extends User {
 
     public void bookFlight() {

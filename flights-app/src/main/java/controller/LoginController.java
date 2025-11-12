@@ -1,11 +1,16 @@
+package controller;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import model.User;
+import model.Customer;
 
 public class LoginController {
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
     @FXML private Label statusLabel;
 
+    @FXML
     private void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();

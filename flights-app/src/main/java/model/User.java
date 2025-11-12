@@ -1,10 +1,13 @@
+package model;
+
 import java.sql.*;
 
 public abstract class User {
     protected String firstName, lastName, mi, ssn, username, password;
 
     public boolean login(String inputUsername, String inputPassword) {
-        String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";        String dbUser = "cis3270db";
+        String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
+        String dbUser = "cis3270db";
         String dbPass = "Administrator!";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
