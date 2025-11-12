@@ -19,6 +19,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        primaryStage.setTitle("Flight Reservation Login");
         primaryStage.setScene(scene);
         primaryStage.show();
 
