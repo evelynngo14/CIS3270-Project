@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.RegistrationController"
-            prefHeight="800.0" prefWidth="1200.0">
-    <children>
-        <Label text="Select state: " />
-        <components.States />
-    </children>
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="controller.RegistrationController"
+          hgap="10" vgap="10" padding="20">
+    <Label text="First Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="firstNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+    <Label text="Middle Initial:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="miField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+    <Label text="Last Name:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="lastNameField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+    <Label text="Email:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <TextField fx:id="emailField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+    <Label text="Username:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+    <TextField fx:id="usernameField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+    <Label text="Password:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+    <PasswordField fx:id="passwordField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+
+    <Label text="SSN:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+    <TextField fx:id="ssnField" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+    <Label text="Address:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+    <TextField fx:id="addressField" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+
+    <Label text="ZIP Code:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+    <TextField fx:id="zipField" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+
+    <Label text="State:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+    <ChoiceBox fx:id="stateChoiceBox" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+
+    <Label text="Security Question:" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+    <TextField fx:id="securityQuestionField" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+    <Button text="Register" onAction="#handleRegistration" GridPane.rowIndex="11" GridPane.columnIndex="1"/>
+    <Label fx:id="statusLabel" GridPane.rowIndex="12" GridPane.columnIndex="1"/>
 </GridPane>

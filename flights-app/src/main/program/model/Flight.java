@@ -16,7 +16,7 @@ public class Flight {
 
     public boolean login(String inputUsername, String inputPassword) {
         String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-        String dbUser = "cis3270db";
+        String dbUser = "src/main/cis3270db";
         String dbPass = "Administrator!";
 
 

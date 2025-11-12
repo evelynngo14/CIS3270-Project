@@ -1,4 +1,4 @@
-package org.example;
+package example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class TestPreparedStatement {
+public class TestPreparedStatementGoogleCloud {
 	
 	  public static void main(String[] args)
 		      throws SQLException, ClassNotFoundException {
@@ -21,14 +21,14 @@ public class TestPreparedStatement {
 		    System.out.println("Database connected");
 
 		    // Create a statement
-		    PreparedStatement statement = connection.prepareStatement("select firstName, mi, lastName from Student where lastName = ?");
+		    PreparedStatement statement = connection.prepareStatement("select firstName, mi, lastName from Student where lastName "
+		        + " = ?");
 		    
 		    statement.setString(1, "Smith");
 
 		    // Execute a statement
 		    ResultSet resultSet = statement.executeQuery();
 
-		    //statement.executeUpdate()
 		    // Iterate through the result and print the student names
 		    while (resultSet.next())
 		      System.out.println(resultSet.getString(1) + "\t" +

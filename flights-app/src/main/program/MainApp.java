@@ -1,11 +1,8 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -17,9 +14,22 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setTitle("model.Flight Reservation Login");
+        Button loginButton = new Button("Login");
+        Button registerButton = new Button("Register a new account");
+
+        loginButton.setOnAction(e -> {
+            SceneManager.showLoginScreen(primaryStage);
+        });
+        registerButton.setOnAction(e -> {
+            SceneManager.showRegistrationScreen(primaryStage);
+        });
+
+        VBox root = new VBox(10, loginButton, registerButton);
+        root.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(root, 1200, 800);
+
+        primaryStage.setTitle("Flight Reservations");
         primaryStage.setScene(scene);
         primaryStage.show();
 

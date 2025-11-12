@@ -34,7 +34,9 @@ public class RegistrationController {
         stateChoiceBox.getSelectionModel().select("GA"); // Optional default
     }
 
+    @FXML
     private void handleRegistration(ActionEvent event) throws SQLException {
+        //TODO: form validation
         String firstName = firstNameField.getText();
         String mi = miField.getText();
         String lastName = lastNameField.getText();
@@ -45,7 +47,6 @@ public class RegistrationController {
         String address = addressField.getText();
 
         String zip = zipField.getText();
-        if (zip )
 
         String state = stateChoiceBox.getValue();
         if (state == null || state.isEmpty()) {
