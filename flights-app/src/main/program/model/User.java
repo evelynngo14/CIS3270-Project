@@ -5,7 +5,6 @@ import java.sql.*;
 public abstract class User {
     protected String firstName, lastName, mi, email, username, password, securityQuestion, ssn, address, zip, state;
 
-
     public void searchFlights(String departureCity, String destinationCity, String date) {
         String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";
         String dbUser = "src/main/cis3270db";
@@ -40,7 +39,6 @@ public abstract class User {
     }
 
     public void forgotPassword() {
-
     }
 
     public String getFirstName() {

@@ -17,6 +17,10 @@ public class SceneManager {
         loadScene(stage, "/dashboard.fxml", "Dashboard");
     }
 
+    public static void showAdminDashboard(Stage stage) {
+        loadScene(stage, "/admin_dashboard.fxml", "Admin Dashboard");
+    }
+
     private static void loadScene(Stage stage, String fxmlPath, String title) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));

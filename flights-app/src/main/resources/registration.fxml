@@ -52,10 +52,10 @@
 
         <!-- Bottom Buttons -->
         <Button text="Register" onAction="#handleRegistration"
-                GridPane.rowIndex="12" GridPane.columnIndex="2" prefWidth="120"/>
-
-        <Button text="Back to Login" onAction="#handleBackToLogin"
                 GridPane.rowIndex="11" GridPane.columnIndex="2" prefWidth="120"/>
+
+        <Button text="Return to Login" onAction="#handleBackToLogin"
+                GridPane.rowIndex="13" GridPane.columnIndex="2" prefWidth="120"/>
 
        <columnConstraints>
            <ColumnConstraints halignment="LEFT" prefWidth="75" /> <!-- Label column left -->

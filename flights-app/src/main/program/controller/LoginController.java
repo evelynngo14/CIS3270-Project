@@ -22,11 +22,16 @@ public class LoginController {
 
         if (success) {
             //This line retrieves the current window (Stage) that contains the usernameField:
+            //TODO: change stage
             Stage stage = (Stage) usernameField.getScene().getWindow();
-            SceneManager.showDashboard(stage);
+            if (username.equals("admin")) {
+                SceneManager.showAdminDashboard(stage);
+            } else {
+                SceneManager.showDashboard(stage);
+            }
         } else {
             statusLabel.setText("Invalid username or password.");
         }
     }
-
 }
+
