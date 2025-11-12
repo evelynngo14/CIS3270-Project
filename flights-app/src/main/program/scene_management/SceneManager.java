@@ -4,33 +4,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
 public class SceneManager {
 
     public static void showRegistrationScreen(Stage stage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/registration.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("User Registration");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        loadScene(stage, "/registration.fxml", "User Registration");
     }
 
     public static void showDashboard(Stage stage) {
+        loadScene(stage, "/dashboard.fxml", "Dashboard");
+    }
+
+    private static void loadScene(Stage stage, String fxmlPath, String title) {
         try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root, 1200, 800); // consistent sizing
             stage.setScene(scene);
-            stage.setTitle("Flight Reservations - Dashboard");
+            stage.setTitle(title);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
