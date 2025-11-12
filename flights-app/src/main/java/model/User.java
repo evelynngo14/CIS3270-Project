@@ -49,7 +49,7 @@ public abstract class User {
             boolean found = false;
             while (rs.next()) {
                 found = true;
-                System.out.println("Flight ID: " + rs.getInt("flight_id"));
+                System.out.println("model.Flight ID: " + rs.getInt("flight_id"));
                 System.out.println("From: " + rs.getString("departure_city"));
                 System.out.println("To: " + rs.getString("destination_city"));
                 System.out.println("Departure: " + rs.getString("departure_time"));

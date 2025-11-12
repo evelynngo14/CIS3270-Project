@@ -10,7 +10,7 @@
     <center>
         <TableView fx:id="flightsTable">
             <columns>
-                <TableColumn fx:id="flightNumberColumn" text="Flight Number" />
+                <TableColumn fx:id="flightNumberColumn" text="model.Flight Number" />
                 <TableColumn fx:id="departureColumn" text="Departure" />
                 <TableColumn fx:id="arrivalColumn" text="Arrival" />
                 <TableColumn fx:id="timeColumn" text="Time" />
