@@ -21,8 +21,9 @@ public class LoginController {
         boolean success = UserDAO.validateLogin(username, password);
 
         if (success) {
+            //This line retrieves the current window (Stage) that contains the usernameField:
             Stage stage = (Stage) usernameField.getScene().getWindow();
-            SceneManager.showDashboard();
+            SceneManager.showDashboard(stage);
         } else {
             statusLabel.setText("Invalid username or password.");
         }

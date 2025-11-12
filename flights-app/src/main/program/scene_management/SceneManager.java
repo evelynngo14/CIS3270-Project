@@ -8,18 +8,6 @@ import java.io.IOException;
 
 public class SceneManager {
 
-    public static void showDashboard(Stage stage) {
-        try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/dashboard.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Flight Reservations - Dashboard");
-        } catch (IOException e) {
-            e.printStackTrace();
-    }
-        }
-
     public static void showRegistrationScreen(Stage stage) {
         try {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/registration.fxml"));
@@ -31,5 +19,18 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+    public static void showDashboard(Stage stage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/dashboard.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Flight Reservations - Dashboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
