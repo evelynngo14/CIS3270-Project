@@ -51,8 +51,12 @@
         <TextField fx:id="securityQuestionField" opacity="0.67" text="What city were you born in?" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 
         <!-- Bottom Buttons -->
-        <Button onAction="#handleRegistration" text="Register" textAlignment="RIGHT" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-        <Label fx:id="statusLabel" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+        <Button text="Register" onAction="#handleRegistration"
+                GridPane.rowIndex="12" GridPane.columnIndex="2" prefWidth="120"/>
+
+        <Button text="Back to Login" onAction="#handleBackToLogin"
+                GridPane.rowIndex="11" GridPane.columnIndex="2" prefWidth="120"/>
+
        <columnConstraints>
            <ColumnConstraints halignment="LEFT" prefWidth="75" /> <!-- Label column left -->
            <ColumnConstraints halignment="LEFT" prefWidth="200" />  <!-- Field column left -->

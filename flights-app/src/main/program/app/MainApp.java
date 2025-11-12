@@ -1,21 +1,29 @@
+package app;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import scene_management.SceneManager;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import scene_management.SceneManager;
 
 
 public class MainApp extends Application {
 
-    @Override
-    public void start(Stage primaryStage) {
+    private static Stage primaryStage;
 
+    @Override
+    public void start(Stage stage) {
+        primaryStage = stage;
+        showLogin(stage);
+    }
+
+    public static void showLogin(Stage stage) {
         // Logo
-        Image logoImage = new Image(getClass().getResource("/images/airplane-logo.png").toExternalForm());
+        Image logoImage = new Image(MainApp.class.getResource("/images/airplane-logo.png").toExternalForm());
         ImageView logoView = new ImageView(logoImage);
 
         logoView.setFitWidth(150);

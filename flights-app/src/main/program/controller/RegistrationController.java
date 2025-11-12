@@ -1,15 +1,16 @@
 package controller;
 
-import javafx.collections.ObservableList;
+import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.Customer;
-import model.User;
+import javafx.stage.Stage;
 import components.States;
+import javafx.scene.Node;
+
 import java.sql.SQLException;
 
 public class RegistrationController {
@@ -54,6 +55,10 @@ public class RegistrationController {
 
         String securityQuestion = securityQuestionField.getText();
 
-
+    }
+    @FXML
+    private void handleBackToLogin(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MainApp.showLogin(stage);
     }
 }
