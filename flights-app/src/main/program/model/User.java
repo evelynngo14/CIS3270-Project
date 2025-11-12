@@ -5,32 +5,6 @@ import java.sql.*;
 public abstract class User {
     protected String firstName, lastName, mi, email, username, password, securityQuestion, ssn, address, zip, state;
 
-    public boolean login(String inputUsername, String inputPassword) {
-        String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-        String dbUser = "src/main/cis3270db";
-        String dbPass = "Administrator!";
-
-        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "SELECT * FROM users WHERE username = ? AND password = ?"; // ? is filled with user's input
-            PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
-            stmt.setString(1, inputUsername); // corresponds to ? according to parameter index
-            stmt.setString(2, inputPassword);
-
-            ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
-            if (rs.next()) {
-                this.username = rs.getString("username");
-                this.password = rs.getString("password");
-                System.out.println("Login successful");
-                return true;
-            } else {
-                System.out.println("Invalid credentials.");
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Login error: " + e.getMessage());
-            return false;
-        }
-    }
 
     public void searchFlights(String departureCity, String destinationCity, String date) {
         String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";

@@ -1,9 +1,12 @@
 package controller;
 
+import dao.UserDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.User;
 import model.Customer;
+import scene_management.SceneManager;
 
 public class LoginController {
     @FXML private TextField usernameField;
@@ -11,17 +14,16 @@ public class LoginController {
     @FXML private Label statusLabel;
 
     @FXML
-    private void handleLogin() {
+    public void handleLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        User user = new Customer();
+        boolean success = UserDAO.validateLogin(username, password);
 
-        boolean success = user.login(username, password);
         if (success) {
-            statusLabel.setText("Login successful");
-        }
-        else {
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            SceneManager.showDashboard();
+        } else {
             statusLabel.setText("Invalid username or password.");
         }
     }

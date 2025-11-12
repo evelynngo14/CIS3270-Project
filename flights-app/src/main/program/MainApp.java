@@ -1,11 +1,14 @@
-import javafx.application.Application;
+import controller.LoginController;
 import javafx.fxml.FXMLLoader;
+import scene_management.SceneManager;
+import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -15,9 +18,22 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Scene scene = new Scene(loader.load(), 1200, 800);
+        primaryStage.setTitle("Flight Reservations");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
         Label welcomeLabel = new Label("Welcome to Flight Reservations");
         //css styling:
-        welcomeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;");
+        welcomeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a; ");
+
+        // login fields
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Username");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
 
         //Buttons
         Button loginButton = new Button("Login");
@@ -25,20 +41,14 @@ public class MainApp extends Application {
 
         //ActionEvents
         loginButton.setOnAction(e -> { // LOGIN BUTTON
-            SceneManager.showLoginScreen(primaryStage);
+            //
         });
         registerButton.setOnAction(e -> { // REGISTRATION BUTTON
             SceneManager.showRegistrationScreen(primaryStage);
         });
 
-        VBox root = new VBox(10, welcomeLabel, loginButton, registerButton);
+        VBox root = new VBox(10, welcomeLabel, usernameField, passwordField, loginButton, registerButton);
         root.setAlignment(Pos.CENTER);
-
-        Scene scene = new Scene(root, 1200, 800);
-
-        primaryStage.setTitle("Flight Reservations");
-        primaryStage.setScene(scene);
-        primaryStage.show();
 
     }
 

@@ -1,3 +1,5 @@
+package scene_management;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -6,17 +8,17 @@ import java.io.IOException;
 
 public class SceneManager {
 
-    public static void showLoginScreen(Stage stage) {
+    public static void showDashboard(Stage stage) {
         try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/dashboard.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-            stage.setTitle("User Registration");
+            stage.setTitle("Flight Reservations - Dashboard");
         } catch (IOException e) {
             e.printStackTrace();
-        }
     }
+        }
 
     public static void showRegistrationScreen(Stage stage) {
         try {
