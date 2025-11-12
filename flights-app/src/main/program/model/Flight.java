@@ -14,32 +14,6 @@ public class Flight {
     private int capacity;
     private int bookedSeats;
 
-    public boolean login(String inputUsername, String inputPassword) {
-        String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-        String dbUser = "src/main/cis3270db";
-        String dbPass = "Administrator!";
-
-
-        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "SELECT * FROM flights"; // ? is filled with user's input
-            PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
-
-            ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
-            if (rs.next()) {
-                //this.username = rs.getString("username");
-                //this.password = rs.getString("password");
-                System.out.println("Login successful");
-                return true;
-            } else {
-                System.out.println("Invalid credentials.");
-                return false;
-            }
-        } catch (SQLException e) {
-            System.out.println("Login error: " + e.getMessage());
-            return false;
-        }
-    }
-
     public Flight(int flightId, String departureCity, String destinationCity, LocalDate departureDate,
                   LocalTime departureTime, LocalTime arrivalTime, int capacity, int bookedSeats) {
         this.flightId = flightId;
