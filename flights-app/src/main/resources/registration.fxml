@@ -10,5 +10,8 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="controller.RegistrationController"
             prefHeight="800.0" prefWidth="1200.0">
-
+    <children>
+        <Label text="Select state: " />
+        <components.States />
+    </children>
 </GridPane>

@@ -3,7 +3,7 @@ package model;
 import java.sql.*;
 
 public abstract class User {
-    protected String firstName, lastName, mi, ssn, username, password;
+    protected String firstName, lastName, mi, email, username, password, securityQuestion, ssn, address, zip, state;
 
     public boolean login(String inputUsername, String inputPassword) {
         String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
@@ -65,8 +65,8 @@ public abstract class User {
         }
     }
 
-    public void retrievePassword() {
-        //
+    public void forgotPassword() {
+
     }
 
     public String getFirstName() {
@@ -93,12 +93,12 @@ public abstract class User {
         this.mi = mi;
     }
 
-    public String getSsn() {
-        return ssn;
+    public String getEmail() {
+        return email;
     }
 
-    public void setSsn(String ssn) {
-        this.ssn = ssn;
+    public void setEmail(String ssn) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -117,6 +117,44 @@ public abstract class User {
         this.password = password;
     }
 
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
 
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 }
 

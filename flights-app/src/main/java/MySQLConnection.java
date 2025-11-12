@@ -10,7 +10,7 @@ public class MySQLConnection {
 
         try (Connection connection = DriverManager.getConnection(url, dbUser, dbPass)) {
             System.out.println("Connection to MySQL established successfully!");
-            // Perform database wwoperations here
+            // Perform database operations here
         } catch (SQLException e) {
             System.err.println("Error connecting to MySQL: " + e.getMessage());
         }
