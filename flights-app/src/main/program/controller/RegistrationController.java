@@ -12,8 +12,6 @@ import model.User;
 import components.States;
 import java.sql.SQLException;
 
-
-
 public class RegistrationController {
     @FXML private TextField firstNameField;
     @FXML private TextField miField;
@@ -29,13 +27,13 @@ public class RegistrationController {
     @FXML private Label statusLabel;
 
     @FXML
-    public void stateSelect() {
+    public void initialize() {
+        // JavaFX method called when FXML is loaded, used to populate ChoiceBox
         stateChoiceBox.setItems(States.getStateAbbreviations());
-        stateChoiceBox.getSelectionModel().select("GA"); // Optional default
     }
 
     @FXML
-    private void handleRegistration(ActionEvent event) throws SQLException {
+    public void handleRegistration(ActionEvent event) throws SQLException {
         //TODO: form validation
         String firstName = firstNameField.getText();
         String mi = miField.getText();
@@ -55,8 +53,6 @@ public class RegistrationController {
         }
 
         String securityQuestion = securityQuestionField.getText();
-
-
 
 
     }
