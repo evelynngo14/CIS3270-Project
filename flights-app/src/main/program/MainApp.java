@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -18,9 +19,11 @@ public class MainApp extends Application {
         //css styling:
         welcomeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;");
 
+        //Buttons
         Button loginButton = new Button("Login");
-        Button registerButton = new Button("Register a new account");
+        Button registerButton = new Button("Register");
 
+        //ActionEvents
         loginButton.setOnAction(e -> { // LOGIN BUTTON
             SceneManager.showLoginScreen(primaryStage);
         });

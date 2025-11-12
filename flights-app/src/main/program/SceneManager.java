@@ -8,10 +8,9 @@ public class SceneManager {
 
     public static void showLoginScreen(Stage stage) {
         try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/registration.fxml"));
+            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/login.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(SceneManager.class.getResource("/style.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("User Registration");
         } catch (IOException e) {
@@ -24,7 +23,6 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource("/registration.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(SceneManager.class.getResource("/style.css").toExternalForm());
             stage.setScene(scene);
             stage.setTitle("User Registration");
         } catch (IOException e) {
