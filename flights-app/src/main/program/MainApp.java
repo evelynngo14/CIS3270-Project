@@ -5,11 +5,22 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import scene_management.SceneManager;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
+        // Logo
+        Image logoImage = new Image(getClass().getResource("/images/airplane-logo.png").toExternalForm());
+        ImageView logoView = new ImageView(logoImage);
+
+        logoView.setFitWidth(150);
+        logoView.setPreserveRatio(true);
+
         // Header
         Label welcomeLabel = new Label("Welcome to Flight Reservations");
         welcomeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;");
@@ -63,7 +74,13 @@ public class MainApp extends Application {
         buttonBox.setAlignment(Pos.CENTER);
 
         // Root layout
-        VBox root = new VBox(20, welcomeLabel, usernameBox, passwordBox, buttonBox);
+        VBox root = new VBox(20,
+                logoView,
+                welcomeLabel,
+                usernameBox,
+                passwordBox,
+                buttonBox
+        );
         root.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(root, 1200, 800);

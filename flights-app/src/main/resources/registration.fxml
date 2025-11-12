@@ -55,7 +55,7 @@
         <Label fx:id="statusLabel" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="7" />
        <columnConstraints>
            <ColumnConstraints halignment="LEFT" prefWidth="75" /> <!-- Label column left -->
-           <ColumnConstraints halignment="LEFT" prefWidth="250" />  <!-- Field column left -->
+           <ColumnConstraints halignment="LEFT" prefWidth="200" />  <!-- Field column left -->
            <ColumnConstraints halignment="LEFT" prefWidth="100.0" /> <!-- Label column right -->
            <ColumnConstraints halignment="LEFT" prefWidth="250" />  <!-- Field column right -->
        </columnConstraints>
