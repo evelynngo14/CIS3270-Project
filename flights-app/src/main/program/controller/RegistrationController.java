@@ -35,6 +35,9 @@ public class RegistrationController {
 
     @FXML
     public void handleRegistration(ActionEvent event) throws SQLException {
+        if (!validateRegistrationForm()) {
+            return; // stop if validation fails
+        }
         //TODO: form validation
         String firstName = firstNameField.getText();
         String mi = miField.getText();
@@ -60,5 +63,35 @@ public class RegistrationController {
     private void handleBackToLogin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MainApp.showLogin(stage);
+    }
+
+    private boolean validateRegistrationForm() {
+        // check required fields
+        if (firstNameField.getText().trim().isEmpty()) {
+            statusLabel.setText("First name is required.");
+            return false;
+        }
+        if (lastNameField.getText().trim().isEmpty()) {
+            statusLabel.setText("Last name is required.");
+            return false;
+        }
+        if (emailField.getText().trim().isEmpty()) {
+            statusLabel.setText("Email is required.");
+            return false;
+        }
+        if (usernameField.getText().trim().isEmpty()) {
+            statusLabel.setText("Username is required.");
+            return false;
+        }
+        if (passwordField.getText().length() < 3) {
+            statusLabel.setText("Password must be at least 3 characters.");
+            return false;
+        }
+        if (stateChoiceBox.getValue() == null) {
+            statusLabel.setText("Please select a state.");
+            return false;
+        }
+
+        return true;
     }
 }
