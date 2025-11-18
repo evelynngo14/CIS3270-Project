@@ -1,7 +1,7 @@
 package controller;
 
-import java.fmxl.FMXL;
-import java.scene.control.Label;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class DashboardController {
     @FXML private Label welcomeLabel;
@@ -14,7 +14,7 @@ public class DashboardController {
     @FXML
     public void handleSearchFlights() {
         //to-do: implement flight search
-        System.out.println("Search flights clicked")
+        System.out.println("Search flights clicked");
     }
 
     @FXML
@@ -26,7 +26,7 @@ public class DashboardController {
     @FXML
     public void handleLogout() {
         //to-do: implement logout
-        System.out.println("Logout clicked")
+        System.out.println("Logout clicked");
     }
 
 }

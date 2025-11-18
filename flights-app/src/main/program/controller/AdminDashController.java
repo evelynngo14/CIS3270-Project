@@ -1,10 +1,10 @@
 package controller;
 
-import javafx.fxml.FMXL;
+import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class AdminDashController {
-    @FMXL private Label welcomeLabel;
+    @FXML private Label welcomeLabel;
 
     @FXML
     public void initialize() {
@@ -26,7 +26,7 @@ public class AdminDashController {
     @FXML
     public void handleLogout() {
         //to-do:implement logout
-        System.out.println("Logout clicked")
+        System.out.println("Logout clicked");
 
     }
 
