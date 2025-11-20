@@ -13,6 +13,8 @@ import javafx.scene.Node;
 
 import java.sql.SQLException;
 
+import dao.RegistrationDAO;
+
 public class RegistrationController {
     @FXML private TextField firstNameField;
     @FXML private TextField miField;
@@ -58,7 +60,27 @@ public class RegistrationController {
 
         String securityQuestion = securityQuestionField.getText();
 
+        // Call the DAO to register the user
+        boolean ok;
+        try {
+            ok = RegistrationDAO.register(username, email, password);
+        } catch (Exception e) {
+            statusLabel.setText("Registration failed");
+            System.err.println("Registration error: " + e.getMessage());
+            return;
+        }
+
+        if (!ok) {
+            statusLabel.setText("Username is incorrect");
+            return;
+        }
+
+        // success: show Registered and return to login
+        statusLabel.setText("Registered");
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        MainApp.showLogin(stage);
     }
+
     @FXML
     private void handleBackToLogin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
