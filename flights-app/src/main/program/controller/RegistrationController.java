@@ -61,25 +61,17 @@ public class RegistrationController {
         String securityQuestion = securityQuestionField.getText();
 
         // Call the DAO to register the user
-        boolean ok;
-        try {
-            ok = RegistrationDAO.register(username, email, password);
-        } catch (Exception e) {
-            statusLabel.setText("Registration failed");
-            System.err.println("Registration error: " + e.getMessage());
-            return;
-        }
+        boolean ok = RegistrationDAO.register(username, email, password);
 
         if (!ok) {
-            statusLabel.setText("Username is incorrect");
+            statusLabel.setText("Registration failed.");
             return;
         }
 
-        // success: show Registered and return to login
+// success: show Registered and return to login
         statusLabel.setText("Registered");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MainApp.showLogin(stage);
-    }
 
     @FXML
     private void handleBackToLogin(ActionEvent event) {
