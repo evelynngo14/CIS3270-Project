@@ -8,25 +8,33 @@ public class RegistrationDAO {
     private static String dbUser = "src/main/cis3270db";
     private static String dbPass = "Administrator!";
 
-    // simple method to add a user
-    public static boolean register(String username, String email, String password) {
+    public static boolean register(String firstName, String lastName, String address, String zip,
+                                   String state, String username, String password, String email,
+                                   String ssn, String securityQuestion) {
+
         try {
             Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
 
-            String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO users (firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, username);
-            stmt.setString(2, email);
-            stmt.setString(3, password);
+            stmt.setString(1, firstName);
+            stmt.setString(2, lastName);
+            stmt.setString(3, address);
+            stmt.setString(4, zip);
+            stmt.setString(5, state);
+            stmt.setString(6, username);
+            stmt.setString(7, password);
+            stmt.setString(8, email);
+            stmt.setString(9, ssn);
+            stmt.setString(10, securityQuestion);
 
-            int result = stmt.executeUpdate();
-
+            int rows = stmt.executeUpdate();
             conn.close();
-            return result == 1;
+            return rows == 1;
 
-        } catch (SQLException e) {
-            System.out.println("Error while registering user");
+        } catch (Exception e) {
+            System.out.println("Error inserting user");
             return false;
         }
     }
