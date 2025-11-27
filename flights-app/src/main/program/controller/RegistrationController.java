@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import components.States;
 import javafx.scene.Node;
 
-import java.sql.SQLException;
-
 import dao.RegistrationDAO;
 
 public class RegistrationController {
@@ -36,7 +34,7 @@ public class RegistrationController {
     }
 
     @FXML
-    public void handleRegistration(ActionEvent event) throws SQLException {
+    public void handleRegistration(ActionEvent event) {
         if (!validateRegistrationForm()) {
             return; // stop if validation fails
         }
@@ -61,21 +59,25 @@ public class RegistrationController {
         String securityQuestion = securityQuestionField.getText();
 
         // Call the DAO to register the user
-        boolean ok;
-        try {
-            ok = RegistrationDAO.register(username, email, password);
-        } catch (Exception e) {
-            statusLabel.setText("Registration failed");
-            System.err.println("Registration error: " + e.getMessage());
-            return;
-        }
+        boolean ok = RegistrationDAO.register(
+                firstName,
+                lastName,
+                address,
+                zip,
+                state,
+                username,
+                password,
+                email,
+                ssn,
+                securityQuestion
+        );
 
         if (!ok) {
-            statusLabel.setText("Username is incorrect");
+            statusLabel.setText("Registration failed.");
             return;
         }
 
-        // success: show Registered and return to login
+// success: show Registered and return to login
         statusLabel.setText("Registered");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         MainApp.showLogin(stage);

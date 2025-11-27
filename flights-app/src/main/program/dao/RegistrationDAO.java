@@ -2,64 +2,40 @@ package dao;
 
 import java.sql.*;
 
-    public RegistrationDAO() {
-        // match the connection constants used in UserDAO in this repo
-        private static final String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-        private static final String dbUser = "src/main/cis3270db";
-        private static final String dbPass = "Administrator!";
+public class RegistrationDAO {
 
-        /**
-         * Register a new user (simple: username, email, password).
-         * Returns true if insert succeeds, false if username/email already exists or on error.
-         */
-        public static boolean register(String username, String email, String password) {
-            if (existsByUsername(username) || existsByEmail(email)) {
-                return false;
-            }
+    private static String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
+    private static String dbUser = "src/main/cis3270db";
+    private static String dbPass = "Administrator!";
 
-            String sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-            try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
-                 PreparedStatement ps = conn.prepareStatement(sql)) {
+    public static boolean register(String firstName, String lastName, String address, String zip,
+                                   String state, String username, String password, String email,
+                                   String ssn, String securityQuestion) {
 
-                ps.setString(1, username);
-                ps.setString(2, email);
-                ps.setString(3, password);
+        try {
+            Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
 
-                int rows = ps.executeUpdate();
-                return rows == 1;
-            } catch (SQLException e) {
-                System.err.println("Registration failed: " + e.getMessage());
-                return false;
-            }
+            String sql = "INSERT INTO users (firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, firstName);
+            stmt.setString(2, lastName);
+            stmt.setString(3, address);
+            stmt.setString(4, zip);
+            stmt.setString(5, state);
+            stmt.setString(6, username);
+            stmt.setString(7, password);
+            stmt.setString(8, email);
+            stmt.setString(9, ssn);
+            stmt.setString(10, securityQuestion);
+
+            int rows = stmt.executeUpdate();
+            conn.close();
+            return rows == 1;
+
+        } catch (Exception e) {
+            System.out.println("Error inserting user");
+            return false;
         }
-
-        public static boolean existsByUsername(String username) {
-            String sql = "SELECT 1 FROM users WHERE username = ? LIMIT 1";
-            try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
-                 PreparedStatement ps = conn.prepareStatement(sql)) {
-
-                ps.setString(1, username);
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next();
-                }
-            } catch (SQLException e) {
-                System.err.println("existsByUsername failed: " + e.getMessage());
-                return false;
-            }
-        }
-
-        public static boolean existsByEmail(String email) {
-            String sql = "SELECT 1 FROM users WHERE email = ? LIMIT 1";
-            try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
-                 PreparedStatement ps = conn.prepareStatement(sql)) {
-
-                ps.setString(1, email);
-                try (ResultSet rs = ps.executeQuery()) {
-                    return rs.next();
-                }
-            } catch (SQLException e) {
-                System.err.println("existsByEmail failed: " + e.getMessage());
-                return false;
-            }
-        }
+    }
 }
