@@ -1,6 +1,7 @@
 package dao;
 
 import model.User;
+
 import java.sql.*;
 
 public class UserDAO {
@@ -33,8 +34,9 @@ public class UserDAO {
         }
         return null;
     }
+    public static User getUserById(int id) {
+        String query = "SELECT * FROM users WHERE id = ?";
+    }
+
 }
 
-public static User getUserById(int id) {
-    String query = "SELECT * FROM users WHERE id = ?";
-}
