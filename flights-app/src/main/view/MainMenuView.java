@@ -1,26 +1,17 @@
-package app;
+package view;
 
-import javafx.application.Application;
+import app.MainApp;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import scene_management.SceneManager;
 
-
-public class MainApp extends Application {
-
-    private static Stage primaryStage;
-
-    @Override
-    public void start(Stage stage) {
-        primaryStage = stage;
-        showLogin(stage);
-    }
-
+public class MainMenuView {
     public static void showLogin(Stage stage) {
         // Logo
         Image logoImage = new Image(MainApp.class.getResource("/images/airplane-logo.png").toExternalForm());
@@ -92,12 +83,7 @@ public class MainApp extends Application {
         root.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(root, 1200, 800);
-        primaryStage.setTitle("Flight Reservations");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
