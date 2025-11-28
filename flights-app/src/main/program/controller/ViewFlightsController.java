@@ -3,8 +3,6 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 
-import java.fx.scene.control.cell.PropertyValueFactory;
-
 public class ViewFlightsController {
     @FXML
     private TableView flightsTable;

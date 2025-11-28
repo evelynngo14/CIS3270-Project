@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import app.MainApp;
+import view.MainMenuView;
 
 public class DashboardController {
     @FXML
@@ -35,7 +36,7 @@ public class DashboardController {
     public void handleLogout(ActionEvent event) {
         System.out.println("Logout clicked");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainApp.showLogin(stage);
+        MainMenuView.showLogin(stage);
     }
 
 }

@@ -1,5 +1,4 @@
 package controller;
-
 import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import components.States;
 import javafx.scene.Node;
+import view.MainMenuView;
 
 import dao.RegistrationDAO;
 
@@ -92,13 +92,13 @@ public class RegistrationController {
 // success: show Registered and return to login
         statusLabel.setText("Registered");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainApp.showLogin(stage);
+        MainMenuView.showLogin(stage);
     }
 
     @FXML
     private void handleBackToLogin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainApp.showLogin(stage);
+        MainMenuView.showLogin(stage);
     }
 
     private boolean validateRegistrationForm() {

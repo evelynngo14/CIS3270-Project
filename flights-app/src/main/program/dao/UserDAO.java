@@ -24,20 +24,12 @@ public class UserDAO {
             // Run the SQL query defined in stmt, and store the results in a ResultSet object called rs (table of rows)
             ResultSet rs = stmt.executeQuery(); // rs is handle to result set; use to loop through rows
             if (rs.next()) { // true if user exists
-                User user = new User;
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                return user;
             }
 
         } catch (SQLException e) {
             System.out.println("Login error: " + e.getMessage());
         }
         return null;
-    }
-
-    public static User getUserById(int id) {
-        String query = "SELECT * FROM users WHERE id = ?";
     }
 
 }

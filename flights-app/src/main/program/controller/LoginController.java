@@ -21,7 +21,7 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        boolean success = UserDAO.validateLogin(username, password);
+        /*boolean success = UserDAO.login(username, password);
 
         if (success) {
             //This line retrieves the current window (Stage) that contains the usernameField:
@@ -34,7 +34,7 @@ public class LoginController {
             }
         } else {
             statusLabel.setText("Invalid username or password.");
-        }
+        } */
     }
 }
 

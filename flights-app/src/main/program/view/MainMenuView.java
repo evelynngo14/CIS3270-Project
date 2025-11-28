@@ -2,7 +2,6 @@ package view;
 
 import app.MainApp;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,9 +9,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import scene_management.SceneManager;
+import app.MainApp;
 
 public class MainMenuView {
-    public static void showLogin(Stage stage) {
+    public static VBox showLogin(Stage stage) {
         // Logo
         Image logoImage = new Image(MainApp.class.getResource("/images/airplane-logo.png").toExternalForm());
         ImageView logoView = new ImageView(logoImage);
@@ -66,8 +66,8 @@ public class MainMenuView {
         loginButton.setPrefWidth(250);
         registerButton.setPrefWidth(250);
 
-        loginButton.setOnAction(e -> SceneManager.showDashboard(primaryStage));
-        registerButton.setOnAction(e -> SceneManager.showRegistrationScreen(primaryStage));
+        loginButton.setOnAction(e -> SceneManager.showDashboard(MainApp.primaryStage));
+        registerButton.setOnAction(e -> SceneManager.showRegistrationScreen(MainApp.primaryStage));
 
         VBox buttonBox = new VBox(10, loginButton, registerButton);
         buttonBox.setAlignment(Pos.CENTER);
@@ -82,7 +82,8 @@ public class MainMenuView {
         );
         root.setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(root, 1200, 800);
+        return root;
+
 
     }
 
