@@ -6,7 +6,9 @@ public class Customer extends User {
 
     }
 
-    public void cancelFlight() {}
+    public void cancelFlight() {
+    }
 
-    public void viewBookedFlights() {}
+    public void viewBookedFlights() {
+    }
 }

@@ -1,4 +1,5 @@
 package dao;
+
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,4 +23,4 @@ public class FlightDAO {
         }
     }
 }
-    //public void insertRecord(String firstName, String mi, String lastName, String email, String password, String
+//public void insertRecord(String firstName, String mi, String lastName, String email, String password, String

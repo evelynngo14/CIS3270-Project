@@ -9,9 +9,12 @@ import model.Customer;
 import scene_management.SceneManager;
 
 public class LoginController {
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private Label statusLabel;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Label statusLabel;
 
     @FXML
     public void handleLogin() {

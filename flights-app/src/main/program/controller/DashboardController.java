@@ -8,7 +8,8 @@ import javafx.scene.Node;
 import app.MainApp;
 
 public class DashboardController {
-    @FXML private Label welcomeLabel;
+    @FXML
+    private Label welcomeLabel;
 
     @FXML
     public void initialize() {
@@ -21,7 +22,7 @@ public class DashboardController {
         System.out.println("Search flights clicked");
         //to-do: navigate to search flight screen
         // Main.app.showSearchFlightsPage();
-     }
+    }
 
     @FXML
     public void handleViewBooking(ActionEvent event) {

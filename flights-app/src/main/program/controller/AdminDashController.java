@@ -4,7 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class AdminDashController {
-    @FXML private Label welcomeLabel;
+    @FXML
+    private Label welcomeLabel;
 
     @FXML
     public void initialize() {

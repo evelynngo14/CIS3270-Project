@@ -14,18 +14,30 @@ import javafx.scene.Node;
 import dao.RegistrationDAO;
 
 public class RegistrationController {
-    @FXML private TextField firstNameField;
-    @FXML private TextField miField;
-    @FXML private TextField lastNameField;
-    @FXML private TextField emailField;
-    @FXML private TextField usernameField;
-    @FXML private PasswordField passwordField;
-    @FXML private TextField ssnField;
-    @FXML private TextField addressField;
-    @FXML private TextField zipField;
-    @FXML private ChoiceBox<String> stateChoiceBox;
-    @FXML private TextField securityQuestionField;
-    @FXML private Label statusLabel;
+    @FXML
+    private TextField firstNameField;
+    @FXML
+    private TextField miField;
+    @FXML
+    private TextField lastNameField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private TextField ssnField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField zipField;
+    @FXML
+    private ChoiceBox<String> stateChoiceBox;
+    @FXML
+    private TextField securityQuestionField;
+    @FXML
+    private Label statusLabel;
 
     @FXML
     public void initialize() {
