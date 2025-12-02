@@ -20,23 +20,20 @@ public class DashboardController {
 
     @FXML
     public void handleSearchFlights(ActionEvent event) {
-        System.out.println("Search flights clicked");
-        //to-do: navigate to search flight screen
-        // Main.app.showSearchFlightsPage();
+       Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       SceneManager.showSearchFlights(stage);
     }
 
     @FXML
     public void handleViewBooking(ActionEvent event) {
-        System.out.println("View bookings clicked");
-        //to-do: navigate to bookings screen
-        // MainApp.showBookingsPage();
+       Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+       SceneManager.showBookings(stage);
     }
 
     @FXML
     public void handleLogout(ActionEvent event) {
-        System.out.println("Logout clicked");
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainMenuView.showLogin(stage);
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        SceneManager.showRegistrationScreen(stage);
     }
 
 }
