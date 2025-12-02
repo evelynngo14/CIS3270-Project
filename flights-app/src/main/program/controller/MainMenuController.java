@@ -1,0 +1,51 @@
+import view.MainMenuView;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import scene_management.SceneManager; // Assuming this class handles scene switching
+
+public class MainMenuController {
+
+    private final MainMenuView view;
+    private final Stage stage;
+    // private final LoginModel model; // Data/Business Logic
+
+    public MainMenuController(Stage stage, MainMenuView view /*, LoginModel model */) {
+        this.stage = stage;
+        this.view = view;
+        // this.model = model;
+
+        // Attach event handlers from the View to the Controller's logic
+        view.getLoginButton().setOnAction(e -> handleLogin());
+        view.getRegisterButton().setOnAction(e -> handleRegister());
+        view.getForgotPasswordLabel().setOnMouseClicked(e -> handleForgotPassword());
+    }
+
+    private void handleLogin() {
+        // Get data from the View
+        String username = view.getUsernameField().getText();
+        String password = view.getPasswordField().getText();
+
+        // Pass data to the Model (Simulation)
+        // boolean success = model.authenticate(username, password);
+
+        //  Update the view/scene based on the result
+        if (username.equals("admin") && password.equals("password")) { // Simple check for demo
+            SceneManager.showDashboard(stage); // Navigation logic
+        } else {
+            Alert error = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password.");
+            error.show();
+        }
+    }
+
+    private void handleRegister() {
+        SceneManager.showRegistrationScreen(stage); // Navigation logic
+    }
+
+    private void handleForgotPassword() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Password Recovery");
+        alert.setHeaderText(null);
+        alert.setContentText("Password recovery is not implemented yet.");
+        alert.showAndWait();
+    }
+}
