@@ -30,7 +30,7 @@ public class MainMenuController {
         // boolean success = model.authenticate(username, password);
 
         if (username.equals("admin") && password.equals("password")) { // Simple check for demo
-            navigator.showAdminDashboard()
+            navigator.showAdminDashboard();
         } else {
             Alert error = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password.");
             error.show();
@@ -38,7 +38,7 @@ public class MainMenuController {
     }
 
     private void handleRegister() {
-        SceneManager.showRegistrationScreen(stage);
+        SceneManager.showRegistrationScreen();
     }
 
     private void handleForgotPassword() {

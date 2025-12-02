@@ -49,6 +49,8 @@ public class MainApp extends Application {
     public void showDashboard() {
     }
 
+    public void showAdminDashboard() {}
+
     public static void main(String[] args) {
         launch(args);
     }
