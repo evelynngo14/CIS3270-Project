@@ -1,90 +1,84 @@
 package view;
 
-import app.MainApp;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import scene_management.SceneManager;
-import app.MainApp;
 
-public class MainMenuView {
-    public static VBox showLogin(Stage stage) {
-        // Logo
-        Image logoImage = new Image(MainApp.class.getResource("/images/airplane-logo.png").toExternalForm());
+public class MainMenuView extends VBox {
+
+    // 1. Fields for Controls (Exposed via Getters)
+    private final TextField usernameField = new TextField();
+    private final PasswordField passwordField = new PasswordField();
+    private final Button loginButton = new Button("Login");
+    private final Button registerButton = new Button("Register");
+    private final Label forgotPasswordLabel = new Label("Forgot password?");
+
+    public MainMenuView() {
+        // --- Root VBox Setup ---
+        this.setSpacing(20);
+        this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(50));
+
+        // --- Logo ---
+        Image logoImage = new Image(getClass().getResource("/images/airplane-logo.png").toExternalForm());
         ImageView logoView = new ImageView(logoImage);
-
         logoView.setFitWidth(150);
         logoView.setPreserveRatio(true);
 
-        // Header
+        // --- Header ---
         Label welcomeLabel = new Label("Welcome to Flight Reservations");
         welcomeLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;");
 
-        // Username
-        Label usernameLabel = new Label("Username");
-        TextField usernameField = new TextField();
+        // --- Username Box ---
         usernameField.setPromptText("Username");
         usernameField.setMaxWidth(250);
-
-        VBox usernameBox = new VBox(5, usernameLabel, usernameField);
+        VBox usernameBox = new VBox(5, new Label("Username"), usernameField);
         usernameBox.setAlignment(Pos.CENTER_LEFT);
         usernameBox.setMaxWidth(250);
 
-        //Forgot password
-        Label forgotPassword = new Label("Forgot password?");
-        forgotPassword.setStyle("-fx-text-fill: #0066cc; -fx-underline: true; -fx-cursor: hand;");
-        forgotPassword.setOnMouseClicked(e -> {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Password Recovery");
-            alert.setHeaderText(null);
-            alert.setContentText("Password recovery is not implemented yet.");
-            alert.showAndWait();
-        });
-
-        HBox forgotPasswordBox = new HBox(forgotPassword);
+        // --- Forgot Password Link ---
+        forgotPasswordLabel.setStyle("-fx-text-fill: #0066cc; -fx-underline: true; -fx-cursor: hand;");
+        // *** The Mouse Event LOGIC (Alert) is REMOVED from here ***
+        HBox forgotPasswordBox = new HBox(forgotPasswordLabel);
         forgotPasswordBox.setAlignment(Pos.CENTER_RIGHT);
         forgotPasswordBox.setMaxWidth(250);
 
-
-        // Password
-        Label passwordLabel = new Label("Password");
-        PasswordField passwordField = new PasswordField();
+        // --- Password Box ---
         passwordField.setPromptText("Password");
         passwordField.setMaxWidth(250);
-
-        VBox passwordBox = new VBox(5, passwordLabel, passwordField, forgotPasswordBox);
+        VBox passwordBox = new VBox(5, new Label("Password"), passwordField, forgotPasswordBox);
         passwordBox.setAlignment(Pos.CENTER_LEFT);
         passwordBox.setMaxWidth(250);
 
-        // Buttons
-        Button loginButton = new Button("Login");
-        Button registerButton = new Button("Register");
         loginButton.setPrefWidth(250);
         registerButton.setPrefWidth(250);
-
-        loginButton.setOnAction(e -> SceneManager.showDashboard(MainApp.primaryStage));
-        registerButton.setOnAction(e -> SceneManager.showRegistrationScreen(MainApp.primaryStage));
-
         VBox buttonBox = new VBox(10, loginButton, registerButton);
         buttonBox.setAlignment(Pos.CENTER);
 
-        // Root layout
-        VBox root = new VBox(20,
-                logoView,
-                welcomeLabel,
-                usernameBox,
-                passwordBox,
-                buttonBox
-        );
-        root.setAlignment(Pos.CENTER);
-
-        return root;
-
-
+        this.getChildren().addAll(logoView, welcomeLabel, usernameBox, passwordBox, buttonBox);
     }
 
+    public TextField getUsernameField() {
+        return usernameField;
+    }
+
+    public PasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public Button getLoginButton() {
+        return loginButton;
+    }
+
+    public Button getRegisterButton() {
+        return registerButton;
+    }
+
+    public Label getForgotPasswordLabel() {
+        return forgotPasswordLabel;
+    }
 }

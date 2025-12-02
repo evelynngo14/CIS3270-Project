@@ -1,5 +1,7 @@
 package app;
 
+import controller.LoginController;
+import controller.MainMenuController;
 import controller.RegistrationController;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -21,14 +23,32 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        MainApp.primaryStage = stage;
-        SceneManager.initialize(stage);
-        VBox root = showLogin(primaryStage);
-        Scene scene = new Scene(root, 1200, 800);
-        primaryStage = stage;
-        primaryStage.setTitle("Flight Reservations");
+        this.primaryStage = stage;
+        showLoginScreen(); // Start with the main login screen
+    }
+
+    public void showLoginScreen() {
+        MainMenuView loginView = new MainMenuView();
+        new MainMenuController(this, loginView);
+
+        Scene scene = new Scene(loginView, 800, 600);
         primaryStage.setScene(scene);
+        primaryStage.setTitle("Flight Reservations Login");
         primaryStage.show();
+    }
+
+    public void showRegistrationScreen() {
+        RegistrationView registrationView = new RegistrationView();
+        new RegistrationController(this, registrationView);
+
+        Scene scene = new Scene(registrationView, SCENE_WIDTH, SCENE_HEIGHT);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Flight Reservations Registration");
+        primaryStage.show();
+
+    }
+
+    public void showDashboard() {
 
     }
 

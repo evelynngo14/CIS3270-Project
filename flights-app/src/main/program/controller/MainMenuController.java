@@ -1,27 +1,28 @@
+package controller;
+import app.MainApp;
 import view.MainMenuView;
+import model.LoginModel;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import scene_management.SceneManager; // Assuming this class handles scene switching
 
 public class MainMenuController {
 
-    private final MainMenuView view;
-    private final Stage stage;
-    // private final LoginModel model; // Data/Business Logic
+    private final MainApp navigator;
+    private final MainAppView view;
+    // private final LoginModel model
 
-    public MainMenuController(Stage stage, MainMenuView view /*, LoginModel model */) {
-        this.stage = stage;
+    public MainMenuController(Stage stage, MainMenuView view, LoginModel model, MainApp navigator */) {
+        this.navigator = navigator;
         this.view = view;
         // this.model = model;
 
-        // Attach event handlers from the View to the Controller's logic
         view.getLoginButton().setOnAction(e -> handleLogin());
         view.getRegisterButton().setOnAction(e -> handleRegister());
         view.getForgotPasswordLabel().setOnMouseClicked(e -> handleForgotPassword());
     }
 
     private void handleLogin() {
-        // Get data from the View
         String username = view.getUsernameField().getText();
         String password = view.getPasswordField().getText();
 
@@ -38,7 +39,7 @@ public class MainMenuController {
     }
 
     private void handleRegister() {
-        SceneManager.showRegistrationScreen(stage); // Navigation logic
+        SceneManager.showRegistrationScreen(stage);
     }
 
     private void handleForgotPassword() {

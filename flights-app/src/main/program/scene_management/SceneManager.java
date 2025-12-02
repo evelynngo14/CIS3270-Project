@@ -22,15 +22,7 @@ public class SceneManager {
     }
 
     private static void loadScene(Stage stage, String fxmlPath, String title) {
-        try {
-            FXMLLoader loader = new FXMLLoader(SceneManager.class.getResource(fxmlPath));
-            Parent root = loader.load();
-            Scene scene = new Scene(root, 1200, 800); // consistent sizing
-            stage.setScene(scene);
-            stage.setTitle(title);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public static void initialize(Stage stage) {
