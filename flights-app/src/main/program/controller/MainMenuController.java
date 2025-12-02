@@ -29,9 +29,8 @@ public class MainMenuController {
         // Pass data to the Model (Simulation)
         // boolean success = model.authenticate(username, password);
 
-        //  Update the view/scene based on the result
         if (username.equals("admin") && password.equals("password")) { // Simple check for demo
-            SceneManager.showDashboard(stage); // Navigation logic
+            navigator.showAdminDashboard()
         } else {
             Alert error = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password.");
             error.show();
