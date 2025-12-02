@@ -38,7 +38,7 @@ public class MainMenuController {
     }
 
     private void handleRegister() {
-        SceneManager.showRegistrationScreen();
+        showRegistrationScreen();
     }
 
     private void handleForgotPassword() {
