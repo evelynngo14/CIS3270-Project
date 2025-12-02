@@ -7,18 +7,18 @@ import java.time.LocalTime;
 public class Flight {
     private int flightId;
     private String departureCity;
-    private String destinationCity;
+    private String arrivalCity;
     private LocalDate departureDate;
     private LocalTime departureTime;
     private LocalTime arrivalTime;
     private int capacity;
     private int bookedSeats;
 
-    public Flight(int flightId, String departureCity, String destinationCity, LocalDate departureDate,
+    public Flight(int flightId, String departureCity, String arrivalCity, LocalDate departureDate,
                   LocalTime departureTime, LocalTime arrivalTime, int capacity, int bookedSeats) {
         this.flightId = flightId;
         this.departureCity = departureCity;
-        this.destinationCity = destinationCity;
+        this.arrivalCity = arrivalCity;
         this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
@@ -32,7 +32,7 @@ public class Flight {
 
     @Override
     public String toString() {
-        return "model.Flight " + flightId + ": " + departureCity + " → " + destinationCity +
+        return "model.Flight " + flightId + ": " + departureCity + " → " + arrivalCity +
                 " on " + departureDate + " at " + departureTime +
                 " | Seats Available: " + getAvailableSeats();
     }
@@ -53,12 +53,12 @@ public class Flight {
         this.departureCity = departureCity;
     }
 
-    public String getDestinationCity() {
-        return destinationCity;
+    public String getArrivalCity() {
+        return arrivalCity;
     }
 
-    public void setDestinationCity(String destinationCity) {
-        this.destinationCity = destinationCity;
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
     }
 
     public LocalDate getDepartureDate() {
