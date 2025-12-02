@@ -23,6 +23,7 @@ public class RegistrationView extends VBox {
     private final TextField securityQuestionField = new TextField();
     private final Button registerButton = new Button("Register");
     private final Button returnToLoginButton = new Button("Return to Login");
+    private final Label statusLabel = new Label();
 
     public RegistrationView() {
         // Set root VBox properties
@@ -91,6 +92,7 @@ public class RegistrationView extends VBox {
         this.getChildren().addAll(headerLabel, gridPane);
     }
 
+
     private GridPane createGridPane() {
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
@@ -98,7 +100,6 @@ public class RegistrationView extends VBox {
         gridPane.setVgap(10);
         gridPane.setPadding(new Insets(20, 20, 20, 20));
 
-        // Column Constraints (Mirroring FXML)
         ColumnConstraints col1 = new ColumnConstraints(75); // Label column left
         col1.setHalignment(javafx.geometry.HPos.LEFT);
         ColumnConstraints col2 = new ColumnConstraints(200); // Field column left
@@ -110,15 +111,12 @@ public class RegistrationView extends VBox {
 
         gridPane.getColumnConstraints().addAll(col1, col2, col3, col4);
 
-        // Row Constraints (The FXML had empty <RowConstraints/> tags, using sensible defaults here)
         for (int i = 0; i < 8; i++) {
             gridPane.getRowConstraints().add(new RowConstraints());
         }
 
         return gridPane;
     }
-
-    // --- Getters for Controller to access the UI elements and set event handlers ---
 
     public TextField getFirstNameField() {
         return firstNameField;
@@ -170,5 +168,9 @@ public class RegistrationView extends VBox {
 
     public Button getReturnToLoginButton() {
         return returnToLoginButton;
+    }
+
+    public Labeled getStatusLabel() {
+        return statusLabel;
     }
 }

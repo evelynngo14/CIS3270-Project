@@ -12,63 +12,47 @@ import javafx.scene.Node;
 import view.MainMenuView;
 
 import dao.RegistrationDAO;
+import view.RegistrationView;
+
+// Main contributor: Kelly
 
 public class RegistrationController {
-    @FXML
-    private TextField firstNameField;
-    @FXML
-    private TextField miField;
-    @FXML
-    private TextField lastNameField;
-    @FXML
-    private TextField emailField;
-    @FXML
-    private TextField usernameField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField ssnField;
-    @FXML
-    private TextField addressField;
-    @FXML
-    private TextField zipField;
-    @FXML
-    private ChoiceBox<String> stateChoiceBox;
-    @FXML
-    private TextField securityQuestionField;
-    @FXML
-    private Label statusLabel;
 
-    @FXML
-    public void initialize() {
-        // JavaFX method called when FXML is loaded, used to populate ChoiceBox
-        stateChoiceBox.setItems(States.getStateAbbreviations());
+    private final MainApp navigator;
+    private final RegistrationView view;
+
+    public RegistrationController(MainApp navigator, RegistrationView view) {
+        this.navigator = navigator;
+        this.view = view;
+
+        // State Choice Box with state abbreviations
+        view.getStateChoiceBox().setItems(States.getStateAbbreviations());
+
+        view.getRegisterButton().setOnAction(this::handleRegistration);
+        view.getReturnToLoginButton().setOnAction(this::handleBackToLogin);
     }
 
-    @FXML
-    public void handleRegistration(ActionEvent event) {
+    private void handleRegistration(ActionEvent event) {
         if (!validateRegistrationForm()) {
-            return; // stop if validation fails
-        }
-        //TODO: form validation
-        String firstName = firstNameField.getText();
-        String mi = miField.getText();
-        String lastName = lastNameField.getText();
-        String email = emailField.getText();
-        String username = usernameField.getText();
-        String password = passwordField.getText();
-        String ssn = ssnField.getText();
-        String address = addressField.getText();
-
-        String zip = zipField.getText();
-
-        String state = stateChoiceBox.getValue();
-        if (state == null || state.isEmpty()) {
-            statusLabel.setText("Please select a state.");
             return;
         }
 
-        String securityQuestion = securityQuestionField.getText();
+        String firstName = view.getFirstNameField().getText();
+        String mi = view.getMiField().getText();
+        String lastName = view.getLastNameField().getText();
+        String email = view.getEmailField().getText();
+        String username = view.getUsernameField().getText();
+        String password = view.getPasswordField().getText();
+        String ssn = view.getSsnField().getText();
+        String address = view.getAddressField().getText();
+        String zip = view.getZipField().getText();
+        String state = view.getStateChoiceBox().getValue();
+        String securityQuestion = view.getSecurityQuestionField().getText();
+
+        if (state == null || state.isEmpty()) {
+            view.getStatusLabel().setText("Please select a state.");
+            return;
+        }
 
         // Call the DAO to register the user
         boolean ok = RegistrationDAO.register(
@@ -85,46 +69,52 @@ public class RegistrationController {
         );
 
         if (!ok) {
-            statusLabel.setText("Registration failed.");
+            view.getStatusLabel().setText("Registration failed.");
             return;
         }
 
-// success: show Registered and return to login
-        statusLabel.setText("Registered");
+        // success: show Registered and return to login
+        view.getStatusLabel().setText("Registered");
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainMenuView.showLogin(stage);
+        navigator.showLoginScreen(); // switch to MainApp
     }
 
-    @FXML
     private void handleBackToLogin(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        MainMenuView.showLogin(stage);
+        navigator.showLoginScreen();
     }
 
     private boolean validateRegistrationForm() {
-        // check required fields
-        if (firstNameField.getText().trim().isEmpty()) {
-            statusLabel.setText("First name is required.");
+        // Reset status message
+        view.getStatusLabel().setText("");
+
+        if (view.getFirstNameField().getText().trim().isEmpty()) {
+            view.getStatusLabel().setText("First name is required.");
             return false;
         }
-        if (lastNameField.getText().trim().isEmpty()) {
-            statusLabel.setText("Last name is required.");
+        if (view.getLastNameField().getText().trim().isEmpty()) {
+            view.getStatusLabel().setText("Last name is required.");
             return false;
         }
-        if (emailField.getText().trim().isEmpty()) {
-            statusLabel.setText("Email is required.");
+        if (view.getEmailField().getText().trim().isEmpty()) {
+            view.getStatusLabel().setText("Email is required.");
             return false;
         }
-        if (usernameField.getText().trim().isEmpty()) {
-            statusLabel.setText("Username is required.");
+        if (view.getUsernameField().getText().trim().isEmpty()) {
+            view.getStatusLabel().setText("Username is required.");
             return false;
         }
-        if (passwordField.getText().length() < 3) {
-            statusLabel.setText("Password must be at least 3 characters.");
+        if (view.getPasswordField().getText().length() < 3) {
+            view.getStatusLabel().setText("Password must be at least 3 characters.");
             return false;
         }
-        if (stateChoiceBox.getValue() == null) {
-            statusLabel.setText("Please select a state.");
+        if (view.getStateChoiceBox().getValue() == null) {
+            view.getStatusLabel().setText("Please select a state.");
+            return false;
+        }
+
+        // TODO: Add zip code validation check (placeholder)
+        if (view.getZipField().getText().trim().length() < 5) {
+            view.getStatusLabel().setText("Zip code must be at least 5 digits.");
             return false;
         }
 

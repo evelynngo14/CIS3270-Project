@@ -9,7 +9,7 @@ import scene_management.SceneManager; // Assuming this class handles scene switc
 public class MainMenuController {
 
     private final MainApp navigator;
-    private final MainAppView view;
+    private final MainMenuView view;
     // private final LoginModel model
 
     public MainMenuController(Stage stage, MainMenuView view, LoginModel model, MainApp navigator */) {

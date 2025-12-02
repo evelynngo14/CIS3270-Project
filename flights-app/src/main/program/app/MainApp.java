@@ -13,8 +13,6 @@ import scene_management.SceneManager;
 import view.MainMenuView;
 import view.RegistrationView;
 
-import static view.MainMenuView.showLogin;
-
 public class MainApp extends Application {
 
     public static Stage primaryStage;
@@ -49,7 +47,6 @@ public class MainApp extends Application {
     }
 
     public void showDashboard() {
-
     }
 
     public static void main(String[] args) {
