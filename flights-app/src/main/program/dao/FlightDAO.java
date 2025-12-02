@@ -5,10 +5,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class FlightDAO {
-    private static final String url = "mysql -h cis3270db.mysql.database.azure.com -P 3306 -u cis3270db -p";
-    private static final String dbUser = "src/main/cis3270db";
-    private static final String dbPass = "Administrator!";
+public class FlightDAO implements DAO {
+
     int flightsNum = 0;
     String[] flights = new String[flightsNum];
 

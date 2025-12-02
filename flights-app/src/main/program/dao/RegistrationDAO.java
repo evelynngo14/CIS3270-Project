@@ -2,11 +2,7 @@ package dao;
 
 import java.sql.*;
 
-public class RegistrationDAO {
-
-    private static String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-    private static String dbUser = "src/main/cis3270db";
-    private static String dbPass = "Administrator!";
+public class RegistrationDAO implements DAO {
 
     public static boolean register(String firstName, String lastName, String address, String zip,
                                    String state, String username, String password, String email,

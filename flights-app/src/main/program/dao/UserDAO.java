@@ -4,10 +4,7 @@ import model.User;
 
 import java.sql.*;
 
-public class UserDAO {
-    private static final String url = "jdbc:mysql://cis3270db.mysql.database.azure.com:3306/airline_reservation?useSSL=true";
-    private static final String dbUser = "cis3270db";
-    private static final String dbPass = "Administrator!";
+public class UserDAO implements DAO {
 
     // Authenticate user
     public static User login(String inputUsername, String inputPassword) {

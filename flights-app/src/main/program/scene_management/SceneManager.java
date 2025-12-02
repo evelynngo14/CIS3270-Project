@@ -33,4 +33,6 @@ public class SceneManager {
         }
     }
 
+    public static void initialize(Stage stage) {
+    }
 }
