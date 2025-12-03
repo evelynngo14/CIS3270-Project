@@ -8,6 +8,7 @@ public class UserDAO implements DAO {
     public void viewFlights() {
     }
 
+
     public void deleteBooking(int bookingId) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             PreparedStatement stmt = conn.prepareStatement("DELETE FROM bookings WHERE bookingId = ?" );

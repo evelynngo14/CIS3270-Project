@@ -26,7 +26,7 @@ public class BookingDAO implements DAO {
         );
     }
 
-    public ObservableList<Booking> getBookingsByUser(int userId) {
+    public static ObservableList<Booking> getBookingsByUser(int userId) {
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
         // b. = bookings table | f. = flights table
