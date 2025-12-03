@@ -14,6 +14,8 @@ public class Flight {
     private int capacity;
     private int bookedSeats;
 
+    public Flight() {}
+
     public Flight(int flightId, String departureCity, String arrivalCity, LocalDate departureDate,
                   LocalTime departureTime, LocalTime arrivalTime, int capacity, int bookedSeats) {
         this.flightId = flightId;

@@ -23,13 +23,15 @@ public class AdminDashboardController {
     }
 
     private void handleAddFlight(ActionEvent actionEvent) {
-        // TODO: implement add flight functionality
+        view.getAddFlightButton().setOnAction(this::handleAddFlight);
+        view.getManageFlightsButton().setOnAction(this::handleManageFlights);
+        view.getLogoutButton().setOnAction(this::handleLogout);
         System.out.println("Add flight clicked. Navigating to flight form");
         // navigator.showAddFlightForm
     }
 
     private void handleManageFlights(ActionEvent actionEvent) {
-        //TODO: implement flight management
+        //TODO: implement flight TABLE VIEW
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
     }
 
