@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.
+import model.Booking;
 
 public class BookingDAO implements DAO {
     public static ObservableList<Booking> getAllBookings() {
@@ -28,7 +28,7 @@ public class BookingDAO implements DAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Error getting bookings: " + e.getMessage());
         }
     }
 
@@ -50,7 +50,7 @@ public class BookingDAO implements DAO {
         }
     }
 
-    public void insertBooking(int flightId, int userId, int seatNumber) {
+    public void insertBooking(int flightId, int userId, String seatNumber) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             String query = "INSERT INTO bookings (flightId, userId, seatNumber) VALUES (?, ?, ?)" +
                     "UPDATE flights SET bookedSeats = bookedSeats + 1 WHERE flightId = ?;";

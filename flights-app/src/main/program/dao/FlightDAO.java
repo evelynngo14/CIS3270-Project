@@ -49,5 +49,3 @@ public class FlightDAO implements DAO {
     }
 
 }
-
-//public void insertRecord(String firstName, String mi, String lastName, String email, String password, String
