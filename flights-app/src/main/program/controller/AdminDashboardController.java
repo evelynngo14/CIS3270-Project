@@ -29,8 +29,6 @@ public class AdminDashboardController {
     }
 
     private void handleViewFlights() {
-        view.getFlightTable().getSelectionModel().clearSelection();
-
         // calls Admin Model to fetch ObservableList of flight objects
         ObservableList<Flight> flightList = model.getAllFlights();
         view.getFlightTable().setItems(flightList);
