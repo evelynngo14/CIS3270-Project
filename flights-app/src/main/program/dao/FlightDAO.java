@@ -20,15 +20,18 @@ public class FlightDAO implements DAO {
             String query = "SELECT * FROM flights";
             PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
             ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
+
+            // Observable list is used as source for TableView
+            // iterate through rs to create instances of flights and populate with flight data
             while (rs.next()) {
                 flights.add(new Flight(
-                        rs.getInt("flightId");
-                        rs.getInt("capacity");
-                        rs.getInt("bookedSeats");
-                        rs.getString("departureCity");
-                        rs.getString("arrivalCity");
-                        rs.getString("departureTime");
-                        rs.getString("arrivalTime");
+                        rs.getInt("flightId"),
+                        rs.getInt("capacity"),
+                        rs.getInt("bookedSeats"),
+                        rs.getString("departureCity"),
+                        rs.getString("arrivalCity"),
+                        rs.getString("departureTime"),
+                        rs.getString("arrivalTime"),
                 ));
             }
 
