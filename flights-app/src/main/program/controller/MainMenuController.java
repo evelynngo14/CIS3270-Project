@@ -32,8 +32,10 @@ public class MainMenuController {
         boolean success = model.authenticate(username, password);
         if (success) {
             System.out.println("login successful");
-        } else {
             navigator.showDashboard();
+        } else {
+            view.getLoginErrorLabel().setText("Invalid username or password");
+            System.out.println("Incorrect username or password");
         }
     }
 

@@ -15,6 +15,7 @@ public class MainMenuView extends VBox {
     private final Button loginButton = new Button("Login");
     private final Button registerButton = new Button("Register");
     private final Label forgotPasswordLabel = new Label("Forgot password?");
+    private final Label loginErrorLabel = new Label("");
 
     public MainMenuView() {
         // Root box SETUP
@@ -56,7 +57,7 @@ public class MainMenuView extends VBox {
         buttonBox.setAlignment(Pos.CENTER);
 
         // returns a list of nodes in the pane
-        this.getChildren().addAll(logoView, welcomeLabel, usernameBox, passwordBox, buttonBox);
+        this.getChildren().addAll(logoView, welcomeLabel, usernameBox, passwordBox, buttonBox, loginErrorLabel);
     }
 
     public TextField getUsernameField() {
@@ -77,5 +78,9 @@ public class MainMenuView extends VBox {
 
     public Label getForgotPasswordLabel() {
         return forgotPasswordLabel;
+    }
+
+    public Label getLoginErrorLabel() {
+        return loginErrorLabel;
     }
 }
