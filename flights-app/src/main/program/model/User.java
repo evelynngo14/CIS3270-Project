@@ -61,10 +61,6 @@ public abstract class User {
         return mi;
     }
 
-    public void setMi(String mi) {
-        this.mi = mi;
-    }
-
     public String getEmail() {
         return email;
     }

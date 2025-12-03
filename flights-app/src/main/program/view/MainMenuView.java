@@ -56,6 +56,8 @@ public class MainMenuView extends VBox {
         VBox buttonBox = new VBox(10, loginButton, registerButton);
         buttonBox.setAlignment(Pos.CENTER);
 
+        loginErrorLabel.setStyle("-fx-text-fill: #801f28;");
+
         // returns a list of nodes in the pane
         this.getChildren().addAll(logoView, welcomeLabel, usernameBox, passwordBox, buttonBox, loginErrorLabel);
     }

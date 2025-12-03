@@ -37,7 +37,7 @@ public class RegistrationView extends VBox {
         headerLabel.setStyle("-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;");
         headerLabel.setAlignment(Pos.CENTER);
 
-        // GridPane Setup
+        // GridPane Setup : 3 cols, 4 rows
         GridPane gridPane = createGridPane();
 
         // Left Column

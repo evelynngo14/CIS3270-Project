@@ -56,6 +56,7 @@ public class AdminDashboardView extends VBox {
         buttons.setAlignment(Pos.CENTER);
         buttons.setSpacing(20);
 
+        // ignore this error. runs fine
         flightTable.getColumns().addAll(
                 flightIdCol, departureCityCol, arrivalCityCol,
                 departureTimeCol, arrivalTimeCol, capacityCol,

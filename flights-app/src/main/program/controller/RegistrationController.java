@@ -32,7 +32,6 @@ public class RegistrationController {
         }
 
         String firstName = view.getFirstNameField().getText();
-        String mi = view.getMiField().getText();
         String lastName = view.getLastNameField().getText();
         String email = view.getEmailField().getText();
         String username = view.getUsernameField().getText();
