@@ -37,7 +37,7 @@ public class MainMenuController {
     }
 
     private void handleRegister() {
-        //showRegistrationScreen();
+        navigator.showRegistrationScreen();
     }
 
     private void handleForgotPassword() {

@@ -8,7 +8,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.Login;
-import scene_management.SceneManager;
 import view.MainMenuView;
 import view.RegistrationView;
 
@@ -20,6 +19,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
+        this.primaryStage = stage; // will NOT start without initializing
         showLoginScreen();
     }
 
@@ -28,7 +28,7 @@ public class MainApp extends Application {
         MainMenuView loginView = new MainMenuView();
         new MainMenuController(this, loginView, model); // 'this': MainApp
 
-        Scene scene = new Scene(loginView, 800, 600);
+        Scene scene = new Scene(loginView, SCENE_WIDTH, SCENE_HEIGHT);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flight Reservations Login");
         primaryStage.show();
