@@ -44,6 +44,6 @@ public class MainMenuController {
     }
 
     private void handleForgotPassword() {
-        navigator.showForgotPasswordScreen();
+        navigator.showForgotPasswordScreen(); // TODO: implement
     }
 }

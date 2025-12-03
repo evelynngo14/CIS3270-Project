@@ -1,5 +1,6 @@
 package app;
 import controller.AdminDashboardController;
+import controller.ForgotPasswordController;
 import controller.MainMenuController;
 import controller.RegistrationController;
 import javafx.application.Application;
@@ -63,6 +64,11 @@ public class MainApp extends Application {
         primaryStage.setTitle("Admin Dashboard");
         primaryStage.show();
 
+    }
+
+    public void showForgotPasswordScreen() {
+        //ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
+        //new ForgotPasswordController(this, forgotPasswordView);
     }
 
     public static void main(String[] args) {
