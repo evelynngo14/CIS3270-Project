@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+//refer to MainMenuController for event logic
 public class MainMenuView extends VBox {
 
     private final TextField usernameField = new TextField();
@@ -40,6 +41,7 @@ public class MainMenuView extends VBox {
         usernameBox.setAlignment(Pos.CENTER_LEFT); // this layout pane will position on the center VERTICALLY and left HORIZONTALLY
         usernameBox.setMaxWidth(250);
 
+        // forgot password
         forgotPasswordLabel.setStyle("-fx-text-fill: #0066cc; -fx-underline: true; -fx-cursor: hand;");
         HBox forgotPasswordBox = new HBox(forgotPasswordLabel);
         forgotPasswordBox.setAlignment(Pos.CENTER_RIGHT);

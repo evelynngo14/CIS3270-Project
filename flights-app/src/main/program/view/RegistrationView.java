@@ -110,10 +110,6 @@ public class RegistrationView extends VBox {
 
         gridPane.getColumnConstraints().addAll(col1, col2, col3, col4);
 
-        for (int i = 0; i < 8; i++) {
-            gridPane.getRowConstraints().add(new RowConstraints());
-        }
-
         return gridPane;
     }
 

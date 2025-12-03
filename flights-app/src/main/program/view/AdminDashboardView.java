@@ -26,7 +26,7 @@ public class AdminDashboardView extends VBox {
         this.setPrefWidth(1200);
         this.setSpacing(20);
 
-        // TableView Columns
+        // FLIGHTS TableView Columns. matches getter method names in the Flight Model
         TableColumn<Flight, Integer> flightIdCol = new TableColumn<>("Flight ID");
         flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
 
