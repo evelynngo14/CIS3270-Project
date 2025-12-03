@@ -29,8 +29,9 @@ public class AdminDashboardController {
         view.getLogoutButton().setOnAction(this::handleLogout);
     }
 
+    // *TableView for All Flights*
     private void handleViewFlights() {
-        // calls Admin Model to fetch ObservableList of flight objects
+        // calls Admin Model to fetch ObservableList of flight objects, sends to View
         ObservableList<Flight> flightList = model.getAllFlights();
         view.getFlightTable().setItems(flightList);
     }
