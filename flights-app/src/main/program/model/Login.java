@@ -2,8 +2,11 @@ package model;
 
 
 import dao.LoginDAO;
+import dao.UserDAO;
 
 public class Login {
+
+    UserDAO userDAO = new UserDAO();
 
     public boolean authenticate(String username, String password) {
         if (username == null || username.isEmpty() ||  password == null || password.isEmpty()) {
@@ -16,7 +19,10 @@ public class Login {
         return isValid;
     }
 
-    public boolean resetPassword(String username, String password, String securityAnswer, String newPassword) {
-
+    public boolean resetPassword(String username, String securityAnswer, String newPassword) {
+        boolean success = userDAO.verifySecurityAnswer(username, securityAnswer);
+        if (success) {
+            userDAO.updatePassword(username, newPassword);
+        }
     }
 }
