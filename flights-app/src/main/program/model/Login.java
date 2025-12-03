@@ -15,4 +15,8 @@ public class Login {
 
         return isValid;
     }
+
+    public boolean resetPassword(String username, String password, String securityAnswer, String newPassword) {
+
+    }
 }

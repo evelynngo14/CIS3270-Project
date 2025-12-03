@@ -44,10 +44,6 @@ public class MainMenuController {
     }
 
     private void handleForgotPassword() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Password Recovery");
-        alert.setHeaderText(null);
-        alert.setContentText("Password recovery is not implemented yet.");
-        alert.showAndWait();
+        navigator.showForgotPasswordScreen();
     }
 }
