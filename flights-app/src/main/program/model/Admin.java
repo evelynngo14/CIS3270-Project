@@ -2,10 +2,11 @@ package model;
 
 import dao.FlightDAO;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import view.AdminDashboardView;
 
 // admin logic ; fetch flight data
 public class Admin extends User {
-    // TODO: implement a way to login as admin
     protected String username = "admin";
     protected String password = "123";
 
