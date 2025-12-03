@@ -1,6 +1,4 @@
 package app;
-
-import controller.LoginController;
 import controller.MainMenuController;
 import controller.RegistrationController;
 import javafx.application.Application;
@@ -9,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import model.LoginModel;
 import scene_management.SceneManager;
 import view.MainMenuView;
 import view.RegistrationView;
@@ -22,12 +21,13 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
         this.primaryStage = stage;
-        showLoginScreen(); // Start with the main login screen
+        showLoginScreen();
     }
 
     public void showLoginScreen() {
+        LoginModel model = new LoginModel();
         MainMenuView loginView = new MainMenuView();
-        new MainMenuController(this, loginView);
+        new MainMenuController(this, loginView, model); // 'this': MainApp
 
         Scene scene = new Scene(loginView, 800, 600);
         primaryStage.setScene(scene);
