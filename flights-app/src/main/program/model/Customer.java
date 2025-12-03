@@ -8,6 +8,10 @@ import java.sql.DriverManager;
 
 public class Customer extends User {
 
+    protected int userId;
+
+    BookingDAO bookingDAO = new BookingDAO();
+
     public Customer(String username, String password, String email) {
         super(username, password, email);
     }
@@ -15,11 +19,11 @@ public class Customer extends User {
     public ObservableList<Flight> getAvailableFlights() {
     }
 
-    public ObservableList<Booking> getBookings() {
+    public ObservableList<Booking> getBookings(int userId) {
+
     }
 
     public boolean bookFlight(int flightId, int userId, String seatNumber) {
-        BookingDAO bookingDAO = new BookingDAO();
         bookingDAO.insertBooking(flightId, userId, seatNumber);
     }
 
