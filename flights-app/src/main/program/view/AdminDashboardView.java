@@ -42,15 +42,15 @@ public class AdminDashboardView extends VBox {
 
         TableColumn<Flight, String> arrivalCityCol = new TableColumn<>("Arrival City");
         arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
-        departureCityCol.setPrefWidth(150);
+        arrivalCityCol.setPrefWidth(150);
 
         TableColumn<Flight, LocalDateTime>  departureTimeCol = new TableColumn<>("Departure Time");
         departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
-        departureCityCol.setPrefWidth(150);
+        departureTimeCol.setPrefWidth(150);
 
         TableColumn<Flight, LocalDateTime> arrivalTimeCol = new TableColumn<>("Arrival Time");
         arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
-        departureCityCol.setPrefWidth(150);
+        arrivalTimeCol.setPrefWidth(150);
 
         HBox buttons =  new HBox(10, addFlightButton,manageFlightsButton,logoutButton);
         buttons.setAlignment(Pos.CENTER);
