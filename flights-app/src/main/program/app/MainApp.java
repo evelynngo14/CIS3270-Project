@@ -52,7 +52,10 @@ public class MainApp extends Application {
 
     public void showAdminDashboard() {
         AdminDashboardView adminDashboardView = new AdminDashboardView();
-        Admin model = new Admin();
+        String username = "admin";
+        String password = "password";
+        String email = "admin@email.com";
+        Admin model = new Admin(username, password, email);
         new AdminDashboardController(this, adminDashboardView, model);
 
         Scene scene = new Scene(adminDashboardView, SCENE_WIDTH, SCENE_HEIGHT);

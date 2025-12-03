@@ -10,6 +10,7 @@ import model.Flight;
 
 public class BookingDAO implements DAO {
 
+    // needed for departure/arrival times and cities
     private static Flight mapResultSetToFlight(ResultSet rs) throws SQLException {
         LocalDateTime departureDateTime = rs.getTimestamp("departureDateTime").toLocalDateTime();
         LocalDateTime arrivalDateTime = rs.getTimestamp("arrivalDateTime").toLocalDateTime();
@@ -23,32 +24,6 @@ public class BookingDAO implements DAO {
                 rs.getInt("capacity"),
                 rs.getInt("bookedSeats")
         );
-    }
-
-    public static ObservableList<Booking> getAllBookings() {
-        ObservableList<Booking> bookings = FXCollections.observableArrayList();
-
-        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM booking");
-            ResultSet rs = stmt.executeQuery();
-
-
-            while (rs.next()) {
-                LocalDateTime bookingDateTime = rs.getTimestamp("bookingDateTime").toLocalDateTime();
-                Flight flight;
-                bookings.add(new Booking(
-                        rs.getInt("bookingId"),
-                        rs.getInt("userId"),
-                        rs.getInt("flightId"),
-                        bookingDateTime,
-                        rs.getString("seatNumber"),
-                        flight
-                ));
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error getting bookings: " + e.getMessage());
-        }
     }
 
     public ObservableList<Booking> getBookingsByUser(int userId) {
