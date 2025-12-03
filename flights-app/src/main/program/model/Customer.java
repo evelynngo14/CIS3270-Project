@@ -10,7 +10,6 @@ public class Customer extends User {
     }
 
     public ObservableList<Flight> getAvailableFlights() {
-
     }
 
     public ObservableList<Booking> getBookings() {

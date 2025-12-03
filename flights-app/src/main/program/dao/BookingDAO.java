@@ -1,16 +1,30 @@
 package dao;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.
 
 public class BookingDAO implements DAO {
+    public static ObservableList<Booking> getAllBookings() {
+        ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
-    public void viewAllBookings() {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            PreparedStatement stmt = conn.stmt("SELECT * FROM booking");
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM booking");
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
-                bookings.add(new Booking)
+                LocalDateTime bookingDateTime = rs.getTimestamp("bookingDateTime").toLocalDateTime();
+
+                bookings.add(new Booking(
+                        rs.getInt("bookingId"),
+                        rs.getInt("userId"),
+                        rs.getInt("flightId"),
+                        bookingDateTime,
+                        rs.getString("seatNumber")
+                ));
             }
 
         } catch (SQLException e) {
@@ -38,7 +52,7 @@ public class BookingDAO implements DAO {
 
     public void insertBooking(int flightId, int userId, int seatNumber) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "INSERT INTO bookings (flightId, userId, bookedSeats) VALUES (?, ?, ?)" +
+            String query = "INSERT INTO bookings (flightId, userId, seatNumber) VALUES (?, ?, ?)" +
                     "UPDATE flights SET bookedSeats = bookedSeats + 1 WHERE flightId = ?;";
             PreparedStatement stmt = conn.prepareStatement(query);
 
