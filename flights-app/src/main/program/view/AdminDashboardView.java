@@ -1,5 +1,6 @@
 package view;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class AdminDashboardView extends VBox {
-    private Label welcomeLabel;
+    private Label welcomeLabel = new Label();
     private Button addFlightButton = new Button("Add Flight");
     private Button manageFlightsButton = new Button("Manage Flights");
     private Button logoutButton = new Button("Logout");
@@ -20,6 +21,7 @@ public class AdminDashboardView extends VBox {
 
     public AdminDashboardView() {
         this.setAlignment(Pos.CENTER);
+        this.setPadding(new Insets(20));
         this.setPrefHeight(800);
         this.setPrefWidth(1200);
         this.setSpacing(20);
@@ -36,15 +38,19 @@ public class AdminDashboardView extends VBox {
 
         TableColumn<Flight, String> departureCityCol = new TableColumn<>("Departure City");
         departureCityCol.setCellValueFactory(new PropertyValueFactory<>("departureCity"));
+        departureCityCol.setPrefWidth(150);
 
         TableColumn<Flight, String> arrivalCityCol = new TableColumn<>("Arrival City");
         arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
+        departureCityCol.setPrefWidth(150);
 
         TableColumn<Flight, LocalDateTime>  departureTimeCol = new TableColumn<>("Departure Time");
         departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
+        departureCityCol.setPrefWidth(150);
 
         TableColumn<Flight, LocalDateTime> arrivalTimeCol = new TableColumn<>("Arrival Time");
         arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
+        departureCityCol.setPrefWidth(150);
 
         HBox buttons =  new HBox(10, addFlightButton,manageFlightsButton,logoutButton);
         buttons.setAlignment(Pos.CENTER);
@@ -55,7 +61,6 @@ public class AdminDashboardView extends VBox {
                 departureTimeCol, arrivalTimeCol, capacityCol,
                 bookedSeatsCol
         );
-
 
         this.getChildren().addAll(
                 welcomeLabel,
