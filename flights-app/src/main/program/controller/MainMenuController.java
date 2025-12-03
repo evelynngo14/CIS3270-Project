@@ -28,11 +28,12 @@ public class MainMenuController {
         // Pass data to the Model (Simulation)
         // boolean success = model.authenticate(username, password);
 
+        model.authenticate(username, password);
+
         if (username.equals("admin") && password.equals("password")) { // Simple check for demo
             navigator.showAdminDashboard();
         } else {
-            Alert error = new Alert(Alert.AlertType.ERROR, "Invalid Username or Password.");
-            error.show();
+            navigator.showDashboard();
         }
     }
 

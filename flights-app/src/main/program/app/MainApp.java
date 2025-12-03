@@ -1,4 +1,5 @@
 package app;
+import controller.AdminDashboardController;
 import controller.MainMenuController;
 import controller.RegistrationController;
 import javafx.application.Application;
@@ -7,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import model.Admin;
 import model.Login;
+import view.AdminDashboardView;
 import view.MainMenuView;
 import view.RegistrationView;
 
@@ -47,7 +50,17 @@ public class MainApp extends Application {
     public void showDashboard() {
     }
 
-    public void showAdminDashboard() {}
+    public void showAdminDashboard() {
+        AdminDashboardView adminDashboardView = new AdminDashboardView();
+        Admin model = new Admin();
+        new AdminDashboardController(this, adminDashboardView, model);
+
+        Scene scene = new Scene(adminDashboardView, SCENE_WIDTH, SCENE_HEIGHT);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Admin Dashboard");
+        primaryStage.show();
+
+    }
 
     public static void main(String[] args) {
         launch(args);
