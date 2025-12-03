@@ -1,19 +1,19 @@
 package model;
 
+import javafx.collections.ObservableList;
+import scene_management.Booking;
+
 public class Customer extends User {
 
     public Customer(String username, String password, String email) {
         super(username, password, email);
     }
 
-    public void bookFlight() {
+    public ObservableList<Flight> getAvailableFlights() {
 
     }
 
-    public void cancelFlight() {
-    }
-
-    public void viewBookedFlights() {
+    public ObservableList<Booking> getBookings() {
     }
 
     @Override
