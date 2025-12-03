@@ -25,13 +25,13 @@ public class MainMenuController {
         String username = view.getUsernameField().getText();
         String password = view.getPasswordField().getText();
 
-        // Pass data to the Model (Simulation)
-        // boolean success = model.authenticate(username, password);
-
-        model.authenticate(username, password);
-
-        if (username.equals("admin") && password.equals("password")) { // Simple check for demo
+        if (username.equals("admin") && password.equals("password")) {
             navigator.showAdminDashboard();
+        }
+
+        boolean success = model.authenticate(username, password);
+        if (success) {
+            System.out.println("login successful");
         } else {
             navigator.showDashboard();
         }
