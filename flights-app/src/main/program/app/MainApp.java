@@ -20,7 +20,6 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        this.primaryStage = stage;
         showLoginScreen();
     }
 
@@ -43,7 +42,6 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.setTitle("Flight Reservations Registration");
         primaryStage.show();
-
     }
 
     public void showDashboard() {

@@ -112,7 +112,6 @@ public class RegistrationController {
             return false;
         }
 
-        // TODO: Add zip code validation check (placeholder)
         if (view.getZipField().getText().trim().length() < 5) {
             view.getStatusLabel().setText("Zip code must be at least 5 digits.");
             return false;
