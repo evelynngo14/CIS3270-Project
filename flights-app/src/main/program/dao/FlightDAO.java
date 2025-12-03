@@ -45,6 +45,8 @@ public class FlightDAO implements DAO {
         } catch (SQLException e) {
             System.out.println("Login error: " + e.getMessage());
         }
+
+        return flights;
     }
 }
 
