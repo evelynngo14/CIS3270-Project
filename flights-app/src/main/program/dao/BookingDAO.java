@@ -1,11 +1,22 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import model.
 
 public class BookingDAO implements DAO {
+
+    public void viewAllBookings() {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.stmt("SELECT * FROM booking");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                bookings.add(new Booking)
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void viewBooking(int userId) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {

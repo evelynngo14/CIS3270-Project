@@ -18,9 +18,6 @@ public class Admin extends User {
         return FlightDAO.getFlights();
     }
 
-    public void addFlight() {
-    }
-
     public void updateFlight() {
     }
 
