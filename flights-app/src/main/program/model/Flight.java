@@ -53,11 +53,11 @@ public class Flight {
         this.departureCity = departureCity;
     }
 
-    public String getArrivalCity() {
+    public String getarrivalCity() {
         return arrivalCity;
     }
 
-    public void setArrivalCity(String arrivalCity) {
+    public void setarrivalCity(String arrivalCity) {
         this.arrivalCity = arrivalCity;
     }
 
