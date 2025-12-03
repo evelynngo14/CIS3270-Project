@@ -40,7 +40,7 @@ public class RegistrationView extends VBox {
         // GridPane Setup
         GridPane gridPane = createGridPane();
 
-        // Populate GridPane (Left Column)
+        // Left Column
         gridPane.add(new Label("First Name:"), 0, 0);
         gridPane.add(firstNameField, 1, 0);
 
@@ -59,7 +59,7 @@ public class RegistrationView extends VBox {
         gridPane.add(new Label("Password:"), 0, 5);
         gridPane.add(passwordField, 1, 5);
 
-        // Populate GridPane (Right Column)
+        // Right Column
         gridPane.add(new Label("SSN:"), 2, 0);
         gridPane.add(ssnField, 3, 0);
 
@@ -77,7 +77,6 @@ public class RegistrationView extends VBox {
         securityQuestionField.setOpacity(0.67);
         gridPane.add(securityQuestionField, 3, 4);
 
-        // Bottom Buttons (placed at specific grid locations as per FXML)
         registerButton.setPrefWidth(120);
         GridPane.setColumnIndex(registerButton, 2);
         GridPane.setRowIndex(registerButton, 11);

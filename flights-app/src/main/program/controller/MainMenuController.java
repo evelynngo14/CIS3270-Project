@@ -4,7 +4,6 @@ import view.MainMenuView;
 import model.LoginModel;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import scene_management.SceneManager; // Assuming this class handles scene switching
 
 public class MainMenuController {
 
