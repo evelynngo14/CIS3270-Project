@@ -25,12 +25,12 @@ public class FlightDAO implements DAO {
             PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
             ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
 
-            // convert LocalDateTime for compatibility with ResultSet
-            LocalDateTime departureDateTime = rs.getTimestamp("departureDateTime").toLocalDateTime();
-            LocalDateTime arrivalDateTime = rs.getTimestamp("arrivalDateTime").toLocalDateTime();
-
             // iterate through rs to create instances of flights and populate with flight data
             while (rs.next()) {
+                // convert LocalDateTime for compatibility with ResultSet
+                LocalDateTime departureDateTime = rs.getTimestamp("departureDateTime").toLocalDateTime();
+                LocalDateTime arrivalDateTime = rs.getTimestamp("arrivalDateTime").toLocalDateTime();
+
                 flights.add(new Flight(
                         rs.getInt("flightId"),
                         rs.getString("departureCity"),
@@ -43,7 +43,7 @@ public class FlightDAO implements DAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Login error: " + e.getMessage());
+            System.out.println("Error fetching flight data: " + e.getMessage());
         }
 
         return flights;
