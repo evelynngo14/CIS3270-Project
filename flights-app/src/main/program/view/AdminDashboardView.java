@@ -1,15 +1,14 @@
 package view;
 
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Flight;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class AdminDashboardView extends VBox {
@@ -32,8 +31,8 @@ public class AdminDashboardView extends VBox {
         TableColumn<Flight, Integer> capacityCol = new TableColumn<>("Capacity");
         capacityCol.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
-        TableColumn<Flight, Integer> bookedSeats = new TableColumn<>("Booked Seats");
-        bookedSeats.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
+        TableColumn<Flight, Integer> bookedSeatsCol = new TableColumn<>("Booked Seats");
+        bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
 
         TableColumn<Flight, String> departureCityCol = new TableColumn<>("Departure City");
         departureCityCol.setCellValueFactory(new PropertyValueFactory<>("departureCity"));
@@ -41,17 +40,38 @@ public class AdminDashboardView extends VBox {
         TableColumn<Flight, String> arrivalCityCol = new TableColumn<>("Arrival City");
         arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
 
-        TableColumn<Flight, LocalTime> departureTimeCol = new TableColumn<>("Departure Time");
-        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        TableColumn<Flight, LocalDateTime>  departureTimeCol = new TableColumn<>("Departure Time");
+        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
 
-        TableColumn<Flight, LocalTime> arrivalTimeCol = new TableColumn<>("Arrival Time");
-        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        TableColumn<Flight, LocalDateTime> arrivalTimeCol = new TableColumn<>("Arrival Time");
+        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
 
+        HBox buttons =  new HBox(10, addFlightButton,manageFlightsButton,logoutButton);
+        buttons.setAlignment(Pos.CENTER);
+        buttons.setSpacing(20);
+
+        flightTable.getColumns().addAll(
+                flightIdCol, departureCityCol, arrivalCityCol,
+                departureTimeCol, arrivalTimeCol, capacityCol,
+                bookedSeatsCol
+        );
+
+
+        this.getChildren().addAll(
+                welcomeLabel,
+                new Separator(),
+                flightTable,
+                buttons
+        );
 
     }
 
     public Label getWelcomeLabel() {
         return welcomeLabel;
+    }
+
+    public TableView<Flight> getFlightTable() {
+        return flightTable;
     }
 
     public Button getAddFlightButton() {

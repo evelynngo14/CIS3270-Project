@@ -2,27 +2,27 @@ package model;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Flight {
     private int flightId;
     private String departureCity;
     private String arrivalCity;
-    private LocalDate departureDate;
-    private LocalTime departureTime;
-    private LocalTime arrivalTime;
+    private LocalDateTime departureDateTime;
+    private LocalDateTime arrivalDateTime;
     private int capacity;
     private int bookedSeats;
 
     public Flight() {}
 
     public Flight(int flightId, String departureCity, String arrivalCity,
-                  LocalTime departureTime, LocalTime arrivalTime, int capacity, int bookedSeats) {
+                  LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int capacity, int bookedSeats) {
         this.flightId = flightId;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
         this.capacity = capacity;
         this.bookedSeats = bookedSeats;
     }
@@ -34,7 +34,7 @@ public class Flight {
     @Override
     public String toString() {
         return "model.Flight " + flightId + ": " + departureCity + " → " + arrivalCity +
-                " on " + departureDate + " at " + departureTime +
+                "on" + " at " + departureDateTime.toString() + " to " + arrivalDateTime.toString() +
                 " | Seats Available: " + getAvailableSeats();
     }
 
@@ -62,20 +62,20 @@ public class Flight {
         this.arrivalCity = arrivalCity;
     }
 
-    public LocalTime getDepartureTime() {
-        return departureTime;
+    public LocalDateTime getDepartureDateTime() {
+        return departureDateTime;
     }
 
-    public void setDepartureTime(LocalTime departureTime) {
-        this.departureTime = departureTime;
+    public void setDepartureDateTime(LocalDateTime departureDateTime) {
+        this.departureDateTime = departureDateTime;
     }
 
-    public LocalTime getArrivalTime() {
-        return arrivalTime;
+    public LocalDateTime getArrivalDateTime() {
+        return arrivalDateTime;
     }
 
-    public void setArrivalTime(LocalTime arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setArrivalDateTime(LocalDateTime arrivalDateTime) {
+        this.arrivalDateTime = arrivalDateTime;
     }
 
     public int getCapacity() {
