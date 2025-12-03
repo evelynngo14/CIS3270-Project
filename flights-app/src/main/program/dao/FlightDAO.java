@@ -48,6 +48,24 @@ public class FlightDAO implements DAO {
 
         return flights;
     }
+
+    public void insertBooking(int flightId, int userId, int bookedSeats) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "INSERT INTO bookings (flightId, userId, bookedSeats) VALUES (?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, flightId);
+            stmt.setInt(2, userId);
+            stmt.setInt(3, bookedSeats);
+
+            stmt.executeUpdate();
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error inserting booking: " + e.getMessage());
+        }
+    }
+
 }
 
 //public void insertRecord(String firstName, String mi, String lastName, String email, String password, String
