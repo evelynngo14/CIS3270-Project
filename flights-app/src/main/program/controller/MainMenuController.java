@@ -1,7 +1,7 @@
 package controller;
 import app.MainApp;
 import view.MainMenuView;
-import model.LoginModel;
+import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
@@ -9,12 +9,12 @@ public class MainMenuController {
 
     private final MainApp navigator;
     private final MainMenuView view;
-    // private final LoginModel model
+    private final Login model;
 
-    public MainMenuController(Stage stage, MainMenuView view, LoginModel model, MainApp navigator */) {
-        this.navigator = navigator;
+    public MainMenuController(MainApp navigator, MainMenuView view, Login model) {
         this.view = view;
-        // this.model = model;
+        this.navigator = navigator;
+        this.model = model;
 
         view.getLoginButton().setOnAction(e -> handleLogin());
         view.getRegisterButton().setOnAction(e -> handleRegister());
@@ -37,7 +37,7 @@ public class MainMenuController {
     }
 
     private void handleRegister() {
-        showRegistrationScreen();
+        //showRegistrationScreen();
     }
 
     private void handleForgotPassword() {

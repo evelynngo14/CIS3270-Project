@@ -21,19 +21,19 @@ public class DashboardController {
     @FXML
     public void handleSearchFlights(ActionEvent event) {
        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-       SceneManager.showSearchFlights(stage);
+       //SceneManager.showSearchFlights(stage);
     }
 
     @FXML
     public void handleViewBooking(ActionEvent event) {
        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-       SceneManager.showBookings(stage);
+       //SceneManager.showBookings(stage);
     }
 
     @FXML
     public void handleLogout(ActionEvent event) {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        SceneManager.showRegistrationScreen(stage);
+        //SceneManager.showRegistrationScreen(stage);
     }
 
 }

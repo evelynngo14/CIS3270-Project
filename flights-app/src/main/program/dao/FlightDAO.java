@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class FlightDAO implements DAO {
 
-    int flightsNum = 0;
+    public static int flightsNum = 0;
     String[] flights = new String[flightsNum];
 
     public static void viewFlights() {
@@ -21,4 +21,5 @@ public class FlightDAO implements DAO {
         }
     }
 }
+
 //public void insertRecord(String firstName, String mi, String lastName, String email, String password, String
