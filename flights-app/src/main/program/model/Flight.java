@@ -16,12 +16,11 @@ public class Flight {
 
     public Flight() {}
 
-    public Flight(int flightId, String departureCity, String arrivalCity, LocalDate departureDate,
+    public Flight(int flightId, String departureCity, String arrivalCity,
                   LocalTime departureTime, LocalTime arrivalTime, int capacity, int bookedSeats) {
         this.flightId = flightId;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
-        this.departureDate = departureDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.capacity = capacity;
@@ -61,14 +60,6 @@ public class Flight {
 
     public void setArrivalCity(String arrivalCity) {
         this.arrivalCity = arrivalCity;
-    }
-
-    public LocalDate getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(LocalDate departureDate) {
-        this.departureDate = departureDate;
     }
 
     public LocalTime getDepartureTime() {

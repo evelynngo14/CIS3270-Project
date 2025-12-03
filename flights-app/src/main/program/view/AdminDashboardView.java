@@ -41,9 +41,6 @@ public class AdminDashboardView extends VBox {
         TableColumn<Flight, String> arrivalCityCol = new TableColumn<>("Arrival City");
         arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
 
-        TableColumn<Flight, LocalDate> departureDateCol = new TableColumn<>("Departure Date");
-        departureDateCol.setCellValueFactory(new PropertyValueFactory<>("departureDate"));
-
         TableColumn<Flight, LocalTime> departureTimeCol = new TableColumn<>("Departure Time");
         departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
 
