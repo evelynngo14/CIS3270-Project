@@ -23,7 +23,7 @@ public class DashboardController {
         this.model = model;
     }
 
-    view.getWelcomeLabel().setText("Dashboard - Welcome!")
+    //view.getWelcomeLabel().setText("Dashboard - Welcome!")
 
     @FXML
     private Label welcomeLabel;
