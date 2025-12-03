@@ -1,11 +1,7 @@
 package controller;
 
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
-import javafx.scene.Node;
 import app.MainApp;
 import model.Booking;
 import model.Customer;
@@ -27,7 +23,7 @@ public class DashboardController {
 
         loadBooking();
 
-        //view.getLogoutButton().setOnAction(this::handleLogout);
+        view.getLogoutButton().setOnAction(this::handleLogout);
     }
 
 
