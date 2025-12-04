@@ -64,6 +64,7 @@ public class AdminDashboardView extends VBox {
                 bookedSeatsCol
         );
 
+        // add components to vbox
         this.getChildren().addAll(
                 welcomeLabel,
                 new Separator(),
