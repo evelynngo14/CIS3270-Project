@@ -28,7 +28,6 @@ public class Admin extends User {
         return "admin";
     }
 
-    @Override
     public boolean addFlight(Flight newFlight) {
         return false;
     }

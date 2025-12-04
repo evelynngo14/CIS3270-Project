@@ -10,6 +10,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 
+/*
+7 COLUMNS:
+flightId
+departureCity
+arrivalCity
+departureDateTime
+arrivalDateTime
+capacity
+bookedSeats
+ */
+
 public class FlightDAO implements DAO {
 
     public static int flightsNum = 0;
@@ -46,6 +57,25 @@ public class FlightDAO implements DAO {
         }
 
         return flights;
+    }
+
+    public static boolean addFlight(Flight newFlight) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "INSERT INTO flights VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, newFlight.getFlightId());
+            stmt.setString(2, newFlight.getDepartureCity());
+            stmt.setString(3, newFlight.getArrivalCity());
+            stmt.setString(4, newFlight.getDepartureDateTime().toString());
+            stmt.setString(5, newFlight.getArrivalDateTime().toString());
+            stmt.setInt(6, newFlight.getCapacity());
+            stmt.setInt(7, newFlight.getBookedSeats());
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error adding flight: " + e.getMessage());
+        }
     }
 
     public static boolean deleteFlight(int flightId) {
