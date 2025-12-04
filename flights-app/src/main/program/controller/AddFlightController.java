@@ -2,6 +2,7 @@ package controller;
 
 import app.MainApp;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -20,15 +21,24 @@ public class AddFlightController {
     private final Flight flightModel;
     private final Admin adminModel;
 
+    @FXML private TextField departureCityField;
+    @FXML private TextField arrivalCityField;
+    @FXML private DatePicker departureDatePicker;
+    @FXML private ChoiceBox<String> departureTimeChoice;
+    @FXML private DatePicker arrivalDatePicker;
+    @FXML private ChoiceBox<String> arrivalTimeChoice;
+    @FXML private TextField capacityField;
+    @FXML private Button addFlightButton;
+    @FXML private Button cancelButton;
+
     public AddFlightController(MainApp navigator, AddFlightView view,  Flight flightModel, Admin adminModel) {
         this.navigator = navigator;
         this.view = view;
         this.adminModel = adminModel;
         this.flightModel = flightModel;
-
-        view.getCancelButton().setOnAction(this::handleReturn);
     }
 
+    @FXML
     private LocalDateTime convertToLocalDateTime(DatePicker datePicker, ChoiceBox<String> timeChoiceBox) {
         LocalDate date = datePicker.getValue();
         if (date == null) {
@@ -44,6 +54,7 @@ public class AddFlightController {
         return LocalDateTime.of(date, time);
     }
 
+    @FXML
     private void handleAddFlight(ActionEvent actionEvent) {
         String departureCity = String.valueOf(view.getDepartureCityField());
         String arrivalCity = String.valueOf(view.getArrivalCityField());
@@ -63,9 +74,17 @@ public class AddFlightController {
 
         Flight.incrementFlightId(); // static method
         Flight newFlight = new Flight(flightModel.getFlightId(), departureCity, arrivalCity, departureTime, arrivalTime, capacity, bookedSeats);
-        adminModel.addFlight(newFlight);
+        boolean success = adminModel.addFlight(newFlight);
+
+        if (success) {
+            navigator.showAdminDashboard();
+        } else {
+            System.err.println("Failed to save flight to database.");
+        }
 
     }
+
+    @FXML
     private void handleReturn(ActionEvent actionEvent) {
         navigator.showDashboard();
     }
