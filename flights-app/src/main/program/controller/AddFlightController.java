@@ -30,10 +30,12 @@ public class AddFlightController {
     private void handleAddFlight(ActionEvent actionEvent) {
         String departureCity = String.valueOf(view.getDepartureCityField());
         String arrivalCity = String.valueOf(view.getArrivalCityField());
+
         DatePicker departureDatePicker = view.getDepartureDatePicker();
-        ChoiceBox<String> departureTimeField = view.getDepartureTimeField();
+        ChoiceBox<String> departureTimeField = view.getDepartureTimeChoice();
+
         DatePicker arrivalDatePicker = view.getArrivalDatePicker();
-        ChoiceBox<String> arrivalTimeField = view.getArrivalTimeField();
+        ChoiceBox<String> arrivalTimeField = view.getArrivalTimeChoice();
 
         int capacity = Integer.parseInt(view.getCapacityField());
         int bookedSeats = flightModel.getBookedSeats();
