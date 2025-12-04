@@ -1,9 +1,7 @@
 package app;
-import controller.AdminDashboardController;
-import controller.ForgotPasswordController;
-import controller.MainMenuController;
-import controller.RegistrationController;
+import controller.*;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,6 +9,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.Admin;
 import model.Login;
+import view.AddFlightView;
 import view.AdminDashboardView;
 import view.MainMenuView;
 import view.RegistrationView;
@@ -69,6 +68,16 @@ public class MainApp extends Application {
     public void showForgotPasswordScreen() {
         //ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
         //new ForgotPasswordController(this, forgotPasswordView);
+    }
+
+    public void showAddFlightForm() {
+        AddFlightView addFlightView = new AddFlightView();
+        new AddFlightController(this, addFlightView);
+
+        Scene scene = new Scene(addFlightView, SCENE_WIDTH, SCENE_HEIGHT);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Add Flight Reservation");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

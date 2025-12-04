@@ -37,12 +37,10 @@ public class AdminDashboardController {
         view.getFlightTable().setItems(flightList);
     }
 
+    // shows the flight form
     private void handleAddFlight(ActionEvent actionEvent) {
-        view.getAddFlightButton().setOnAction(this::handleAddFlight);
-        view.getManageFlightsButton().setOnAction(this::handleManageFlights);
-        view.getLogoutButton().setOnAction(this::handleLogout);
         System.out.println("Add flight clicked. Navigating to flight form");
-        // navigator.showAddFlightForm
+        navigator.showAddFlightForm();
     }
 
     private void handleDeleteFlight(ActionEvent actionEvent) {
