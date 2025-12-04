@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.Admin;
+import model.Flight;
 import model.Login;
 import view.AddFlightView;
 import view.AdminDashboardView;
@@ -72,7 +73,9 @@ public class MainApp extends Application {
 
     public void showAddFlightForm() {
         AddFlightView addFlightView = new AddFlightView();
-        new AddFlightController(this, addFlightView);
+        Flight flightModel = new Flight();
+        Admin adminModel = new Admin();
+        new AddFlightController(this, addFlightView,  flightModel, adminModel);
 
         Scene scene = new Scene(addFlightView, SCENE_WIDTH, SCENE_HEIGHT);
         primaryStage.setScene(scene);

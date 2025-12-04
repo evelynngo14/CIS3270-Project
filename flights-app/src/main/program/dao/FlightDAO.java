@@ -72,9 +72,11 @@ public class FlightDAO implements DAO {
             stmt.setInt(6, newFlight.getCapacity());
             stmt.setInt(7, newFlight.getBookedSeats());
             stmt.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error adding flight: " + e.getMessage());
+            return false;
         }
     }
 

@@ -5,13 +5,9 @@ import javafx.collections.ObservableList;
 
 // admin logic ; fetch flight data
 public class Admin extends User {
-    protected String username = "admin";
-    protected String password = "123";
 
-    public Admin(String username, String password, String email) {
-        super(username, password, email);
+    public Admin() {
     }
-
     public ObservableList<Flight> getAllFlights() {
         return FlightDAO.getFlights();
     }
