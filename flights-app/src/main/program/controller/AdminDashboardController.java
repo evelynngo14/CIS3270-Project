@@ -39,8 +39,9 @@ public class AdminDashboardController {
 
     // shows the flight form
     private void handleAddFlight(ActionEvent actionEvent) {
+        Admin adminModel = new Admin();
         System.out.println("Add flight clicked. Navigating to flight form");
-        navigator.showAddFlightForm();
+        navigator.showAddFlightForm(adminModel);
     }
 
     private void handleDeleteFlight(ActionEvent actionEvent) {

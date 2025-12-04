@@ -33,7 +33,7 @@ public class FlightDAO implements DAO {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             String query = "SELECT * FROM flights";
             PreparedStatement stmt = conn.prepareStatement(query); // Prepared statement to prevent SQL injection
-            ResultSet rs = stmt.executeQuery(); // Executes the SQL query and stores the result in a ResultSet
+            ResultSet rs = stmt.executeQuery();  // Executes the SQL query and stores the result in a ResultSet
 
             // iterate through rs to create instances of flights and populate with flight data
             while (rs.next()) {
