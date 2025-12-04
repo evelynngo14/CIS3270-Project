@@ -1,5 +1,7 @@
 package view;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -8,6 +10,8 @@ import javafx.geometry.Pos;
 import static java.lang.String.valueOf;
 
 public class AddFlightView extends VBox {
+    String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"};
+
     private Label arrivalCityLabel = new Label("Arrival City");
     private TextField arrivalCityField = new TextField("");
     private Label departureCityLabel = new Label("Departure City");
@@ -17,13 +21,13 @@ public class AddFlightView extends VBox {
     private DatePicker departureDatePicker = new DatePicker();
 
     private Label departureTimeLabel = new Label("Departure Time");
-    private ChoiceBox<String> departureTimeChoice = new ChoiceBox<>();
+    private ChoiceBox<String> departureTimeChoice = new ChoiceBox<>(FXCollections.observableArrayList(times));
 
     private Label arrivalDateLabel = new Label("Arrival Date");
     private DatePicker arrivalDatePicker = new DatePicker();
 
     private Label arrivalTimeLabel = new Label("Arrival Time");
-    private ChoiceBox<String> arrivalTimeChoice = new ChoiceBox<>();
+    private ChoiceBox<String> arrivalTimeChoice = new ChoiceBox<>(FXCollections.observableArrayList(times));
 
     private Label capacityLabel = new Label("Capacity");
     private TextField capacityField = new TextField("");
@@ -35,7 +39,6 @@ public class AddFlightView extends VBox {
         this.setPadding(new Insets(20)); // padding
         this.setPrefWidth(1200);
         this.setPrefHeight(800);
-
 
     }
 
