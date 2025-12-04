@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.MainMenuController"
+      alignment="CENTER"
+      spacing="20"
+      prefWidth="900"
+      prefHeight="600">
+
+    <Label text="Welcome Back"
+           style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+
+    <GridPane hgap="15" vgap="15" alignment="CENTER">
+
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+
+        <TextField fx:id="usernameField"
+                   GridPane.columnIndex="1"
+                   GridPane.rowIndex="0"
+                   prefWidth="200"/>
+
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+        <PasswordField fx:id="passwordField"
+                       GridPane.columnIndex="1"
+                       GridPane.rowIndex="1"
+                       prefWidth="200"/>
+
+    </GridPane>
+
+    <Label fx:id="loginErrorLabel"
+           style="-fx-text-fill: red;"
+           text=""
+    />
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="loginButton"
+                text="Login"
+                prefWidth="120"/>
+
+        <Button fx:id="registerButton"
+                text="Register"
+                prefWidth="120"/>
+    </HBox>
+
+    <Label fx:id="forgotPasswordLabel"
+           text="Forgot Password?"
+           style="-fx-text-fill: blue; -fx-underline: true;"
+    />
+
+</VBox>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.RegistrationController"
+      alignment="CENTER"
+      spacing="20"
+      prefWidth="1200"
+      prefHeight="800">
+
+    <Label text="Create Account"
+           alignment="CENTER"
+           style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2a2a2a;" />
+
+    <GridPane alignment="CENTER"
+              hgap="40"
+              vgap="10">
+
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <columnConstraints>
+            <ColumnConstraints minWidth="75" halignment="LEFT"/>
+            <ColumnConstraints minWidth="200" halignment="LEFT"/>
+            <ColumnConstraints minWidth="100" halignment="LEFT"/>
+            <ColumnConstraints minWidth="250" halignment="LEFT"/>
+        </columnConstraints>
+
+        <!-- LEFT SIDE -->
+        <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <Label text="Middle Initial:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="miField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+        <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+        <!-- RIGHT SIDE -->
+        <Label text="SSN:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <TextField fx:id="ssnField" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+        <Label text="Address:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <TextField fx:id="addressField" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+        <Label text="ZIP Code:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+        <TextField fx:id="zipField" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+        <Label text="State:" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        <ChoiceBox fx:id="stateChoiceBox" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+        <Label text="Security Question:" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+        <TextField fx:id="securityQuestionField"
+                   text="What city were you born in?"
+                   opacity="0.67"
+                   GridPane.columnIndex="3"
+                   GridPane.rowIndex="4"/>
+
+        <!-- Buttons -->
+        <Button fx:id="registerButton"
+                text="Register"
+                prefWidth="120"
+                GridPane.columnIndex="2"
+                GridPane.rowIndex="11"/>
+
+        <Button fx:id="returnToLoginButton"
+                text="Return to Login"
+                prefWidth="120"
+                GridPane.columnIndex="2"
+                GridPane.rowIndex="13"/>
+
+        <Label fx:id="statusLabel"
+               GridPane.columnIndex="1"
+               GridPane.rowIndex="14"
+               GridPane.columnSpan="3"/>
+
+    </GridPane>
+
+</VBox>
