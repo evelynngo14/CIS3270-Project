@@ -14,11 +14,7 @@ public abstract class User {
         this.email = email;
     }
 
-    public abstract boolean addFlight(Flight newFlight);
-
     public abstract String getRole();
-
-    public abstract boolean addFlight();
 
     public String getUsername() {
         return username;

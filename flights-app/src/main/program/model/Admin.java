@@ -20,7 +20,7 @@ public class Admin extends User {
     }
 
     public boolean deleteFlight(int flightId) {
-        return FlightDAO.deleteFlight(flightId);
+        return FlightDAO.deleteFlight(flightId); // success = true
     }
 
     @Override
@@ -28,8 +28,7 @@ public class Admin extends User {
         return "admin";
     }
 
-    @Override
     public boolean addFlight(Flight newFlight) {
-        return false;
+        return FlightDAO.addFlight(newFlight); // success = true
     }
 }

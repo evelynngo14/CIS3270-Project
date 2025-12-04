@@ -11,6 +11,8 @@ import view.AddFlightView;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Date;
 
 public class AddFlightController {
     private final MainApp navigator;
@@ -27,15 +29,34 @@ public class AddFlightController {
         view.getCancelButton().setOnAction(this::handleReturn);
     }
 
+    private LocalDateTime convertToLocalDateTime(DatePicker datePicker, ChoiceBox<String> timeChoiceBox) {
+        LocalDate date = datePicker.getValue();
+        if (date == null) {
+            return null;
+        }
+
+        String timeString = timeChoiceBox.getValue();
+
+        if (timeString == null || timeString.isEmpty()) {
+            return null;
+        }
+        LocalTime time =  LocalTime.parse(timeString);
+        return LocalDateTime.of(date, time);
+    }
+
     private void handleAddFlight(ActionEvent actionEvent) {
         String departureCity = String.valueOf(view.getDepartureCityField());
         String arrivalCity = String.valueOf(view.getArrivalCityField());
 
         DatePicker departureDatePicker = view.getDepartureDatePicker();
-        ChoiceBox<String> departureTimeField = view.getDepartureTimeChoice();
+        ChoiceBox<String> departureTimeChoice = view.getDepartureTimeChoice();
 
         DatePicker arrivalDatePicker = view.getArrivalDatePicker();
-        ChoiceBox<String> arrivalTimeField = view.getArrivalTimeChoice();
+        ChoiceBox<String> arrivalTimeChoice = view.getArrivalTimeChoice();
+
+        // convert DatePicker and ChoiceBox string into LocalDateTime
+        LocalDateTime departureTime = convertToLocalDateTime(departureDatePicker, departureTimeChoice);
+        LocalDateTime arrivalTime = convertToLocalDateTime(arrivalDatePicker, arrivalTimeChoice);
 
         int capacity = Integer.parseInt(view.getCapacityField());
         int bookedSeats = flightModel.getBookedSeats();
@@ -45,9 +66,7 @@ public class AddFlightController {
         adminModel.addFlight(newFlight);
 
     }
-
     private void handleReturn(ActionEvent actionEvent) {
         navigator.showDashboard();
     }
-
 }
