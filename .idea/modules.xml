@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CIS3270-Project.iml" filepath="$PROJECT_DIR$/.idea/CIS3270-Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/flights-app/cis3270-project.iml" filepath="$PROJECT_DIR$/flights-app/cis3270-project.iml" />
     </modules>
   </component>
