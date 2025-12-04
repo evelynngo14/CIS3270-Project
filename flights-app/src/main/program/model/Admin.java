@@ -23,12 +23,13 @@ public class Admin extends User {
         return FlightDAO.deleteFlight(flightId);
     }
 
-    public void addFlight() {
-
-    }
-
     @Override
     public String getRole() {
         return "admin";
+    }
+
+    @Override
+    public boolean addFlight(Flight newFlight) {
+        return false;
     }
 }
