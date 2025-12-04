@@ -26,6 +26,7 @@ public class AdminDashboardController {
 
         view.getAddFlightButton().setOnAction(this::handleAddFlight);
         view.getManageFlightsButton().setOnAction(this::handleManageFlights);
+        view.getDeleteFlightButton().setOnAction(this::handleDeleteFlight);
         view.getLogoutButton().setOnAction(this::handleLogout);
     }
 
@@ -44,7 +45,12 @@ public class AdminDashboardController {
         // navigator.showAddFlightForm
     }
 
+    private void handleDeleteFlight(ActionEvent actionEvent) {
+        view.getDeleteFlightButton().setOnAction(this::handleDeleteFlight);
+    }
+
     private void handleManageFlights(ActionEvent actionEvent) {
+        view.getManageFlightsButton().setOnAction(this::handleManageFlights);
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
     }
 

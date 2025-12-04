@@ -48,4 +48,18 @@ public class FlightDAO implements DAO {
         return flights;
     }
 
+    public static boolean deleteFlight(int flightId) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "DELETE FROM flights WHERE flightId = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, flightId);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting flight: " + e.getMessage());
+        }
+        return false;
+    }
+
 }

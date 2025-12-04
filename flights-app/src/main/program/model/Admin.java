@@ -2,8 +2,6 @@ package model;
 
 import dao.FlightDAO;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TableView;
-import view.AdminDashboardView;
 
 // admin logic ; fetch flight data
 public class Admin extends User {
@@ -21,7 +19,12 @@ public class Admin extends User {
     public void updateFlight() {
     }
 
-    public void deleteFlight() {
+    public boolean deleteFlight(int flightId) {
+        return FlightDAO.deleteFlight(flightId);
+    }
+
+    public void addFlight() {
+
     }
 
     @Override

@@ -16,6 +16,7 @@ public class AdminDashboardView extends VBox {
     private Label welcomeLabel = new Label();
     private Button addFlightButton = new Button("Add Flight");
     private Button manageFlightsButton = new Button("Manage Flights");
+    private Button deleteFlightButton = new Button("Delete Flight");
     private Button logoutButton = new Button("Logout");
     TableView<Flight> flightTable = new TableView<>();
 
@@ -90,5 +91,9 @@ public class AdminDashboardView extends VBox {
 
     public Button getLogoutButton() {
         return logoutButton;
+    }
+
+    public Button getDeleteFlightButton() {
+        return deleteFlightButton;
     }
 }
