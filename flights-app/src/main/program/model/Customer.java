@@ -11,8 +11,9 @@ public class Customer extends User {
 
     BookingDAO bookingDAO = new BookingDAO();
 
-    public Customer(String username, String password, String email) {
-        super(username, password, email);
+
+    public Customer(int userId) {
+        this.userId = userId;
     }
 
     public boolean bookFlight(int flightId, int userId, String seatNumber) {
