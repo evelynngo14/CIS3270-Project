@@ -1,9 +1,9 @@
 package view;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
 
@@ -11,6 +11,7 @@ import static java.lang.String.valueOf;
 
 public class AddFlightView extends VBox {
     String[] times = {"00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"};
+    private Label headerLabel = new Label("Add Flight Form");
 
     private Label arrivalCityLabel = new Label("Arrival City");
     private TextField arrivalCityField = new TextField("");
@@ -41,14 +42,36 @@ public class AddFlightView extends VBox {
         this.setPrefWidth(1200);
         this.setPrefHeight(800);
 
-        addFlightButton;
+        this.setSpacing(10);
+
+        //component properties
+
+        HBox departureCityHBox = new HBox();
+        departureCityHBox.getChildren().add(departureCityLabel);
+        departureCityHBox.getChildren().add(departureCityField);
+        departureCityHBox.setAlignment(Pos.CENTER);
+        departureCityHBox.setSpacing(10);
+
+        HBox arrivalCityHBox = new HBox();
+        arrivalCityHBox.getChildren().add(arrivalCityLabel);
+        arrivalCityHBox.getChildren().add(arrivalCityField);
+        arrivalCityHBox.setAlignment(Pos.CENTER);
+        arrivalCityHBox.setSpacing(10);
+
+        departureCityField.setMaxWidth(100);
+        arrivalCityField.setMaxWidth(100);
+        capacityField.setMaxWidth(50);
+
 
         //add components to vbox
         this.getChildren().addAll(
-        departureCityLabel, departureCityField,
-        arrivalCityLabel, arrivalCityField,
-        departureDateLabel, departureDatePicker, departureTimeLabel,
-        arrivalDateLabel, arrivalTimeChoice, departureTimeChoice,
+        headerLabel,
+        departureCityHBox,
+        arrivalCityHBox,
+        departureDateLabel, departureDatePicker,
+        departureTimeLabel, departureTimeChoice,
+        arrivalDateLabel, arrivalDatePicker,
+        arrivalTimeLabel, arrivalTimeChoice,
         capacityLabel, capacityField,
         addFlightButton, cancelButton
         );
