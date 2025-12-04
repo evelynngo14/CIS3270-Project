@@ -56,7 +56,7 @@ public class MainApp extends Application {
         String username = "admin";
         String password = "password";
         String email = "admin@email.com";
-        Admin model = new Admin(username, password, email);
+        Admin model = new Admin();
         new AdminDashboardController(this, adminDashboardView, model);
 
         Scene scene = new Scene(adminDashboardView, SCENE_WIDTH, SCENE_HEIGHT);
