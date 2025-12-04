@@ -2,7 +2,9 @@ package app;
 import controller.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -14,6 +16,9 @@ import view.AddFlightView;
 import view.AdminDashboardView;
 import view.MainMenuView;
 import view.RegistrationView;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class MainApp extends Application {
 
@@ -71,16 +76,21 @@ public class MainApp extends Application {
         //new ForgotPasswordController(this, forgotPasswordView);
     }
 
-    public void showAddFlightForm() {
-        AddFlightView addFlightView = new AddFlightView();
-        Flight flightModel = new Flight();
-        Admin adminModel = new Admin();
-        new AddFlightController(this, addFlightView,  flightModel, adminModel);
+    public void showAddFlightForm(Admin adminModel) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddFlightView.fxml"));
+            Parent root = loader.load();
+            AddFlightController controller = loader.getController();
 
-        Scene scene = new Scene(addFlightView, SCENE_WIDTH, SCENE_HEIGHT);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Add Flight Reservation");
-        primaryStage.show();
+            controller.initializeDependencies(this, adminModel);
+
+            primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
+            primaryStage.show();
+
+        } catch (IOException e) {
+            System.out.println("Error showing flight form: " + e.getMessage());
+
+        }
     }
 
     public static void main(String[] args) {

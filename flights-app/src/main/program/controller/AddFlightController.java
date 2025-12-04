@@ -3,6 +3,7 @@ package controller;
 import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -87,5 +88,9 @@ public class AddFlightController {
     @FXML
     private void handleReturn(ActionEvent actionEvent) {
         navigator.showDashboard();
+    }
+
+
+    public void initializeDependencies(MainApp mainApp, Admin adminModel) {
     }
 }
