@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Admin;
 import model.Customer;
+import model.Flight;
 import model.Login;
 import java.io.IOException;
 import java.net.URL;
@@ -17,6 +18,7 @@ public class MainApp extends Application {
     Customer customerModel = new Customer();
     Login loginModel = new Login();
     MainMenuController mainMenuController;
+    Flight flightModel = new Flight();
 
 
     public static Stage primaryStage;
@@ -109,7 +111,7 @@ public class MainApp extends Application {
 
     public void showUpdateFlightsScreen(Admin adminModel) {
         loadScene("/view/update_flights_screen.fxml",
-                type -> new UpdateFlightsController(),
+                type -> new UpdateFlightsController(this, adminModel, flightModel),
                 "Manage Flights");
     }
 
