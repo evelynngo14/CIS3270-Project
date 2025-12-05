@@ -33,9 +33,6 @@ public class RegistrationController {
 
     @FXML
     private void handleRegistration(ActionEvent event) {
-        if (!validateRegistrationForm()) {
-            return;
-        }
 
         String firstName = view.getFirstNameField().getText();
         String lastName = view.getLastNameField().getText();

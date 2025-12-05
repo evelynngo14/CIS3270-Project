@@ -18,6 +18,10 @@ public class ForgotPasswordController {
     @FXML private Text securityQuestion;
     @FXML private TextField securityAnswerField;
     @FXML private Button returnButton;
+    @FXML private Label emailLabel;
+    @FXML private TextField  emailField;
+    @FXML private Label ssnLabel;
+    @FXML private TextField ssnField;
 
     public ForgotPasswordController(MainApp navigator, Customer model) {
         this.navigator = navigator;

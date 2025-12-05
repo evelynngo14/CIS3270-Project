@@ -20,8 +20,8 @@ public class UserDAO implements DAO {
     }
 
     // used for forgot password in Login Model
-    public boolean verifySecurityAnswer(String username, String securityAnswer) {
-        String query = "SELECT securityAnswer FROM users WHERE username = ? AND securityAnswer = ?";
+    public boolean verifySecurityAnswer(String username, String email, String securityAnswer) {
+        String query = "SELECT securityAnswer FROM users WHERE username = ? AND securityAnswer = ? AND email = ?";
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
@@ -33,7 +33,24 @@ public class UserDAO implements DAO {
             } else return false;
 
         } catch (SQLException e) {
-            System.out.println("Error authenticating forgot password: " + e.getMessage());
+            System.out.println("Error authenticating security answer: " + e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean verifySsn (String ssn, String username, String email) {
+        String query = "SELECT ssn FROM users WHERE username = ? AND ssn = ? AND email = ?";
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            stmt.setString(2, ssn);
+            stmt.setString(3, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return true;
+            } else return false;
+        } catch (SQLException e) {
+            System.out.println("Error authenticating SSN: " + e.getMessage());
         }
         return false;
     }
