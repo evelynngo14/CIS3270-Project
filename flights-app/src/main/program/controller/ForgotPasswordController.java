@@ -43,26 +43,26 @@ public class ForgotPasswordController {
     @FXML
     private boolean handlePasswordReset(ActionEvent actionEvent) {
         String username = usernameField.getText();
-        String securityAnswer = securityQuestionField.getText();
+        String securityQuestion = securityQuestionField.getText();
         String email = emailField.getText();
         String ssn = ssnField.getText();
         String newPassword = newPasswordField.getText();
 
         securityQuestionErrorLabel.setText("");
-        boolean verifySecurityAnswer = model.authenticateSecurityQuestion(username, ssn, securityAnswer);
+        boolean verifySecurityQuestion = model.authenticateSecurityQuestion(username, ssn, securityQuestion);
         boolean verifySsn = model.authenticateSsn(ssn, email, username);
 
         // will show ssnErrorLabel OR securityQuestionErrorLabel, not both
         if (!verifySsn) {
             ssnErrorLabel.setText("Error verifying SSN, email, or username.");
         } else {
-            if (!verifySecurityAnswer) {
+            if (!verifySecurityQuestion) {
                 System.out.println("Answer to security question is incorrect.");
                 securityQuestionErrorLabel.setText("Answer to security question is incorrect.");
             }
         }
 
-        if (verifySecurityAnswer && verifySsn) {
+        if (verifySecurityQuestion && verifySsn) {
             System.out.println("Password reset successful.");
             model.resetPassword(username, newPassword);
             navigator.showLoginScreen();
