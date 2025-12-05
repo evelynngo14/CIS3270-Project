@@ -66,7 +66,6 @@ public class ForgotPasswordController {
             System.out.println("Password reset successful.");
             model.resetPassword(username, newPassword);
             navigator.showLoginScreen();
-            mainMenuController.setNewPasswordLabel();
             return true;
         } else {
             errorLabel.setText("Failed verification. Try again.");

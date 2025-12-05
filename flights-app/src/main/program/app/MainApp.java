@@ -60,14 +60,14 @@ public class MainApp extends Application {
     }
 
     public void showLoginScreen() {
-        showLoginScreen(false);
+        showLoginScreen(false, false);
     }
 
-    public void showLoginScreen(boolean registrationSuccessful) {
+    public void showLoginScreen(boolean registrationSuccessful, boolean newPasswordSuccessful) {
         Login model = new Login();
 
         loadScene("/view/Main_menu_view.fxml",
-            type -> new MainMenuController(this, model, registrationSuccessful),
+            type -> new MainMenuController(this, model, registrationSuccessful, newPasswordSuccessful),
             "Login"
             );
     }

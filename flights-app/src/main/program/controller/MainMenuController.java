@@ -19,6 +19,7 @@ public class MainMenuController {
     private final MainApp navigator;
     private final Login model;
     private final boolean registrationSuccessful;
+    private final boolean newPasswordSuccessful;
 
     @FXML
     private TextField usernameField;
@@ -37,10 +38,11 @@ public class MainMenuController {
     @FXML Label registrationSuccessLabel;
     @FXML Label newPasswordSuccessLabel;
 
-    public MainMenuController(MainApp navigator, Login model, boolean registrationSuccessful) {
+    public MainMenuController(MainApp navigator, Login model, boolean registrationSuccessful, boolean newPasswordSuccessful) {
         this.navigator = navigator;
         this.model = model;
         this.registrationSuccessful = registrationSuccessful;
+        this.newPasswordSuccessful = newPasswordSuccessful;
     }
 
     @FXML
