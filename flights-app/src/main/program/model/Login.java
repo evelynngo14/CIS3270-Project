@@ -18,11 +18,4 @@ public class Login {
 
         return isValid;
     }
-
-    public void resetPassword(String username, String securityAnswer, String newPassword) {
-        boolean success = userDAO.verifySecurityAnswer(username, securityAnswer);
-        if (success) {
-            userDAO.updatePassword(username, newPassword);
-        }
-    }
 }

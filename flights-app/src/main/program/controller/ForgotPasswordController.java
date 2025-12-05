@@ -51,13 +51,14 @@ public class ForgotPasswordController {
         boolean verifySecurityAnswer = model.authenticateSecurityQuestion(username, ssn, securityAnswer);
         boolean verifySsn = model.authenticateSsn(ssn, email, username);
 
-        if (!verifySecurityAnswer) {
-            System.out.println("Answer to security question is incorrect.");
-            securityQuestionErrorLabel.setText("Answer to security question is incorrect.");
-        }
-
+        // will show ssnErrorLabel OR securityQuestionErrorLabel, not both
         if (!verifySsn) {
             ssnErrorLabel.setText("Error verifying SSN, email, or username.");
+        } else {
+            if (!verifySecurityAnswer) {
+                System.out.println("Answer to security question is incorrect.");
+                securityQuestionErrorLabel.setText("Answer to security question is incorrect.");
+            }
         }
 
         if (verifySecurityAnswer && verifySsn) {

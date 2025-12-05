@@ -36,6 +36,16 @@ public class Customer extends User {
         return BookingDAO.getBookingsByUser(this.userId);
     }
 
+    public void resetPassword(String username, String securityAnswer, String ssn, String email, String newPassword) {
+        boolean success = false;
+        if (userDAO.verifySsn(ssn, username, email) && userDAO.verifySecurityAnswer(username, email, securityAnswer)) {
+            success = true;
+        }
+        if (success) {
+            userDAO.updatePassword(username, newPassword);
+        }
+    }
+
     //public ObservableList<Flight> searchFlights() {
         // return
         // call FlightDAO (get flights based on a SQL query)
