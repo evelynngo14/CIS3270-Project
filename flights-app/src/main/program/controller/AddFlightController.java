@@ -17,10 +17,10 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class AddFlightController {
-    private final MainApp navigator;
+    private MainApp navigator;
     private final AddFlightView view;
     private final Flight flightModel;
-    private final Admin adminModel;
+    private Admin adminModel;
 
     @FXML private TextField departureCityField;
     @FXML private TextField arrivalCityField;
@@ -90,7 +90,11 @@ public class AddFlightController {
         navigator.showDashboard();
     }
 
+    public void initializeDependencies(MainApp navigator, Admin adminModel) {
+        this.navigator = navigator;
+        this.adminModel = adminModel;
 
-    public void initializeDependencies(MainApp mainApp, Admin adminModel) {
+        addFlightButton.setOnAction(this::handleAddFlight);
+        cancelButton.setOnAction(this::handleReturn);
     }
 }
