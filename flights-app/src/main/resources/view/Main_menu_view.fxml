@@ -41,10 +41,14 @@
 
     </GridPane>
 
-    <Label fx:id="loginErrorLabel"
-           style="-fx-text-fill: red;"
-           text=""
-    />
+    <Pane>
+        <Label fx:id="loginErrorLabel"
+               style="-fx-text-fill: red;"
+        />
+        <Label fx:id="registrationSuccessLabel"
+               style="-fx-text-full: green"
+               />
+    </Pane>
 
     <HBox spacing="20" alignment="CENTER">
         <Button fx:id="loginButton"

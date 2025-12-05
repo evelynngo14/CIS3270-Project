@@ -13,6 +13,7 @@ import model.User;
 public class ForgotPasswordController {
     private final MainApp navigator;
     private final Customer model;
+    private final MainMenuController mainMenuController;
 
     @FXML private TextField usernameField;
     @FXML private TextField securityQuestionField;
@@ -26,9 +27,12 @@ public class ForgotPasswordController {
     @FXML private Label errorLabel;
     @FXML private Label securityQuestionErrorLabel;
     @FXML private Label ssnErrorLabel;
+    @FXML private Label newPasswordLabel;
+    @FXML private TextField newPasswordField;
 
-    public ForgotPasswordController(MainApp navigator, Customer model) {
+    public ForgotPasswordController(MainApp navigator, MainMenuController mainMenuController, Customer model) {
         this.navigator = navigator;
+        this.mainMenuController = mainMenuController;
         this.model = model;
     }
 
@@ -44,10 +48,9 @@ public class ForgotPasswordController {
         String securityAnswer = securityQuestionField.getText();
         String email = emailField.getText();
         String ssn = ssnField.getText();
+        String newPassword = newPasswordField.getText();
 
         securityQuestionErrorLabel.setText("");
-        Customer model = new Customer();
-
         boolean verifySecurityAnswer = model.authenticateSecurityQuestion(username, ssn, securityAnswer);
         boolean verifySsn = model.authenticateSsn(ssn, email, username);
 
@@ -63,6 +66,9 @@ public class ForgotPasswordController {
 
         if (verifySecurityAnswer && verifySsn) {
             System.out.println("Password reset successful.");
+            model.resetPassword(username, newPassword);
+            navigator.showLoginScreen();
+            mainMenuController.setRegistrationSuccessLabel();
             return true;
         } else {
             errorLabel.setText("Failed verification. Try again.");

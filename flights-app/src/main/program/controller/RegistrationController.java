@@ -52,12 +52,9 @@ public class RegistrationController {
         String state = stateChoiceBox.getValue();
         String securityQuestion = securityQuestionField.getText();
 
-        statusLabel.setText("");
-
         Customer model = new Customer();
 
-        if (firstName == null | lastName == null | email == null | username == null || password == null
-                | ssn == null | address == null || securityQuestion == null | zip == null | state == null) {
+        if (firstName == null | lastName == null | email == null | username == null | password == null | ssn == null | address == null | securityQuestion == null | zip == null | state == null) {
             statusLabel.setText("Please fill all the fields.");
         };
         // success: show Registered and return to login

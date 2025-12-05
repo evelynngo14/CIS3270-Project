@@ -90,8 +90,11 @@ public class MainApp extends Application {
 
     public void showForgotPasswordScreen() {
         Customer customerModel = new Customer();
+        MainApp navigator = new MainApp();
+        Login loginModel = new Login();
+        MainMenuController mainMenuController = new MainMenuController(navigator, loginModel);
         loadScene("/view/forgot_password_view.fxml",
-                type -> new ForgotPasswordController(this, customerModel),
+                type -> new ForgotPasswordController(this, mainMenuController, customerModel),
                 "Reset Password"
         );
     }

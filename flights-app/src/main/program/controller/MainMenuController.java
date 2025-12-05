@@ -11,6 +11,7 @@ import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class MainMenuController {
@@ -33,6 +34,7 @@ public class MainMenuController {
     private Label forgotPasswordLabel;
     @FXML
     private Button forgotPasswordButton;
+    @FXML Label registrationSuccessLabel;
 
     public MainMenuController(MainApp navigator, Login model) {
         this.navigator = navigator;
@@ -61,6 +63,7 @@ public class MainMenuController {
             System.out.println("login successful");
             navigator.showDashboard(customerModel);
         } else {
+            registrationSuccessLabel.setText("");
             loginErrorLabel.setText("Invalid username or password");
             System.out.println("Incorrect username or password");
         }
@@ -75,5 +78,11 @@ public class MainMenuController {
     @FXML
     private void handleForgotPassword(ActionEvent event) {
         navigator.showForgotPasswordScreen();
+    }
+
+    // after registration and redirect to main menu
+    @FXML
+    void setRegistrationSuccessLabel() {
+        registrationSuccessLabel.setText("Successfully registered. Login with your new credentials.");
     }
 }
