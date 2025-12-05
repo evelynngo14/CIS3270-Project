@@ -13,7 +13,6 @@ import model.User;
 public class ForgotPasswordController {
     private final MainApp navigator;
     private final Customer model;
-    private final MainMenuController mainMenuController;
 
     @FXML private TextField usernameField;
     @FXML private TextField securityQuestionField;
@@ -30,9 +29,8 @@ public class ForgotPasswordController {
     @FXML private Label newPasswordLabel;
     @FXML private TextField newPasswordField;
 
-    public ForgotPasswordController(MainApp navigator, MainMenuController mainMenuController, Customer model) {
+    public ForgotPasswordController(MainApp navigator, Customer model) {
         this.navigator = navigator;
-        this.mainMenuController = mainMenuController;
         this.model = model;
     }
 

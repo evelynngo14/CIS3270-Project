@@ -31,7 +31,6 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         primaryStage = stage; // will NOT start without initializing
         showLoginScreen();
-        this.mainMenuController = new MainMenuController(this, loginModel);
     }
 
     // fxmlPath : the path to the FXML file
@@ -61,17 +60,21 @@ public class MainApp extends Application {
     }
 
     public void showLoginScreen() {
+        showLoginScreen(false);
+    }
+
+    public void showLoginScreen(boolean registrationSuccessful) {
         Login model = new Login();
 
         loadScene("/view/Main_menu_view.fxml",
-            type -> new MainMenuController(this, model),
+            type -> new MainMenuController(this, model, registrationSuccessful),
             "Login"
             );
     }
 
     public void showRegistrationScreen() {
         loadScene("/view/Registration_view.fxml",
-                type -> new RegistrationController(this, mainMenuController),
+                type -> new RegistrationController(this),
                 "Register new Customer"
         );
     }
@@ -96,7 +99,7 @@ public class MainApp extends Application {
 
     public void showForgotPasswordScreen() {
         loadScene("/view/forgot_password_view.fxml",
-                type -> new ForgotPasswordController(this, mainMenuController, customerModel),
+                type -> new ForgotPasswordController(this, customerModel),
                 "Reset Password"
         );
     }

@@ -15,7 +15,6 @@ import components.States;
 
 public class RegistrationController {
     private final MainApp navigator;
-    private final MainMenuController mainMenuController;
 
     @FXML private Button registerButton;
     @FXML private TextField usernameField;
@@ -31,9 +30,8 @@ public class RegistrationController {
     @FXML private Button returnToLoginButton;
     @FXML private Label statusLabel;
 
-    public RegistrationController(MainApp navigator, MainMenuController mainMenuController) {
+    public RegistrationController(MainApp navigator) {
         this.navigator = navigator;
-        this.mainMenuController = mainMenuController;
     }
 
     public void initialize() {
@@ -69,7 +67,6 @@ public class RegistrationController {
         boolean success = model.registerNewUser(firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion);
         if (success) {
             navigator.showLoginScreen();
-            mainMenuController.setRegistrationSuccessLabel();
             return true;
         } else {
             statusLabel.setText("There was a problem registering. Please try again.");

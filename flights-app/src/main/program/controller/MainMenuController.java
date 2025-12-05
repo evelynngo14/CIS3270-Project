@@ -18,7 +18,7 @@ public class MainMenuController {
 
     private final MainApp navigator;
     private final Login model;
-
+    private final boolean registrationSuccessful;
 
     @FXML
     private TextField usernameField;
@@ -37,14 +37,20 @@ public class MainMenuController {
     @FXML Label registrationSuccessLabel;
     @FXML Label newPasswordSuccessLabel;
 
-    public MainMenuController(MainApp navigator, Login model) {
+    public MainMenuController(MainApp navigator, Login model, boolean registrationSuccessful) {
         this.navigator = navigator;
         this.model = model;
+        this.registrationSuccessful = registrationSuccessful;
     }
 
     @FXML
     public void initialize() {
         loginErrorLabel.setText("");
+        if (registrationSuccessful) {
+            registrationSuccessLabel.setText("Registration successful! Please log in.");
+        } else {
+            registrationSuccessLabel.setText(""); // Keep it empty otherwise
+        }
     }
 
     @FXML
