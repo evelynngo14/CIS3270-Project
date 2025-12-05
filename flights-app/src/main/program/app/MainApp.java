@@ -109,7 +109,7 @@ public class MainApp extends Application {
 
     public void showManageFlightsScreen(Admin adminModel) {
         loadScene("/view/update_flights_screen.fxml",
-                type -> new ManageFlightsController(),
+                type -> new UpdateFlightsController(),
                 "Manage Flights");
     }
 

@@ -1,5 +1,6 @@
 package dao;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Flight;
@@ -92,6 +93,27 @@ public class FlightDAO implements DAO {
             System.out.println("Error deleting flight: " + e.getMessage());
         }
         return false;
+    }
+
+    public static boolean updateFlight(Flight flight) {
+        String query = "UPDATE flights SET departure_city = ?, arrival_city = ?, departure_date_time = ?, arrival_date_time = ?, capacity = ?, booked_seats = ? WHERE flight_id = ?";
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, flight.getDepartureCity());
+            stmt.setString(2, flight.getArrivalCity());
+            stmt.setTimestamp(3, Timestamp.valueOf(flight.getDepartureDateTime()));
+            stmt.setTimestamp(4, Timestamp.valueOf(flight.getArrivalDateTime()));
+            stmt.setInt(5, flight.getCapacity());
+            stmt.setInt(6, flight.getBookedSeats());
+            stmt.setInt(7, flight.getFlightId());
+
+            stmt.executeQuery();
+
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error updating flight: " + e.getMessage());
+            return false;
+        }
     }
 
     //public static boolean searchFlight(String departureCity, String arrivalCity, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {}
