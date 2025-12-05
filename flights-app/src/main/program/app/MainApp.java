@@ -19,9 +19,8 @@ import java.net.URL;
 public class MainApp extends Application {
 
     Customer customerModel = new Customer();
-    MainApp navigator = new MainApp();
     Login loginModel = new Login();
-    MainMenuController mainMenuController = new MainMenuController(navigator, loginModel);
+    MainMenuController mainMenuController;
 
 
     public static Stage primaryStage;
@@ -32,6 +31,7 @@ public class MainApp extends Application {
     public void start(Stage stage) {
         primaryStage = stage; // will NOT start without initializing
         showLoginScreen();
+        this.mainMenuController = new MainMenuController(this, loginModel);
     }
 
     // fxmlPath : the path to the FXML file

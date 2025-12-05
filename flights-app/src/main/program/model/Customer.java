@@ -13,7 +13,7 @@ public class Customer extends User {
 
     BookingDAO bookingDAO = new BookingDAO();
     UserDAO userDAO = new UserDAO();
-    RegistrationDAO registrationDAO = new RegistrationDAO()
+    RegistrationDAO registrationDAO = new RegistrationDAO();
 
     public Customer() {}
 

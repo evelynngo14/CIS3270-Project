@@ -39,6 +39,7 @@ public class RegistrationController {
     public void initialize() {
         stateChoiceBox.setItems(States.getStatesList());
         securityQuestionField.setPromptText("What is your favorite animal?");
+        ssnField.setPromptText("Last four digits of your SSN");
     }
 
     @FXML
