@@ -49,11 +49,7 @@ public class MainMenuController {
         Admin adminModel = new Admin();
 
         if (username.equals("admin") && password.equals("password")) {
-            try {
-                navigator.showAdminDashboard(adminModel);
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
+            navigator.showAdminDashboard(adminModel);
         }
 
         boolean success = model.authenticate(username, password);
