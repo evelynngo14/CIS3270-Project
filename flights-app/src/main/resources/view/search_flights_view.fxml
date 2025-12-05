@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SearchFlightsView">
+   <children>
+      <TableView layoutX="32.0" layoutY="134.0" prefHeight="200.0" prefWidth="538.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Flight ID" />
+          <TableColumn prefWidth="93.0" text="Departure City" />
+            <TableColumn prefWidth="116.0" text="Arrival City" />
+            <TableColumn prefWidth="132.0" text="Departure Date&amp;Time" />
+            <TableColumn prefWidth="121.0" text="Arrival Date&amp;Time" />
+        </columns>
+      </TableView>
+      <Button fx:id="logoutButton" layoutX="274.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
+      <HBox layoutX="63.0" layoutY="67.0" prefHeight="47.0" prefWidth="466.0">
+         <children>
+            <TextField prefHeight="26.0" prefWidth="184.0" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" text="Search" />
+            <DatePicker prefHeight="26.0" prefWidth="210.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
