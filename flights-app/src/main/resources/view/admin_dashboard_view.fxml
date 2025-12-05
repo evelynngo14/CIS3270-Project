@@ -38,18 +38,16 @@
 
         <!-- buttons HBox -->
         <HBox alignment="CENTER" spacing="20.0">
-            <children>
-                <Button fx:id="addFlightButton"
-                        text="Add Flight"
-                        onAction="#handleAddFlight" />
-                <Button fx:id="manageFlightsButton"
-                        text="Manage Flights"
-                        onAction="#handleManageFlights" />
+            <Button fx:id="addFlightButton"
+                    text="Add Flight"
+                    onAction="#handleAddFlight"/>
+            <Button fx:id="manageFlightsButton"
+                    text="Manage Flights"
+                    onAction="#handleManageFlights"/>
 
-                <Button fx:id="logoutButton"
-                        text="Logout"
-                        onAction="#handleLogout" />
-            </children>
+            <Button fx:id="logoutButton"
+                    text="Logout"
+                    onAction="#handleLogout"/>
         </HBox>
 
     </children>

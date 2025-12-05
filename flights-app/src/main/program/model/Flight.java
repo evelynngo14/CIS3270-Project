@@ -31,6 +31,8 @@ public class Flight {
         return capacity - bookedSeats;
     }
 
+
+
     @Override
     public String toString() {
         return "model.Flight " + flightId + ": " + departureCity + " → " + arrivalCity +

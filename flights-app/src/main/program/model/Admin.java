@@ -15,8 +15,8 @@ public class Admin extends User {
     public void updateFlight() {
     }
 
-    public boolean deleteFlight(int flightId) {
-        return FlightDAO.deleteFlight(flightId); // success = true
+    public boolean deleteFlight(Flight flight) {
+        return FlightDAO.deleteFlight(flight.getFlightId()); // success = true
     }
 
     @Override

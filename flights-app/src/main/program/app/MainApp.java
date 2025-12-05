@@ -57,7 +57,7 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    public void showLoginScreen(Admin adminModel) {
+    public void showLoginScreen() {
         Login model = new Login();
         MainMenuView loginView = new MainMenuView();
         new MainMenuController(this, loginView, model); // 'this': MainApp
