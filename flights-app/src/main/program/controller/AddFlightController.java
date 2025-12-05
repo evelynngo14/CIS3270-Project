@@ -77,7 +77,7 @@ public class AddFlightController {
 
     }
 
-    private void populateTimeChoices(ChoiceBox<String> choiceBox) {
+    static void populateTimeChoices(ChoiceBox<String> choiceBox) {
         for (int h = 0; h < 24; h++) {
             for (int m = 0; m < 60; m += 30) {
                 String time = String.format("%02d:%02d", h, m);
