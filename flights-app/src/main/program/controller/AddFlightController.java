@@ -74,7 +74,6 @@ public class AddFlightController {
         int capacity = Integer.parseInt(view.getCapacityField());
         int bookedSeats = flightModel.getBookedSeats();
 
-        Flight.incrementFlightId(); // static method
         Flight newFlight = new Flight(flightModel.getFlightId(), departureCity, arrivalCity, departureTime, arrivalTime, capacity, bookedSeats);
         boolean success = adminModel.addFlight(newFlight);
 
@@ -94,5 +93,6 @@ public class AddFlightController {
     public void initializeDependencies(MainApp navigator, Admin adminModel) {
         this.navigator = navigator;
         this.adminModel = adminModel;
+
     }
 }

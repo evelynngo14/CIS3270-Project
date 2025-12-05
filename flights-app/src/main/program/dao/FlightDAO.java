@@ -53,7 +53,7 @@ public class FlightDAO implements DAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("Error fetching flight data: " + e.getMessage());
+            System.err.println("Error fetching flight data: " + e.getMessage());
         }
 
         return flights;
@@ -61,17 +61,17 @@ public class FlightDAO implements DAO {
 
     public static boolean addFlight(Flight newFlight) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "INSERT INTO flights VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO flights (departureCity, arrivalCity, departureDateTime, arrivalDateTime, capacity, bookedSeats) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(query);
 
-            stmt.setInt(1, newFlight.getFlightId());
-            stmt.setString(2, newFlight.getDepartureCity());
-            stmt.setString(3, newFlight.getArrivalCity());
-            stmt.setString(4, newFlight.getDepartureDateTime().toString());
-            stmt.setString(5, newFlight.getArrivalDateTime().toString());
-            stmt.setInt(6, newFlight.getCapacity());
-            stmt.setInt(7, newFlight.getBookedSeats());
+            stmt.setString(1, newFlight.getDepartureCity());
+            stmt.setString(2, newFlight.getArrivalCity());
+            stmt.setTimestamp(3, Timestamp.valueOf(newFlight.getDepartureDateTime()));
+            stmt.setTimestamp(4, Timestamp.valueOf(newFlight.getArrivalDateTime()));
+            stmt.setInt(5, newFlight.getCapacity());
+            stmt.setInt(6, newFlight.getBookedSeats());
             stmt.executeUpdate();
+
             return true;
 
         } catch (SQLException e) {

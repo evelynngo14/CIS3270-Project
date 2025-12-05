@@ -42,59 +42,27 @@ public class Flight {
         return flightId;
     }
 
-    public void setFlightId(int flightId) {
-        Flight.flightId = flightId;
-    }
-
-    public static void incrementFlightId() {
-        ++flightId;
-    }
-
     public String getDepartureCity() {
         return departureCity;
-    }
-
-    public void setDepartureCity(String departureCity) {
-        this.departureCity = departureCity;
     }
 
     public String getArrivalCity() {
         return arrivalCity;
     }
 
-    public void setArrivalCity(String arrivalCity) {
-        this.arrivalCity = arrivalCity;
-    }
-
     public LocalDateTime getDepartureDateTime() {
         return departureDateTime;
-    }
-
-    public void setDepartureDateTime(LocalDateTime departureDateTime) {
-        this.departureDateTime = departureDateTime;
     }
 
     public LocalDateTime getArrivalDateTime() {
         return arrivalDateTime;
     }
 
-    public void setArrivalDateTime(LocalDateTime arrivalDateTime) {
-        this.arrivalDateTime = arrivalDateTime;
-    }
-
     public int getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
     public int getBookedSeats() {
         return bookedSeats;
-    }
-
-    public void setBookedSeats(int bookedSeats) {
-        this.bookedSeats = bookedSeats;
     }
 }
