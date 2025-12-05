@@ -15,13 +15,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class AddFlightController {
-    private MainApp navigator;
-    private final AddFlightView view;
-    private final Flight flightModel;
-    private Admin adminModel;
+    private final MainApp navigator;
+    private final Admin adminModel;
 
     @FXML private TextField departureCityField;
     @FXML private TextField arrivalCityField;
@@ -33,50 +32,48 @@ public class AddFlightController {
     @FXML private Button addFlightButton;
     @FXML private Button cancelButton;
 
-    public AddFlightController(MainApp navigator, AddFlightView view,  Flight flightModel, Admin adminModel) {
+    public AddFlightController(MainApp navigator, Admin adminModel) {
         this.navigator = navigator;
-        this.view = view;
         this.adminModel = adminModel;
-        this.flightModel = flightModel;
     }
 
     @FXML
-    private LocalDateTime convertToLocalDateTime(DatePicker datePicker, ChoiceBox<String> timeChoiceBox) {
-        LocalDate date = datePicker.getValue();
-        if (date == null) {
-            return null;
-        }
-
-        String timeString = timeChoiceBox.getValue();
-
-        if (timeString == null || timeString.isEmpty()) {
-            return null;
-        }
-        LocalTime time =  LocalTime.parse(timeString);
-        return LocalDateTime.of(date, time);
+    public void initialize() {
+        // 00:00, 00:30, ...
+        populateTimeChoices(departureTimeChoice);
+        populateTimeChoices(arrivalTimeChoice);
     }
 
     @FXML
-    private void handleAddFlight(ActionEvent actionEvent) throws IOException {
-        String departureCity = String.valueOf(view.getDepartureCityField());
-        String arrivalCity = String.valueOf(view.getArrivalCityField());
+    private void handleAddFlight(ActionEvent actionEvent) {
 
-        DatePicker departureDatePicker = view.getDepartureDatePicker();
-        ChoiceBox<String> departureTimeChoice = view.getDepartureTimeChoice();
-
-        DatePicker arrivalDatePicker = view.getArrivalDatePicker();
-        ChoiceBox<String> arrivalTimeChoice = view.getArrivalTimeChoice();
-
+        String departureCity = departureCityField.getText();
+        String arrivalCity = arrivalCityField.getText();
         // convert DatePicker and ChoiceBox string into LocalDateTime
         LocalDateTime departureTime = convertToLocalDateTime(departureDatePicker, departureTimeChoice);
         LocalDateTime arrivalTime = convertToLocalDateTime(arrivalDatePicker, arrivalTimeChoice);
 
-        int capacity = Integer.parseInt(view.getCapacityField());
-        int bookedSeats = flightModel.getBookedSeats();
+        if (departureTime == null || arrivalTime == null || departureCity.isEmpty() || arrivalCity.isEmpty() || capacityField.getText().isEmpty()) {
+            System.err.println("Input error. Fill in all fields.");
+            return;
+        }
 
-        Flight newFlight = new Flight(flightModel.getFlightId(), departureCity, arrivalCity, departureTime, arrivalTime, capacity, bookedSeats);
+        int capacity =  Integer.parseInt(capacityField.getText());
+
+        // new flight
+        int bookedSeats = 0;
+
+        Flight newFlight = new Flight(
+                0, // placeholder so DAO ignores it
+                departureCity,
+                arrivalCity,
+                departureTime,
+                arrivalTime,
+                capacity,
+                bookedSeats
+        );
+
         boolean success = adminModel.addFlight(newFlight);
-
         if (success) {
             navigator.showAdminDashboard(adminModel);
         } else {
@@ -85,14 +82,30 @@ public class AddFlightController {
 
     }
 
-    @FXML
-    private void handleReturn(ActionEvent actionEvent) {
-        navigator.showDashboard();
+    private void populateTimeChoices(ChoiceBox<String> choiceBox) {
+        for (int h = 0; h < 24; h++) {
+            for (int m = 0; m < 60; m += 30) {
+                String time = String.format("%02d:%02d", h, m);
+                choiceBox.getItems().add(time);
+            }
+        }
     }
 
-    public void initializeDependencies(MainApp navigator, Admin adminModel) {
-        this.navigator = navigator;
-        this.adminModel = adminModel;
+    private LocalDateTime convertToLocalDateTime(DatePicker datePicker, ChoiceBox<String> timeChoice) {
+        LocalDate date = datePicker.getValue();
+        String timeString = timeChoice.getValue();
+        if (date == null || timeString == null || timeString.isEmpty()) {
+            return null;
+        }
 
+        // format time string
+        LocalTime time = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
+
+        return(LocalDateTime.of(date, time));
+    }
+
+    @FXML
+    private void handleCancel(ActionEvent actionEvent) {
+        navigator.showDashboard();
     }
 }

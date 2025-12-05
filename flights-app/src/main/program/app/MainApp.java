@@ -82,7 +82,7 @@ public class MainApp extends Application {
 
     }
 
-    public void showAdminDashboard(Admin adminModel) throws IOException {
+    public void showAdminDashboard(Admin adminModel) {
         loadScene("/view/admin_dashboard_view.fxml",
                 // -- controller initialization with dependency injection --
                 // type (input) is the AdminDashboardController
@@ -99,20 +99,10 @@ public class MainApp extends Application {
     }
 
     public void showAddFlightForm(Admin adminModel) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddFlightView.fxml"));
-            Parent root = loader.load();
-            AddFlightController controller = loader.getController();
-
-            controller.initializeDependencies(this, adminModel);
-
-            primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
-            primaryStage.show();
-
-        } catch (IOException e) {
-            System.out.println("Error showing flight form: " + e.getMessage());
-
-        }
+        loadScene("/view/AddFlightView.fxml",
+        type -> new AddFlightController(this, adminModel),
+                "Admin: Add new flight"
+        );
     }
 
     public static void main(String[] args) {
