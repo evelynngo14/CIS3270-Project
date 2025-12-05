@@ -4,6 +4,7 @@ import app.MainApp;
 import dao.FlightDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import model.Admin;
 import model.Flight;
@@ -38,6 +39,7 @@ public class AdminDashboardController {
     }
 
     // shows the flight form
+    @FXML
     private void handleAddFlight(ActionEvent actionEvent) {
         Admin adminModel = new Admin();
         System.out.println("Add flight clicked. Navigating to flight form");
@@ -45,7 +47,7 @@ public class AdminDashboardController {
     }
 
     private void handleDeleteFlight(ActionEvent actionEvent) {
-        view.getDeleteFlightButton().setOnAction(this::handleDeleteFlight);
+        //view.getDeleteFlightButton().setOnAction(this::handleDeleteFlight);
     }
 
     private void handleManageFlights(ActionEvent actionEvent) {

@@ -2,6 +2,7 @@ package app;
 import controller.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -32,6 +33,7 @@ public class MainApp extends Application {
         showLoginScreen();
     }
 
+    @FXML
     public void showLoginScreen() {
         Login model = new Login();
         MainMenuView loginView = new MainMenuView();
@@ -53,7 +55,9 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
+    @FXML
     public void showDashboard() {
+
     }
 
     public void showAdminDashboard() {

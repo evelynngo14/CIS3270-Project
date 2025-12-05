@@ -69,7 +69,6 @@ public class BookingDAO implements DAO {
             stmt.setInt(1, flightId);
             stmt.setInt(2, userId);
             stmt.setString(3, seatNumber);
-            stmt.setInt(4, flightId);
 
             stmt.executeUpdate();
 

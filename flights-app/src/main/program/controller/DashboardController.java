@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import app.MainApp;
+import javafx.fxml.FXML;
 import model.Booking;
 import model.Customer;
 import view.AdminDashboardView;
@@ -26,14 +27,12 @@ public class DashboardController {
         view.getLogoutButton().setOnAction(this::handleLogout);
     }
 
-
     private void loadBooking() {
         ObservableList<Booking> bookingList = model.getBookingsByUser();
-
         //view.getBookingList.setItems(bookingList);
-
     }
 
+    @FXML
     private void handleLogout(ActionEvent actionEvent) {
         System.out.println("Customer logged out");
         navigator.showLoginScreen();

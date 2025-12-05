@@ -18,14 +18,14 @@
 
     <children>
 
-        <!-- Welcome label -->
         <Label fx:id="welcomeLabel"
                text=""/>
 
-        <!-- Logout button -->
+        <TableView fx:id
+
         <Button fx:id="logoutButton"
                 text="Logout"
-                onAction="#handleLogout"/>
+                onAction="#handleLogout"/> <!-- handleLogout() from DashboardController) -->
 
     </children>
 </VBox>
