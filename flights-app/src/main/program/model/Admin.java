@@ -18,7 +18,6 @@ public class Admin extends User {
     public boolean deleteFlight(Flight flight) {
         return FlightDAO.deleteFlight(flight.getFlightId()); // success = true
     }
-
     @Override
     public String getRole() {
         return "admin";
@@ -26,5 +25,9 @@ public class Admin extends User {
 
     public boolean addFlight(Flight newFlight) {
         return FlightDAO.addFlight(newFlight); // success = true
+    }
+
+    public boolean updateFlight(Flight newFlight) {
+        return FlightDAO.updateFlight(newFlight);
     }
 }
