@@ -2,6 +2,7 @@ package model;
 
 import dao.BookingDAO;
 import dao.FlightDAO;
+import dao.RegistrationDAO;
 import dao.UserDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,11 +13,18 @@ public class Customer extends User {
 
     BookingDAO bookingDAO = new BookingDAO();
     UserDAO userDAO = new UserDAO();
+    RegistrationDAO registrationDAO = new RegistrationDAO()
 
     public Customer() {}
 
     public Customer(int userId) {
         this.userId = userId;
+    }
+
+    public boolean registerNewUser(String firstName, String lastName, String address, String zip,
+                                   String state, String username, String password, String email,
+                                   String ssn, String securityQuestion) {
+        return registrationDAO.register(firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion);
     }
 
     public boolean bookFlight(int flightId, int userId, String seatNumber) {

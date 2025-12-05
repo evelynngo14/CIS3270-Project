@@ -42,7 +42,7 @@ public class RegistrationController {
     }
 
     @FXML
-    private void handleRegistration(ActionEvent event) {
+    private boolean handleRegistration(ActionEvent event) {
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         String email = emailField.getText();
@@ -58,10 +58,18 @@ public class RegistrationController {
 
         if (firstName == null | lastName == null | email == null | username == null | password == null | ssn == null | address == null | securityQuestion == null | zip == null | state == null) {
             statusLabel.setText("Please fill all the fields.");
+            return false;
         };
 
-        navigator.showLoginScreen();
-        mainMenuController.setRegistrationSuccessLabel();
+        boolean success = model.registerNewUser(firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion);
+        if (success) {
+            navigator.showLoginScreen();
+            mainMenuController.setRegistrationSuccessLabel();
+            return true;
+        } else {
+            statusLabel.setText("There was a problem registering. Please try again.");
+            return false;
+        }
     }
 
     @FXML

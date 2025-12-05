@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class RegistrationDAO implements DAO {
 
-    public static boolean register(String firstName, String lastName, String address, String zip,
+    public boolean register(String firstName, String lastName, String address, String zip,
                                    String state, String username, String password, String email,
                                    String ssn, String securityQuestion) {
 
@@ -24,10 +24,10 @@ public class RegistrationDAO implements DAO {
             stmt.setString(10, securityQuestion);
 
             stmt.executeUpdate();
+            System.out.println("Successfully registered new user");
             return true;
-
         } catch (SQLException e) {
-            System.out.println("Error inserting user" + e.getMessage());
+            System.err.println("Error inserting user" + e.getMessage());
             return false;
         }
     }
