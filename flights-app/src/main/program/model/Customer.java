@@ -28,7 +28,7 @@ public class Customer extends User {
     }
 
     public boolean bookFlight(int flightId, int userId, String seatNumber) {
-        bookingDAO.insertBooking(flightId, userId, seatNumber);
+        //return bookingDAO.insertBooking(flightId, userId, seatNumber);
         return false;
     }
 

@@ -71,7 +71,7 @@
 
         <Label fx:id="statusLabel"
                style="-fx-text-fill: #8B0000;"
-               GridPane.columnSpan="4"
+               GridPane.columnSpan="3"
                GridPane.rowIndex="9"
                alignment="CENTER"
                GridPane.columnIndex="2"

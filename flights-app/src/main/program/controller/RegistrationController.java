@@ -24,7 +24,7 @@ public class RegistrationController {
     @FXML private TextField passwordField;
     @FXML private TextField ssnField;
     @FXML private TextField zipField;
-    @FXML private ChoiceBox<String> stateChoiceBox = new ChoiceBox<>();
+    @FXML private ChoiceBox<String> stateChoiceBox;
     @FXML private TextField emailField;
     @FXML private TextField addressField;
     @FXML private TextField securityQuestionField;
@@ -57,7 +57,11 @@ public class RegistrationController {
 
         Customer model = new Customer();
 
-        if (firstName == null | lastName == null | email == null | username == null | password == null | ssn == null | address == null | securityQuestion == null | zip == null | state == null) {
+        if (firstName.trim().isEmpty() || lastName.trim().isEmpty() || email.trim().isEmpty() ||
+                username.trim().isEmpty() || password.trim().isEmpty() || ssn.trim().isEmpty() ||
+                address.trim().isEmpty() || securityQuestion.trim().isEmpty() ||
+                zip.trim().isEmpty() || state == null)
+        {
             statusLabel.setText("Please fill all the fields.");
             return false;
         };
