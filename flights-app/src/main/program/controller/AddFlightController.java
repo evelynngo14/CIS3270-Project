@@ -3,10 +3,7 @@ package controller;
 import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.Admin;
 import model.Flight;
 import view.AddFlightView;
@@ -31,6 +28,7 @@ public class AddFlightController {
     @FXML private TextField capacityField;
     @FXML private Button addFlightButton;
     @FXML private Button cancelButton;
+    @FXML private Label errorLabel;
 
     public AddFlightController(MainApp navigator, Admin adminModel) {
         this.navigator = navigator;

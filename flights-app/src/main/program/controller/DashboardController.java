@@ -4,6 +4,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import app.MainApp;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import model.Booking;
 import model.Customer;
 import view.DashboardView;
@@ -11,18 +13,15 @@ import view.DashboardView;
 public class DashboardController {
 
     private final MainApp navigator;
-    private final DashboardView view;
     private final Customer model;
 
-    public DashboardController(MainApp navigator, DashboardView view, Customer model) {
+    @FXML private Button logoutButton;
+    @FXML private Button searchButton;
+    @FXML private Label welcomeLabel;
+
+    public DashboardController(MainApp navigator, Customer model) {
         this.navigator = navigator;
-        this.view = view;
         this.model = model;
-        //view.getWelcomeLabel().setText("Dashboard - Welcome!")
-
-        loadBooking();
-
-        view.getLogoutButton().setOnAction(this::handleLogout);
     }
 
     private void loadBooking() {

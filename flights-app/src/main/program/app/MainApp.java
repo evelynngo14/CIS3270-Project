@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Admin;
+import model.Customer;
 import model.Flight;
 import model.Login;
 import view.AddFlightView;
@@ -78,8 +79,11 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    public void showDashboard() {
-
+    public void showDashboard(Customer customerModel) {
+        loadScene("/view/dashboard_view.fxml",
+                type -> new DashboardController(this, customerModel),
+                "Dashboard"
+        );
     }
 
     public void showAdminDashboard(Admin adminModel) {
