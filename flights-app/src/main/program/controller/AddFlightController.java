@@ -11,6 +11,7 @@ import model.Admin;
 import model.Flight;
 import view.AddFlightView;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -56,7 +57,7 @@ public class AddFlightController {
     }
 
     @FXML
-    private void handleAddFlight(ActionEvent actionEvent) {
+    private void handleAddFlight(ActionEvent actionEvent) throws IOException {
         String departureCity = String.valueOf(view.getDepartureCityField());
         String arrivalCity = String.valueOf(view.getArrivalCityField());
 
@@ -78,7 +79,7 @@ public class AddFlightController {
         boolean success = adminModel.addFlight(newFlight);
 
         if (success) {
-            navigator.showAdminDashboard();
+            navigator.showAdminDashboard(adminModel);
         } else {
             System.err.println("Failed to save flight to database.");
         }
@@ -93,8 +94,5 @@ public class AddFlightController {
     public void initializeDependencies(MainApp navigator, Admin adminModel) {
         this.navigator = navigator;
         this.adminModel = adminModel;
-
-        addFlightButton.setOnAction(this::handleAddFlight);
-        cancelButton.setOnAction(this::handleReturn);
     }
 }

@@ -94,6 +94,6 @@ public class FlightDAO implements DAO {
         return false;
     }
 
-    public static boolean searchFlight(String departureCity, String arrivalCity, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {}
+    //public static boolean searchFlight(String departureCity, String arrivalCity, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {}
 
 }

@@ -41,10 +41,6 @@
             <Button fx:id="addFlightButton"
                     text="Add Flight"
                     onAction="#handleAddFlight"/>
-            <Button fx:id="manageFlightsButton"
-                    text="Manage Flights"
-                    onAction="#handleManageFlights"/>
-
             <Button fx:id="logoutButton"
                     text="Logout"
                     onAction="#handleLogout"/>

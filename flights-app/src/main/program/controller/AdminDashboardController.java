@@ -13,7 +13,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Admin;
 import model.Flight;
-import view.AdminDashboardView;
 
 import java.io.IOException;
 
@@ -56,11 +55,12 @@ public class AdminDashboardController {
     @FXML
     public void initialize() {
         // table cols
+        // must match getters from Flight class
         flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
         departureCityCol.setCellValueFactory(new PropertyValueFactory<>("departureCity"));
         arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
-        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
+        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
         capacityCol.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
 
@@ -81,8 +81,10 @@ public class AdminDashboardController {
 
     @FXML
     private void handleDeleteFlight(ActionEvent actionEvent) {
+        // get current selected item
         Flight selectedFlight = flightTable.getSelectionModel().getSelectedItem();
         if (model.deleteFlight(selectedFlight)) {
+            // remove in view
             flightTable.getItems().remove(selectedFlight);
         } else {
             System.err.println("Could not delete flight");

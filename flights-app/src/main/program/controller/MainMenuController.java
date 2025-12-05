@@ -1,9 +1,12 @@
 package controller;
 import app.MainApp;
+import model.Admin;
 import view.MainMenuView;
 import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class MainMenuController {
 
@@ -25,8 +28,14 @@ public class MainMenuController {
         String username = view.getUsernameField().getText();
         String password = view.getPasswordField().getText();
 
+        Admin adminModel = new Admin();
+
         if (username.equals("admin") && password.equals("password")) {
-            navigator.showAdminDashboard();
+            try {
+                navigator.showAdminDashboard(adminModel);
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
         }
 
         boolean success = model.authenticate(username, password);

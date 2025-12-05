@@ -15,7 +15,6 @@ import model.Admin;
 import model.Flight;
 import model.Login;
 import view.AddFlightView;
-import view.AdminDashboardView;
 import view.MainMenuView;
 import view.RegistrationView;
 
@@ -83,7 +82,7 @@ public class MainApp extends Application {
     }
 
     public void showAdminDashboard(Admin adminModel) throws IOException {
-        loadScene("/view/AdminDashboardView.fxml",
+        loadScene("/view/admin_dashboard_view.fxml",
                 // -- controller initialization with dependency injection --
                 // type (input) is the AdminDashboardController
                 // -> operator separates the input from the logic

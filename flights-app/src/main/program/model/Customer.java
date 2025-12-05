@@ -25,11 +25,11 @@ public class Customer extends User {
         return BookingDAO.getBookingsByUser(this.userId);
     }
 
-    public ObservableList<Flight> searchFlights() {
+    //public ObservableList<Flight> searchFlights() {
         // return
         // call FlightDAO (get flights based on a SQL query)
         // (SELECT from flight where city is ___ and time ___)
-    }
+    //}
 
     @Override
     public String getRole() {
