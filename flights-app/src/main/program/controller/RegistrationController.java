@@ -66,7 +66,7 @@ public class RegistrationController {
 
         boolean success = model.registerNewUser(firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion);
         if (success) {
-            navigator.showLoginScreen();
+            navigator.showLoginScreen(true, false);
             return true;
         } else {
             statusLabel.setText("There was a problem registering. Please try again.");

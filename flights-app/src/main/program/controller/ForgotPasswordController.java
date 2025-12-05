@@ -65,7 +65,7 @@ public class ForgotPasswordController {
         if (verifySecurityQuestion && verifySsn) {
             System.out.println("Password reset successful.");
             model.resetPassword(username, newPassword);
-            navigator.showLoginScreen();
+            navigator.showLoginScreen(false, true);
             return true;
         } else {
             securityQuestionErrorLabel.setText("Failed verification. Try again.");
