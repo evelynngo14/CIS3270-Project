@@ -10,5 +10,4 @@ public class DashboardView {
     public Button getLogoutButton() {
         return logoutButton;
     }
-
 }
