@@ -68,7 +68,7 @@ public class ForgotPasswordController {
             navigator.showLoginScreen();
             return true;
         } else {
-            errorLabel.setText("Failed verification. Try again.");
+            securityQuestionErrorLabel.setText("Failed verification. Try again.");
             return false;
         }
     }

@@ -26,6 +26,7 @@ public class UserDAO implements DAO {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
             stmt.setString(2, securityAnswer);
+            stmt.setString(3, email);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
