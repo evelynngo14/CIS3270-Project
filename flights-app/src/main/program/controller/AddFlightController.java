@@ -102,7 +102,6 @@ public class AddFlightController {
 
     @FXML
     private void handleCancel(ActionEvent actionEvent) {
-        Customer customerModel = new Customer();
-        navigator.showDashboard(customerModel);
+        navigator.showAdminDashboard(adminModel);
     }
 }
