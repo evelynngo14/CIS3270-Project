@@ -12,14 +12,14 @@ import view.DashboardView;
 
 public class ForgotPasswordController {
     private final MainApp navigator;
-    private final User model;
+    private final Customer model;
 
     @FXML private TextField usernameField;
     @FXML private TextField securityQuestionField;
     @FXML private Text securityQuestion;
     @FXML private TextField securityAnswerField;
 
-    public ForgotPasswordController(MainApp navigator, User model) {
+    public ForgotPasswordController(MainApp navigator, Customer model) {
         this.navigator = navigator;
         this.model = model;
 

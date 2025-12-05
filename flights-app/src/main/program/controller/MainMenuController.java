@@ -31,6 +31,8 @@ public class MainMenuController {
     private Label loginErrorLabel;
     @FXML
     private Label forgotPasswordLabel;
+    @FXML
+    private Button forgotPasswordButton;
 
     public MainMenuController(MainApp navigator, Login model) {
         this.navigator = navigator;
@@ -70,7 +72,8 @@ public class MainMenuController {
         navigator.showRegistrationScreen();
     }
 
-    private void handleForgotPassword() {
-        //navigator.showForgotPasswordScreen(); // TODO: implement
+    @FXML
+    private void handleForgotPassword(ActionEvent event) {
+        navigator.showForgotPasswordScreen();
     }
 }

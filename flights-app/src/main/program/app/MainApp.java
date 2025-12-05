@@ -97,8 +97,11 @@ public class MainApp extends Application {
     }
 
     public void showForgotPasswordScreen() {
-        //ForgotPasswordView forgotPasswordView = new ForgotPasswordView();
-        //new ForgotPasswordController(this, forgotPasswordView);
+        Customer customerModel = new Customer();
+        loadScene("/view/forgot_password_view.fxml",
+                type -> new ForgotPasswordController(this, customerModel),
+                "Reset Password"
+        );
     }
 
     public void showAddFlightForm(Admin adminModel) {

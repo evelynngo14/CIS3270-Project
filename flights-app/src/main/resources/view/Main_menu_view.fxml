@@ -58,9 +58,10 @@
                 prefWidth="120"/>
     </HBox>
 
-    <Label fx:id="forgotPasswordLabel"
+    <Button fx:id="forgotPasswordButton"
            text="Forgot Password?"
-           style="-fx-text-fill: blue; -fx-underline: true;"
+            onAction="#handleForgotPassword"
+           style="-fx-text-fill: blue; -fx-underline: true; -fx-background-color: transparent; -fx-border-width: 0; fx-cursor: hand;"
     />
 
 </VBox>
