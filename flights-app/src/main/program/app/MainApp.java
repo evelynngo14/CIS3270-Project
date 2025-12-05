@@ -47,7 +47,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(fxmlUrl);
 
         // callback factory: allows injection
-        // allows creation of constructor that accepts new dependencies (e.g. new AddFlightController(navigator, model)
+        // instantiates constructor that accepts new dependencies (e.g. new AddFlightController(navigator, model)
         loader.setControllerFactory(controllerFactory);
 
         Parent root = loader.load();
@@ -82,19 +82,11 @@ public class MainApp extends Application {
 
     }
 
-    public void showAdminDashboard() {
-        AdminDashboardView adminDashboardView = new AdminDashboardView();
-        String username = "admin";
-        String password = "password";
-        String email = "admin@email.com";
-        Admin model = new Admin();
-        new AdminDashboardController(this, adminDashboardView, model);
-
-        Scene scene = new Scene(adminDashboardView, SCENE_WIDTH, SCENE_HEIGHT);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Admin Dashboard");
-        primaryStage.show();
-
+    public void showAdminDashboard(Admin adminModel) throws IOException {
+        loadScene("/view/AdminDashboardView.fxml",
+                type -> new AdminDashboardController(this, adminModel),
+                "Admin Dashboard"
+        );
     }
 
     public void showForgotPasswordScreen() {

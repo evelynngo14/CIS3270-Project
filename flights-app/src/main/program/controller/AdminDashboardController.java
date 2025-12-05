@@ -16,9 +16,8 @@ public class AdminDashboardController {
     private final AdminDashboardView view;
     private final Admin model;
 
-    public AdminDashboardController(MainApp navigator, AdminDashboardView view, Admin model) {
+    public AdminDashboardController(MainApp navigator, Admin model) {
         this.navigator = navigator;
-        this.view = view;
         this.model = model;
 
         view.getWelcomeLabel().setText("Admin Dashboard - Welcome!");
