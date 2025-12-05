@@ -2,16 +2,12 @@ package app;
 import controller.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.Admin;
 import model.Customer;
-import model.Flight;
 import model.Login;
 import java.io.IOException;
 import java.net.URL;
@@ -111,9 +107,9 @@ public class MainApp extends Application {
         );
     }
 
-    public void showManageFlightsScreen() {
-        loadScene("/view/manage_flights_screen.fxml",
-                type -> new ManageFlightsController(this, adminModel),
+    public void showManageFlightsScreen(Admin adminModel) {
+        loadScene("/view/update_flights_screen.fxml",
+                type -> new ManageFlightsController(),
                 "Manage Flights");
     }
 

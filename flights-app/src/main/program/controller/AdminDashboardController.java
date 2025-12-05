@@ -14,8 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Admin;
 import model.Flight;
 
-import java.io.IOException;
-
 public class AdminDashboardController {
 
     private final MainApp navigator;
@@ -93,7 +91,7 @@ public class AdminDashboardController {
 
     private void handleManageFlights(ActionEvent event) {
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
-        navigator.showManageFlightsScreen();
+        navigator.showManageFlightsScreen(model);
     }
 
     @FXML
