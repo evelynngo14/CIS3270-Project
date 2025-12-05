@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import model.Booking;
 import model.Customer;
 import view.DashboardView;
-import view.MainMenuView;
 
 public class DashboardController {
 

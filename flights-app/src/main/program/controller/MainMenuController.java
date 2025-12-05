@@ -1,7 +1,11 @@
 package controller;
 import app.MainApp;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import model.Admin;
-import view.MainMenuView;
 import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
@@ -11,23 +15,37 @@ import java.io.IOException;
 public class MainMenuController {
 
     private final MainApp navigator;
-    private final MainMenuView view;
     private final Login model;
 
-    public MainMenuController(MainApp navigator, MainMenuView view, Login model) {
-        this.view = view;
+
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button registerButton;
+    @FXML
+    private Label loginErrorLabel;
+    @FXML
+    private Label forgotPasswordLabel;
+
+    public MainMenuController(MainApp navigator, Login model) {
         this.navigator = navigator;
         this.model = model;
-
-        view.getLoginButton().setOnAction(e -> handleLogin());
-        view.getRegisterButton().setOnAction(e -> handleRegister());
-        view.getForgotPasswordLabel().setOnMouseClicked(e -> handleForgotPassword());
     }
 
-    private void handleLogin() {
-        String username = view.getUsernameField().getText();
-        String password = view.getPasswordField().getText();
+    @FXML
+    public void initialize() {
+        loginErrorLabel.setText("");
+    }
 
+    @FXML
+    private void handleLogin(ActionEvent event) {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+        loginErrorLabel.setText("");
         Admin adminModel = new Admin();
 
         if (username.equals("admin") && password.equals("password")) {
@@ -43,16 +61,18 @@ public class MainMenuController {
             System.out.println("login successful");
             navigator.showDashboard();
         } else {
-            view.getLoginErrorLabel().setText("Invalid username or password");
+            loginErrorLabel.setText("Invalid username or password");
             System.out.println("Incorrect username or password");
         }
     }
 
-    private void handleRegister() {
+    @FXML
+    private void handleRegister(ActionEvent event) {
+        System.out.println("Navigating to registration page");
         navigator.showRegistrationScreen();
     }
 
     private void handleForgotPassword() {
-        navigator.showForgotPasswordScreen(); // TODO: implement
+        //navigator.showForgotPasswordScreen(); // TODO: implement
     }
 }

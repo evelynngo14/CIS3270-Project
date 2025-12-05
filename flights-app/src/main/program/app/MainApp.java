@@ -15,7 +15,6 @@ import model.Admin;
 import model.Flight;
 import model.Login;
 import view.AddFlightView;
-import view.MainMenuView;
 import view.RegistrationView;
 
 import java.io.IOException;
@@ -37,34 +36,36 @@ public class MainApp extends Application {
     // fxmlPath : the path to the FXML file
     // controllerFactory : Callback represents a function that accepts one input and produces one ouput
     // Callback<Class<?>, Object> controllerFactory: given a class, return an object instance of that class
-    private void loadScene(String fxmlPath, Callback<Class<?>, Object> controllerFactory, String title) throws IOException {
-        URL fxmlUrl = getClass().getResource(fxmlPath);
-        if (fxmlUrl == null) {
-            System.err.println("Couldn't find file: " + fxmlPath);
-            return;
+    private void loadScene(String fxmlPath, Callback<Class<?>, Object> controllerFactory, String title) {
+        try {
+            URL fxmlUrl = getClass().getResource(fxmlPath);
+            if (fxmlUrl == null) {
+                System.err.println("Couldn't find file: " + fxmlPath);
+                return;
+            }
+            FXMLLoader loader = new FXMLLoader(fxmlUrl);
+
+            // callback factory: allows injection
+            // instantiates constructor that accepts new dependencies (e.g. new AddFlightController(navigator, model)
+            loader.setControllerFactory(controllerFactory);
+
+            Parent root = loader.load();
+
+            primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
+            primaryStage.setTitle(title);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.err.println("Couldn't load scene for " + fxmlPath + ": " + e.getMessage());
         }
-        FXMLLoader loader = new FXMLLoader(fxmlUrl);
-
-        // callback factory: allows injection
-        // instantiates constructor that accepts new dependencies (e.g. new AddFlightController(navigator, model)
-        loader.setControllerFactory(controllerFactory);
-
-        Parent root = loader.load();
-
-        primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
-        primaryStage.setTitle(title);
-        primaryStage.show();
     }
 
     public void showLoginScreen() {
         Login model = new Login();
-        MainMenuView loginView = new MainMenuView();
-        new MainMenuController(this, loginView, model); // 'this': MainApp
 
-        Scene scene = new Scene(loginView, SCENE_WIDTH, SCENE_HEIGHT);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Flight Reservations Login");
-        primaryStage.show();
+        loadScene("/view/Main_menu_view.fxml",
+            type -> new MainMenuController(this, model),
+            "Login"
+            );
     }
 
     public void showRegistrationScreen() {

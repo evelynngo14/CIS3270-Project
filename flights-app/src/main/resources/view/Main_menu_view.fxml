@@ -4,6 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="controller.MainMenuController"
@@ -12,8 +14,14 @@
       prefWidth="900"
       prefHeight="600">
 
-    <Label text="Welcome Back"
+    <Label text="Flight Reservations App"
            style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+
+    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="125.0" pickOnBounds="true"
+               preserveRatio="true">
+        <Image url="/images/airplane-logo.png"/>
+    </ImageView>
+
 
     <GridPane hgap="15" vgap="15" alignment="CENTER">
 
@@ -41,10 +49,12 @@
     <HBox spacing="20" alignment="CENTER">
         <Button fx:id="loginButton"
                 text="Login"
+                onAction="#handleLogin"
                 prefWidth="120"/>
 
         <Button fx:id="registerButton"
                 text="Register"
+                onAction="#handleRegister"
                 prefWidth="120"/>
     </HBox>
 
