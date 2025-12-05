@@ -11,6 +11,7 @@ public class Customer extends User {
 
     BookingDAO bookingDAO = new BookingDAO();
 
+    public Customer() {}
 
     public Customer(int userId) {
         this.userId = userId;

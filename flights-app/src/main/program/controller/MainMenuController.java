@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.Admin;
+import model.Customer;
 import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
@@ -47,6 +48,7 @@ public class MainMenuController {
         String password = passwordField.getText();
         loginErrorLabel.setText("");
         Admin adminModel = new Admin();
+        Customer customerModel = new Customer();
 
         if (username.equals("admin") && password.equals("password")) {
             navigator.showAdminDashboard(adminModel);
@@ -55,7 +57,7 @@ public class MainMenuController {
         boolean success = model.authenticate(username, password);
         if (success) {
             System.out.println("login successful");
-            navigator.showDashboard();
+            navigator.showDashboard(customerModel);
         } else {
             loginErrorLabel.setText("Invalid username or password");
             System.out.println("Incorrect username or password");

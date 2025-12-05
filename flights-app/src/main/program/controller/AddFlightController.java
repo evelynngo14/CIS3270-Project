@@ -5,9 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Admin;
+import model.Customer;
 import model.Flight;
-import view.AddFlightView;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -103,6 +102,7 @@ public class AddFlightController {
 
     @FXML
     private void handleCancel(ActionEvent actionEvent) {
-        navigator.showDashboard();
+        Customer customerModel = new Customer();
+        navigator.showDashboard(customerModel);
     }
 }

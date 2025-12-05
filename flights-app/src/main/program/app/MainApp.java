@@ -15,7 +15,6 @@ import model.Admin;
 import model.Customer;
 import model.Flight;
 import model.Login;
-import view.AddFlightView;
 import view.RegistrationView;
 
 import java.io.IOException;
