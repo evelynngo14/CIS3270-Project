@@ -53,6 +53,9 @@ public class MainMenuController {
         } else {
             registrationSuccessLabel.setText(""); // Keep it empty otherwise
         }
+        if (newPasswordSuccessful) {
+            newPasswordSuccessLabel.setText("Successfully changed password. Login with your new password.");
+        }
     }
 
     @FXML
@@ -90,14 +93,4 @@ public class MainMenuController {
         navigator.showForgotPasswordScreen();
     }
 
-    // after registration and redirect to main menu
-    @FXML
-    void setRegistrationSuccessLabel() {
-        registrationSuccessLabel.setText("Successfully registered. Login with your new credentials.");
-    }
-
-    @FXML
-    void setNewPasswordLabel() {
-        newPasswordSuccessLabel.setText("Successfully reset password. Login with your new password.");
-    }
 }

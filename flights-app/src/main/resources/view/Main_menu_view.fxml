@@ -46,7 +46,7 @@
                style="-fx-text-fill: red;"
         />
         <Label fx:id="registrationSuccessLabel"
-               style="-fx-text-fll: green"
+               style="-fx-text-fill: green"
                />
         <Label fx:id="newPasswordSuccessLabel"
                style="-fx-text-fill: green"
