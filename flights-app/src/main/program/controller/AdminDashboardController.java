@@ -91,8 +91,9 @@ public class AdminDashboardController {
         }
     }
 
-    private void handleManageFlights() {
+    private void handleManageFlights(ActionEvent event) {
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
+        navigator.showManageFlightsScreen();
     }
 
     @FXML

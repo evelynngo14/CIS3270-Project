@@ -111,6 +111,12 @@ public class MainApp extends Application {
         );
     }
 
+    public void showManageFlightsScreen() {
+        loadScene("/view/manage_flights_screen.fxml",
+                type -> new ManageFlightsController(this, adminModel),
+                "Manage Flights");
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
