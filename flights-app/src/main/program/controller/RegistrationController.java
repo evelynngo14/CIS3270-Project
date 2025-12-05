@@ -15,6 +15,8 @@ import components.States;
 
 public class RegistrationController {
     private final MainApp navigator;
+    private final MainMenuController mainMenuController;
+
     @FXML private Button registerButton;
     @FXML private TextField usernameField;
     @FXML private TextField firstNameField;
@@ -29,8 +31,9 @@ public class RegistrationController {
     @FXML private Button returnToLoginButton;
     @FXML private Label statusLabel;
 
-    public RegistrationController(MainApp navigator) {
+    public RegistrationController(MainApp navigator, MainMenuController mainMenuController) {
         this.navigator = navigator;
+        this.mainMenuController = mainMenuController;
     }
 
     public void initialize() {
@@ -40,7 +43,6 @@ public class RegistrationController {
 
     @FXML
     private void handleRegistration(ActionEvent event) {
-
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         String email = emailField.getText();
@@ -57,8 +59,9 @@ public class RegistrationController {
         if (firstName == null | lastName == null | email == null | username == null | password == null | ssn == null | address == null | securityQuestion == null | zip == null | state == null) {
             statusLabel.setText("Please fill all the fields.");
         };
-        // success: show Registered and return to login
-        // navigator.showLoginScreen();
+
+        navigator.showLoginScreen();
+        mainMenuController.setRegistrationSuccessLabel();
     }
 
     @FXML

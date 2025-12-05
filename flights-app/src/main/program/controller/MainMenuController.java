@@ -35,6 +35,7 @@ public class MainMenuController {
     @FXML
     private Button forgotPasswordButton;
     @FXML Label registrationSuccessLabel;
+    @FXML Label newPasswordSuccessLabel;
 
     public MainMenuController(MainApp navigator, Login model) {
         this.navigator = navigator;
@@ -64,6 +65,7 @@ public class MainMenuController {
             navigator.showDashboard(customerModel);
         } else {
             registrationSuccessLabel.setText("");
+            newPasswordSuccessLabel.setText("");
             loginErrorLabel.setText("Invalid username or password");
             System.out.println("Incorrect username or password");
         }
@@ -84,5 +86,10 @@ public class MainMenuController {
     @FXML
     void setRegistrationSuccessLabel() {
         registrationSuccessLabel.setText("Successfully registered. Login with your new credentials.");
+    }
+
+    @FXML
+    void setNewPasswordLabel() {
+        newPasswordSuccessLabel.setText("Successfully reset password. Login with your new password.");
     }
 }

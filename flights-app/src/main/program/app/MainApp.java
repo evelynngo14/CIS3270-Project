@@ -18,6 +18,12 @@ import java.net.URL;
 
 public class MainApp extends Application {
 
+    Customer customerModel = new Customer();
+    MainApp navigator = new MainApp();
+    Login loginModel = new Login();
+    MainMenuController mainMenuController = new MainMenuController(navigator, loginModel);
+
+
     public static Stage primaryStage;
     public static final int SCENE_WIDTH = 1200;
     public static final int SCENE_HEIGHT = 800;
@@ -65,7 +71,7 @@ public class MainApp extends Application {
 
     public void showRegistrationScreen() {
         loadScene("/view/Registration_view.fxml",
-                type -> new RegistrationController(this),
+                type -> new RegistrationController(this, mainMenuController),
                 "Register new Customer"
         );
     }
@@ -89,10 +95,6 @@ public class MainApp extends Application {
     }
 
     public void showForgotPasswordScreen() {
-        Customer customerModel = new Customer();
-        MainApp navigator = new MainApp();
-        Login loginModel = new Login();
-        MainMenuController mainMenuController = new MainMenuController(navigator, loginModel);
         loadScene("/view/forgot_password_view.fxml",
                 type -> new ForgotPasswordController(this, mainMenuController, customerModel),
                 "Reset Password"

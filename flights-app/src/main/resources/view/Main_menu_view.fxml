@@ -46,7 +46,10 @@
                style="-fx-text-fill: red;"
         />
         <Label fx:id="registrationSuccessLabel"
-               style="-fx-text-full: green"
+               style="-fx-text-fll: green"
+               />
+        <Label fx:id="newPasswordSuccessLabel"
+               style="-fx-text-fill: green"
                />
     </StackPane>
 
