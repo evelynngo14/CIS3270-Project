@@ -1,6 +1,8 @@
 package controller;
 import app.MainApp;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import components.States;
 import javafx.scene.Node;
@@ -15,6 +17,9 @@ public class RegistrationController {
     private final MainApp navigator;
     private final RegistrationView view;
 
+    @FXML private Button registerButton;
+
+
     public RegistrationController(MainApp navigator, RegistrationView view) {
         this.navigator = navigator;
         this.view = view;
@@ -26,6 +31,7 @@ public class RegistrationController {
         view.getReturnToLoginButton().setOnAction(this::handleBackToLogin);
     }
 
+    @FXML
     private void handleRegistration(ActionEvent event) {
         if (!validateRegistrationForm()) {
             return;
@@ -71,6 +77,7 @@ public class RegistrationController {
         navigator.showLoginScreen();
     }
 
+    @FXML
     private void handleBackToLogin(ActionEvent event) {
         navigator.showLoginScreen();
     }

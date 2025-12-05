@@ -74,12 +74,14 @@
         <Button fx:id="registerButton"
                 text="Register"
                 prefWidth="120"
+                onAction="#handleRegistration"
                 GridPane.columnIndex="2"
                 GridPane.rowIndex="11"/>
 
         <Button fx:id="returnToLoginButton"
                 text="Return to Login"
                 prefWidth="120"
+                onAction="#handleBackToLogin"
                 GridPane.columnIndex="2"
                 GridPane.rowIndex="13"/>
 

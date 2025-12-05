@@ -8,11 +8,9 @@ public class RegistrationDAO implements DAO {
                                    String state, String username, String password, String email,
                                    String ssn, String securityQuestion) {
 
-        try {
-            Connection conn = DriverManager.getConnection(url, dbUser, dbPass);
-
-            String sql = "INSERT INTO users (firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)){
+            String query = "INSERT INTO users (firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(query);
 
             stmt.setString(1, firstName);
             stmt.setString(2, lastName);
@@ -25,12 +23,11 @@ public class RegistrationDAO implements DAO {
             stmt.setString(9, ssn);
             stmt.setString(10, securityQuestion);
 
-            int rows = stmt.executeUpdate();
-            conn.close();
-            return rows == 1;
+            stmt.executeUpdate();
+            return true;
 
-        } catch (Exception e) {
-            System.out.println("Error inserting user");
+        } catch (SQLException e) {
+            System.out.println("Error inserting user" + e.getMessage());
             return false;
         }
     }
