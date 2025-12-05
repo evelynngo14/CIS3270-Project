@@ -7,7 +7,7 @@ import javafx.scene.control.ChoiceBox;
 // Drop-down selection box for choosing state during registration form
 
 public class States {
-    public static ObservableList<String> getStateAbbreviations() { //ObservableList for ChoiceBox
+    public static ObservableList<String> getStatesList() { //ObservableList for ChoiceBox
         return FXCollections.observableArrayList( //ChoiceBox selections
                 "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
                 "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",

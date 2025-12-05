@@ -1,8 +1,6 @@
 package app;
 import controller.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -15,11 +13,8 @@ import model.Admin;
 import model.Customer;
 import model.Flight;
 import model.Login;
-import view.RegistrationView;
-
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 
 public class MainApp extends Application {
 
@@ -69,13 +64,10 @@ public class MainApp extends Application {
     }
 
     public void showRegistrationScreen() {
-        RegistrationView registrationView = new RegistrationView();
-        new RegistrationController(this, registrationView);
-
-        Scene scene = new Scene(registrationView, SCENE_WIDTH, SCENE_HEIGHT);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Flight Reservations Registration");
-        primaryStage.show();
+        loadScene("/view/Registration_view.fxml",
+                type -> new RegistrationController(this),
+                "Register new Customer"
+        );
     }
 
     public void showDashboard(Customer customerModel) {

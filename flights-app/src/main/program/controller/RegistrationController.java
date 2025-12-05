@@ -1,26 +1,20 @@
 package controller;
 import app.MainApp;
+import components.States;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import components.States;
-import javafx.scene.Node;
-
-import dao.RegistrationDAO;
 import model.Customer;
-import view.RegistrationView;
+import components.States;
 
-// Main contributor: Kelly
 
 public class RegistrationController {
-
     private final MainApp navigator;
-    private final RegistrationView view;
-
     @FXML private Button registerButton;
     @FXML private TextField usernameField;
     @FXML private TextField firstNameField;
@@ -28,20 +22,20 @@ public class RegistrationController {
     @FXML private TextField passwordField;
     @FXML private TextField ssnField;
     @FXML private TextField zipField;
-    @FXML private ChoiceBox<String> stateChoiceBox;
+    @FXML private ChoiceBox<String> stateChoiceBox = new ChoiceBox<>();
     @FXML private TextField emailField;
     @FXML private TextField addressField;
     @FXML private TextField securityQuestionField;
     @FXML private Button returnToLoginButton;
     @FXML private Label statusLabel;
 
-    public RegistrationController(MainApp navigator, RegistrationView view) {
+    public RegistrationController(MainApp navigator) {
         this.navigator = navigator;
-        this.view = view;
+    }
 
-        // State Choice Box with state abbreviations
-
-        //view.getStateChoiceBox().setItems(States.getStateAbbreviations());
+    public void initialize() {
+        stateChoiceBox.setItems(States.getStatesList());
+        securityQuestionField.setPromptText("What is your favorite animal?");
     }
 
     @FXML
@@ -66,9 +60,6 @@ public class RegistrationController {
                 | ssn == null | address == null || securityQuestion == null | zip == null | state == null) {
             statusLabel.setText("Please fill all the fields.");
         };
-
-
-
         // success: show Registered and return to login
         // navigator.showLoginScreen();
     }

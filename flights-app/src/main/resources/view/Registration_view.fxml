@@ -64,10 +64,7 @@
         <ChoiceBox fx:id="stateChoiceBox" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
 
         <Label text="Security Question:" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
-        <!-- clears prompt text -->
         <TextField fx:id="securityQuestionField"
-                   style="-fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);"
-                   text="What city were you born in?"
                    opacity="0.67"
                    GridPane.columnIndex="3"
                    GridPane.rowIndex="4"/>
@@ -88,9 +85,11 @@
                 GridPane.rowIndex="13"/>
 
         <Label fx:id="statusLabel"
+               style="-fx-fill-text: red;"
                GridPane.columnIndex="1"
+               GridPane.columnSpan="2"
                GridPane.rowIndex="14"
-               GridPane.columnSpan="3"/>
+        />
 
     </GridPane>
 

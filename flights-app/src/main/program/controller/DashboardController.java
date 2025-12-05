@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Booking;
 import model.Customer;
-import view.DashboardView;
 
 public class DashboardController {
 
