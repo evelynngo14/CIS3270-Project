@@ -41,7 +41,7 @@ public class AdminDashboardController {
         this.model = model;
     }
 
-    // FXMLLoader injects TableView obj into fx:id="flightTableView"
+    // FXMLLoader injects TableView obj into fx:id="flightTable"
     @FXML
     public void initialize() {
         // fetch list of flights

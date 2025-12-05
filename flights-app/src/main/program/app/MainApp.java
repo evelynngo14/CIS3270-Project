@@ -84,6 +84,10 @@ public class MainApp extends Application {
 
     public void showAdminDashboard(Admin adminModel) throws IOException {
         loadScene("/view/AdminDashboardView.fxml",
+                // -- controller initialization with dependency injection --
+                // type (input) is the AdminDashboardController
+                // -> operator separates the input from the logic
+                // output: new AdminDashboardController(this, adminModel)
                 type -> new AdminDashboardController(this, adminModel),
                 "Admin Dashboard"
         );
