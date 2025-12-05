@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Flight {
-    private static int flightId;
+    private int flightId;
     private String departureCity;
     private String arrivalCity;
     private LocalDateTime departureDateTime;
@@ -18,7 +18,7 @@ public class Flight {
 
     public Flight(int flightId, String departureCity, String arrivalCity,
                   LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int capacity, int bookedSeats) {
-        Flight.flightId = flightId;
+        this.flightId = flightId;
         this.departureCity = departureCity;
         this.arrivalCity = arrivalCity;
         this.departureDateTime = departureDateTime;
