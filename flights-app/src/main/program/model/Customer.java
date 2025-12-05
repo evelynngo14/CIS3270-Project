@@ -37,7 +37,7 @@ public class Customer extends User {
     }
 
     public boolean authenticateSecurityQuestion(String email, String ssn, String username) {
-        return (userDAO.verifySecurityAnswer(email, ssn, username));
+        return (userDAO.verifySecurityAnswer(username, email, ssn));
     }
 
     public ObservableList<Booking> getBookingsByUser() {
