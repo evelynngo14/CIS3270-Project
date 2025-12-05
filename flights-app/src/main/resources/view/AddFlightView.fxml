@@ -13,23 +13,31 @@
     </padding>
 
     <Label text="Departure City" />
-    <TextField fx:id="departureCityField" prefWidth="250.0" />
+    <TextField fx:id="departureCityField" maxWidth="200.0" />
 
     <Label text="Arrival City" />
-    <TextField fx:id="arrivalCityField" prefWidth="250.0" />
+    <TextField fx:id="arrivalCityField" maxWidth="200.0" />
 
     <Label text="Departure Date" />
     <DatePicker fx:id="departureDatePicker" />
+
     <Label text="Departure Time" />
-    <ChoiceBox fx:id="departureTimeChoice" prefWidth="250.0" />
+    <ChoiceBox fx:id="departureTimeChoice" maxWidth="100.0" />
+
+    <Label text="Arrival Date" />
+    <DatePicker fx:id="arrivalDatePicker" />
+
+    <Label text="Arrival Time" />
+    <ChoiceBox fx:id="arrivalTimeChoice" maxWidth="100.0" />
 
     <Label text="Capacity" />
-    <TextField fx:id="capacityField" prefWidth="100.0" />
+    <TextField fx:id="capacityField" maxWidth="50.0" />
 
     <HBox alignment="CENTER" spacing="10.0">
-        <Button fx:id="addFlightButton" text="Add Flight to Flight List"
-                onAction="#handleAddFlight"/> <Button fx:id="cancelButton" text="Cancel"
-                                                      onAction="#handleCancel"/>
+        <Button fx:id="addFlightButton" text="Add Flight"
+                onAction="#handleAddFlight"/>
+        <Button fx:id="cancelButton" text="Cancel"
+                onAction="#handleCancel"/>
     </HBox>
 
 </VBox>

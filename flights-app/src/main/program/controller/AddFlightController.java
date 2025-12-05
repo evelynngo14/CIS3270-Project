@@ -46,7 +46,6 @@ public class AddFlightController {
 
     @FXML
     private void handleAddFlight(ActionEvent actionEvent) {
-
         String departureCity = departureCityField.getText();
         String arrivalCity = arrivalCityField.getText();
         // convert DatePicker and ChoiceBox string into LocalDateTime
