@@ -21,7 +21,7 @@ public class UserDAO implements DAO {
 
     // used for forgot password in Login Model
     public boolean verifySecurityAnswer(String username, String email, String securityAnswer) {
-        String query = "SELECT securityAnswer FROM users WHERE username = ? AND securityAnswer = ? AND email = ?";
+        String query = "SELECT securityAnswer FROM users WHERE username = ? AND securityQuestion = ? AND email = ?";
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
