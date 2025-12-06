@@ -42,9 +42,11 @@ public class SearchFlightsController {
         this.customerModel = model;
     }
 
+    // table view
     @FXML
     public static void initialize() {
-        AdminDashboardController.initialize();
+        Admin adminModel = new Admin();
+        AdminDashboardController.initialize(adminModel);
     }
 
     @FXML

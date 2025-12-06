@@ -21,7 +21,7 @@ public class AdminDashboardController {
     private final Flight flightModel;
 
     @FXML
-    private TableView<Flight> flightTable;
+    private static TableView<Flight> flightTable;
     @FXML
     private static TableColumn<Flight, Integer> flightIdCol;
     @FXML
@@ -55,7 +55,7 @@ public class AdminDashboardController {
     // FXMLLoader injects TableView obj into fx:id="flightTable"
     // called automatically by FXMLLoader after all @FXML fields are injected
     @FXML
-    public static void initialize() {
+    public static void initialize(Admin adminModel) {
         // table cols
         // must match getters from Flight class
         flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
@@ -67,6 +67,7 @@ public class AdminDashboardController {
         bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
 
         // load data
+
         ObservableList<Flight> flights = adminModel.getAllFlights();
         flightTable.setItems(flights);
     }
