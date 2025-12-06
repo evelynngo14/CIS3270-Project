@@ -114,7 +114,14 @@ public class MainApp extends Application {
                 "Manage Flights");
     }
 
+    public void showSearchFlightsScreen(Customer customerModel) {
+        loadScene("/view/search_flights_view.fxml",
+                type -> new SearchFlightsController(this, customerModel),
+                "Search Flights");
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
+
 }

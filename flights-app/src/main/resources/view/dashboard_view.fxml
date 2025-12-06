@@ -16,17 +16,8 @@
     </padding>
 
         <Label fx:id="welcomeLabel" text="Welcome to your Dashboard" />
-   <TableView prefHeight="200.0" prefWidth="200.0">
-     <columns>
-       <TableColumn prefWidth="75.0" text="Flight ID" />
-       <TableColumn prefWidth="113.0" text="Departure City " />
-         <TableColumn prefWidth="101.0" text="Arrival City" />
-         <TableColumn prefWidth="141.0" text="Departure Date&amp;Time" />
-         <TableColumn prefWidth="129.0" text="Arrival Date&amp;Time" />
-     </columns>
-   </TableView>
 
-   <Button mnemonicParsing="false" text="Search Flights" />
+   <Button mnemonicParsing="false" onAction="#showSearchFlightsScreen" text="Search Flights" />
 
         <Button fx:id="logoutButton" onAction="#handleLogout" text="Logout" /> <!-- handleLogout() from DashboardController) -->
 </VBox>

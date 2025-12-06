@@ -22,6 +22,7 @@ public class SearchFlightsController {
     @FXML private DatePicker arrDateChoiceBox;
     @FXML private ChoiceBox<String> depTimeChoiceBox;
     @FXML private ChoiceBox<String> arrTimeChoiceBox;
+    @FXML private Button bookFlightButton;
 
     @FXML
     private TableView<Flight> flightsTable;
@@ -60,6 +61,10 @@ public class SearchFlightsController {
 
     @FXML private void handleBookFlight() {
         //customerModel.bookFlight();
+    }
+
+    @FXML private void handleCancel() {
+        navigator.showDashboard(customerModel);
     }
 
 }

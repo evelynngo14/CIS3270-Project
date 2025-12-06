@@ -35,4 +35,10 @@ public class DashboardController {
         System.out.println("Customer logged out");
         navigator.showLoginScreen();
     }
+
+    @FXML
+    public void showSearchFlightsScreen(ActionEvent actionEvent) {
+        System.out.println("Navigating to search flights screen");
+        navigator.showSearchFlightsScreen(model);
+    }
 }

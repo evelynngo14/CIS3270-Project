@@ -70,14 +70,14 @@
                 <TableColumn fx:id="arrivalCityCol" prefWidth="150.0" text="Arrival City" />
                 <TableColumn fx:id="departureTimeCol" prefWidth="100.0" text="Departure Time" />
                 <TableColumn fx:id="arrivalTimeCol" prefWidth="100.0" text="Arrival Time" />
-                <TableColumn fx:id="capacityCol" text="Capacity" />
-                <TableColumn fx:id="bookedSeatsCol" text="Booked Seats" />
+                <TableColumn fx:id="capacityCol" prefWidth="100.0" text="Capacity" />
+                <TableColumn fx:id="bookedSeatsCol" prefWidth="100.0" text="Booked Seats" />
             </columns>
         </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
             <Button fx:id="bookFlightButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleBookFlight" prefHeight="30.0" text="Book Flight" />
-            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" text="Logout" />
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" text="Return to Dashboard" />
          </children>
       </HBox>
    </children>
