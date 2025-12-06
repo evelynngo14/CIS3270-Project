@@ -62,4 +62,8 @@ public class Customer extends User {
     public void searchFlights() {
 
     }
+
+    public ObservableList<Flight> getAllFlights() {
+        return FlightDAO.getFlights();
+    }
 }

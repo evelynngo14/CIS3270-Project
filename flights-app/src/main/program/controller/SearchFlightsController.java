@@ -1,8 +1,11 @@
 package controller;
 
 import app.MainApp;
+import components.FlightTableInitialize;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Admin;
 import model.Customer;
 import model.Flight;
@@ -21,7 +24,7 @@ public class SearchFlightsController {
     @FXML private ChoiceBox<String> depTimeChoiceBox;
     @FXML private ChoiceBox<String> arrTimeChoiceBox;
 
-    private TableView<Flight> flightTable;
+    private TableView<Flight> flightsTable;
     @FXML
     private TableColumn<Flight, Integer> flightIdCol;
     @FXML
@@ -44,9 +47,10 @@ public class SearchFlightsController {
 
     // table view
     @FXML
-    public static void initialize() {
-        Admin adminModel = new Admin();
-        AdminDashboardController.initialize(adminModel);
+    public void initialize() {
+        FlightTableInitialize.initializeFlightTable(flightsTable, flightIdCol, departureCityCol, arrivalCityCol, departureTimeCol, arrivalTimeCol, capacityCol, bookedSeatsCol);
+        ObservableList<Flight> flights = customerModel.getAllFlights();
+        flightsTable.setItems(flights);
     }
 
     @FXML

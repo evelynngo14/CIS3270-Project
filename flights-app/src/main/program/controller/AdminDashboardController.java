@@ -1,6 +1,7 @@
 package controller;
 
 import app.MainApp;
+import components.FlightTableInitialize;
 import dao.FlightDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,21 +22,21 @@ public class AdminDashboardController {
     private final Flight flightModel;
 
     @FXML
-    private static TableView<Flight> flightTable;
+    private TableView<Flight> flightsTable;
     @FXML
-    private static TableColumn<Flight, Integer> flightIdCol;
+    private TableColumn<Flight, Integer> flightIdCol;
     @FXML
-    private static TableColumn<Flight, String> departureCityCol;
+    private TableColumn<Flight, String> departureCityCol;
     @FXML
-    private static TableColumn<Flight, String> arrivalCityCol;
+    private TableColumn<Flight, String> arrivalCityCol;
     @FXML
-    private static TableColumn<Flight, String> departureTimeCol;
+    private TableColumn<Flight, String> departureTimeCol;
     @FXML
-    private static TableColumn<Flight, String> arrivalTimeCol;
+    private TableColumn<Flight, String> arrivalTimeCol;
     @FXML
-    private static TableColumn<Flight, Integer> capacityCol;
+    private TableColumn<Flight, Integer> capacityCol;
     @FXML
-    private static TableColumn<Flight, Integer> bookedSeatsCol;
+    private TableColumn<Flight, Integer> bookedSeatsCol;
     @FXML
     private Button addFlightButton;
     @FXML
@@ -55,21 +56,10 @@ public class AdminDashboardController {
     // FXMLLoader injects TableView obj into fx:id="flightTable"
     // called automatically by FXMLLoader after all @FXML fields are injected
     @FXML
-    public static void initialize(Admin adminModel) {
-        // table cols
-        // must match getters from Flight class
-        flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
-        departureCityCol.setCellValueFactory(new PropertyValueFactory<>("departureCity"));
-        arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("arrivalCity"));
-        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
-        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
-        capacityCol.setCellValueFactory(new PropertyValueFactory<>("capacity"));
-        bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
-
-        // load data
-
+    public void initialize() {
+        FlightTableInitialize.initializeFlightTable(flightsTable, flightIdCol, departureCityCol, arrivalCityCol, departureTimeCol, arrivalTimeCol, capacityCol, bookedSeatsCol);
         ObservableList<Flight> flights = adminModel.getAllFlights();
-        flightTable.setItems(flights);
+        flightsTable.setItems(flights);
     }
 
     // shows the flight form
@@ -82,10 +72,10 @@ public class AdminDashboardController {
     @FXML
     private void handleDeleteFlight(ActionEvent actionEvent) {
         // get current selected item
-        Flight selectedFlight = flightTable.getSelectionModel().getSelectedItem();
+        Flight selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
         if (adminModel.deleteFlight(selectedFlight)) {
             // remove in view
-            flightTable.getItems().remove(selectedFlight);
+            flightsTable.getItems().remove(selectedFlight);
         } else {
             System.err.println("Could not delete flight");
         }
@@ -93,7 +83,7 @@ public class AdminDashboardController {
 
     @FXML
     private void handleUpdateFlights(ActionEvent event) {
-        Flight selectedFlight = flightTable.getSelectionModel().getSelectedItem();
+        Flight selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
         navigator.showUpdateFlightsScreen(adminModel, selectedFlight);
     }
