@@ -1,5 +1,7 @@
 package model;
 
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 
 public abstract class User {
@@ -9,6 +11,8 @@ public abstract class User {
     protected String email;
 
     public abstract String getRole();
+
+    public abstract ObservableList<Flight> getAllFlights();
 
     public String getUsername() {
         return username;
