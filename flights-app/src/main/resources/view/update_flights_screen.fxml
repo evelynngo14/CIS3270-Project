@@ -21,7 +21,9 @@
 
     <TextField fx:id="capacityField"/>
 
-    <Button fx:id="cancelButton" text="Cancel"/>
+    <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"/>
+
+    <Button fx:id="updateButton" text="Update" onAction="#handleUpdate"/>
 
     <Label fx:id="errorLabel"/>
 

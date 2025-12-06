@@ -25,6 +25,7 @@ public class UpdateFlightsController {
     @FXML private TextField capacityField;
     @FXML private Button cancelButton;
     @FXML private Label errorLabel;
+    @FXML private Button updateButton;
 
     @FXML private AdminDashboardController adminDashboardController;
 
@@ -53,7 +54,8 @@ public class UpdateFlightsController {
         capacityField.setText(String.valueOf(flightModel.getCapacity()));
     }
 
-    private void handleUpdateField(ActionEvent actionEvent) {
+    @FXML
+    private void handleUpdate(ActionEvent actionEvent) {
         String departureCity = departureCityField.getText();
         String arrivalCity = arrivalCityField.getText();
         LocalDate depDate = departureDatePicker.getValue();
@@ -87,6 +89,8 @@ public class UpdateFlightsController {
         }
     }
 
-
-
+    @FXML
+    private void handleCancel() {
+        navigator.showAdminDashboard(adminModel);
+    }
 }

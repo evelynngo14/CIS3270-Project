@@ -96,7 +96,7 @@ public class FlightDAO implements DAO {
     }
 
     public static boolean updateFlight(Flight flight) {
-        String query = "UPDATE flights SET departure_city = ?, arrival_city = ?, departure_date_time = ?, arrival_date_time = ?, capacity = ?, booked_seats = ? WHERE flight_id = ?";
+        String query = "UPDATE flights SET departureCity = ?, arrivalCity = ?, departureDateTime = ?, arrivalDateTime = ?, capacity = ?, bookedSeats = ? WHERE flightId = ?";
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, flight.getDepartureCity());
