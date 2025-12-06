@@ -56,21 +56,28 @@ public class UpdateFlightsController {
 
     @FXML
     private void handleUpdate(ActionEvent actionEvent) {
-        String departureCity = departureCityField.getText();
-        String arrivalCity = arrivalCityField.getText();
         LocalDate depDate = departureDatePicker.getValue();
         String depTime = departureTimeChoice.getValue();
+        String newCapacity = capacityField.getText();
 
         LocalDateTime updatedDepartureDateTime = depDate.atStartOfDay().plusHours(
                 Integer.parseInt(depTime.substring(0, 2))
         ).plusMinutes(
                 Integer.parseInt(depTime.substring(3, 5))
         );
-        flightModel.setDepartureCity(departureCity);
+        LocalDateTime updatedArrivalDateTime = depDate.atStartOfDay().plusHours(
+                Integer.parseInt(depTime.substring(0, 2))
+        ).plusMinutes(
+                Integer.parseInt(depTime.substring(3, 5))
+        );
+        flightModel.setDepartureCity(departureCityField.getText());
+        flightModel.setArrivalCity(arrivalCityField.getText());
         flightModel.setDepartureDateTime(updatedDepartureDateTime);
-
+        flightModel.setArrivalDateTime(updatedArrivalDateTime);
+        flightModel.setCapacity(Integer.parseInt(newCapacity));
         boolean success = adminModel.updateFlight(flightModel);
         if (success) {
+            System.out.println("Successfully updated flight");
             navigator.showAdminDashboard(adminModel);
         } else {
             errorLabel.setText("Update failed. Check inputs.");

@@ -73,4 +73,17 @@ public class Flight {
     public void setDepartureDateTime(LocalDateTime departureDateTime) {
         this.departureDateTime = departureDateTime;
     }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
+
+    public void setArrivalDateTime(LocalDateTime arrivalDateTime) {
+        this.arrivalDateTime = arrivalDateTime;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
 }

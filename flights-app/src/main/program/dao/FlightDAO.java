@@ -107,9 +107,9 @@ public class FlightDAO implements DAO {
             stmt.setInt(6, flight.getBookedSeats());
             stmt.setInt(7, flight.getFlightId());
 
-            stmt.executeQuery();
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected == 1;
 
-            return true;
         } catch (SQLException e) {
             System.err.println("Error updating flight: " + e.getMessage());
             return false;
