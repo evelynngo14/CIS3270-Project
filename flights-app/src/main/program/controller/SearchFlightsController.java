@@ -1,10 +1,8 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import model.Flight;
 
 public class SearchFlightsController {
 
@@ -17,5 +15,23 @@ public class SearchFlightsController {
     @FXML private DatePicker arrDateChoiceBox;
     @FXML private ChoiceBox<String> depTimeChoiceBox;
     @FXML private ChoiceBox<String> arrTimeChoiceBox;
+
+    private TableView<Flight> flightTable;
+    @FXML
+    private TableColumn<Flight, Integer> flightIdCol;
+    @FXML
+    private TableColumn<Flight, String> departureCityCol;
+    @FXML
+    private TableColumn<Flight, String> arrivalCityCol;
+    @FXML
+    private TableColumn<Flight, String> departureTimeCol;
+    @FXML
+    private TableColumn<Flight, String> arrivalTimeCol;
+    @FXML
+    private TableColumn<Flight, Integer> capacityCol;
+    @FXML
+    private TableColumn<Flight, Integer> bookedSeatsCol;
+
+
 
 }
