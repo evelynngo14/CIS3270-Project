@@ -60,20 +60,21 @@ public class BookingDAO implements DAO {
         return bookings;
     }
 
-    public void insertBooking(int flightId, int userId, String seatNumber) {
+    public boolean insertBooking(int flightId, int userId) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "INSERT INTO bookings (flightId, userId, seatNumber) VALUES (?, ?, ?)" +
+            String query = "INSERT INTO bookings (flightId, userId) VALUES (?, ?, ?)" +
                     "UPDATE flights SET bookedSeats = bookedSeats + 1 WHERE flightId = ?;";
             PreparedStatement stmt = conn.prepareStatement(query);
 
             stmt.setInt(1, flightId);
             stmt.setInt(2, userId);
-            stmt.setString(3, seatNumber);
 
             stmt.executeUpdate();
+            return true;
 
         } catch (SQLException e) {
             System.out.println("Error inserting booking: " + e.getMessage());
+            return false;
         }
     }
 }

@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import model.Booking;
 import model.Customer;
+import model.Flight;
 
 public class DashboardController {
 
@@ -18,6 +20,7 @@ public class DashboardController {
     @FXML private Button logoutButton;
     @FXML private Button searchButton;
     @FXML private Label welcomeLabel;
+    @FXML private Text bookingSuccessLabel;
 
 
     public DashboardController(MainApp navigator, Customer model) {
@@ -25,7 +28,12 @@ public class DashboardController {
         this.model = model;
     }
 
-    private void loadBooking() {
+    @FXML private void showBookingSuccessful(ActionEvent actionEvent) {
+        bookingSuccessLabel.setText("Successfully booked flight.");
+    }
+
+    @FXML
+    private void showBookings() {
         ObservableList<Booking> bookingList = model.getBookingsByUser();
         //view.getBookingList.setItems(bookingList);
     }
@@ -41,4 +49,6 @@ public class DashboardController {
         System.out.println("Navigating to search flights screen");
         navigator.showSearchFlightsScreen(model);
     }
+
+
 }

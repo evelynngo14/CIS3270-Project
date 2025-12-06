@@ -62,6 +62,10 @@ public class Flight {
         return capacity;
     }
 
+    public void incrementCapacity() {
+        capacity++;
+    }
+
     public int getBookedSeats() {
         return bookedSeats;
     }

@@ -14,6 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Label?>
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchFlightsController">
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search and Book Flights">
@@ -76,8 +77,9 @@
         </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
+             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER"/>
             <Button fx:id="bookFlightButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleBookFlight" prefHeight="30.0" text="Book Flight" />
-            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" text="Return to Dashboard" />
+            <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" text="Return to Dashboard" />
          </children>
       </HBox>
    </children>

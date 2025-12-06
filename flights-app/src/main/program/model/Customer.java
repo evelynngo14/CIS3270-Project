@@ -66,4 +66,8 @@ public class Customer extends User {
     public ObservableList<Flight> getAllFlights() {
         return FlightDAO.getFlights();
     }
+
+    public boolean bookFlight(Flight flight) {
+        return bookingDAO.insertBooking(flight.getFlightId(), userId);
+    }
 }
