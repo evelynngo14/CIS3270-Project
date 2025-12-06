@@ -20,7 +20,6 @@ public class MainApp extends Application {
     MainMenuController mainMenuController;
     Flight flightModel = new Flight();
 
-
     public static Stage primaryStage;
     public static final int SCENE_WIDTH = 1200;
     public static final int SCENE_HEIGHT = 800;
@@ -90,7 +89,7 @@ public class MainApp extends Application {
                 // type (input) is the AdminDashboardController
                 // -> operator separates the input from the logic
                 // output: new AdminDashboardController(this, adminModel)
-                type -> new AdminDashboardController(this, adminModel),
+                type -> new AdminDashboardController(this, adminModel, flightModel),
                 "Admin Dashboard"
         );
     }
@@ -109,7 +108,7 @@ public class MainApp extends Application {
         );
     }
 
-    public void showUpdateFlightsScreen(Admin adminModel) {
+    public void showUpdateFlightsScreen(Admin adminModel, Flight flightModel) {
         loadScene("/view/update_flights_screen.fxml",
                 type -> new UpdateFlightsController(this, adminModel, flightModel),
                 "Manage Flights");

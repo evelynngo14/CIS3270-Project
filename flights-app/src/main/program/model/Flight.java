@@ -65,4 +65,12 @@ public class Flight {
     public int getBookedSeats() {
         return bookedSeats;
     }
+
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
+    public void setDepartureDateTime(LocalDateTime departureDateTime) {
+        this.departureDateTime = departureDateTime;
+    }
 }

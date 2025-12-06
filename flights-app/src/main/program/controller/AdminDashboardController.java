@@ -17,7 +17,9 @@ import model.Flight;
 public class AdminDashboardController {
 
     private final MainApp navigator;
-    private final Admin model;
+    private final Admin adminModel;
+    private final Flight flightModel;
+
     @FXML
     private TableView<Flight> flightTable;
     @FXML
@@ -42,10 +44,12 @@ public class AdminDashboardController {
     private Button logoutButton;
     @FXML
     private Label welcomeLabel;
+    @FXML private Button updateFlightButton;
 
-    public AdminDashboardController(MainApp navigator, Admin model) {
+    public AdminDashboardController(MainApp navigator, Admin adminModel, Flight flightModel) {
         this.navigator = navigator;
-        this.model = model;
+        this.adminModel = adminModel;
+        this.flightModel = flightModel;
     }
 
     // FXMLLoader injects TableView obj into fx:id="flightTable"
@@ -63,7 +67,7 @@ public class AdminDashboardController {
         bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
 
         // load data
-        ObservableList<Flight> flights = model.getAllFlights();
+        ObservableList<Flight> flights = adminModel.getAllFlights();
         flightTable.setItems(flights);
 
         welcomeLabel.setText("Welcome to Admin Dashboard");
@@ -74,14 +78,14 @@ public class AdminDashboardController {
     @FXML
     private void handleAddFlight(ActionEvent event) {
         System.out.println("Add flight clicked. Navigating to flight form");
-        navigator.showAddFlightForm(model);
+        navigator.showAddFlightForm(adminModel);
     }
 
     @FXML
     private void handleDeleteFlight(ActionEvent actionEvent) {
         // get current selected item
         Flight selectedFlight = flightTable.getSelectionModel().getSelectedItem();
-        if (model.deleteFlight(selectedFlight)) {
+        if (adminModel.deleteFlight(selectedFlight)) {
             // remove in view
             flightTable.getItems().remove(selectedFlight);
         } else {
@@ -89,9 +93,11 @@ public class AdminDashboardController {
         }
     }
 
-    private void handleManageFlights(ActionEvent event) {
+    @FXML
+    private void handleUpdateFlights(ActionEvent event) {
+        Flight selectedFlight = flightTable.getSelectionModel().getSelectedItem();
         System.out.println("Manage flight clicked. Navigating to manage flight screen");
-        navigator.showManageFlightsScreen(model);
+        navigator.showUpdateFlightsScreen(adminModel, selectedFlight);
     }
 
     @FXML
