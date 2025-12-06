@@ -62,17 +62,18 @@
        </HBox>
 
        <HBox alignment="CENTER" />
-      <TableView layoutX="32.0" layoutY="134.0" maxWidth="863.0" prefHeight="365.0" prefWidth="863.0">
-        <columns>
-          <TableColumn prefWidth="50.0" text="Flight ID" />
-          <TableColumn prefWidth="150.0" text="Departure City" />
-            <TableColumn prefWidth="150.0" text="Arrival City" />
-            <TableColumn prefWidth="140.0" text="Departure Date" />
-            <TableColumn maxWidth="400.0" prefWidth="100.0" text="Departure Time" />
-            <TableColumn prefWidth="140.0" text="Arrival Date" />
-            <TableColumn maxWidth="400.0" prefWidth="100.0" text="Arrival Time" />
-        </columns>
-      </TableView>
+
+        <TableView fx:id="flightTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="751.0" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="flightIdCol" text="Flight ID" />
+                <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />
+                <TableColumn fx:id="arrivalCityCol" prefWidth="150.0" text="Arrival City" />
+                <TableColumn fx:id="departureTimeCol" prefWidth="100.0" text="Departure Time" />
+                <TableColumn fx:id="arrivalTimeCol" prefWidth="100.0" text="Arrival Time" />
+                <TableColumn fx:id="capacityCol" text="Capacity" />
+                <TableColumn fx:id="bookedSeatsCol" text="Booked Seats" />
+            </columns>
+        </TableView>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
             <Button fx:id="bookFlightButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleBookFlight" prefHeight="30.0" text="Book Flight" />
