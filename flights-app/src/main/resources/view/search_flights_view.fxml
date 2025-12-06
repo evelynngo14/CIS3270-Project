@@ -63,7 +63,7 @@
 
        <HBox alignment="CENTER" />
 
-        <TableView fx:id="flightTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="751.0" VBox.vgrow="ALWAYS">
+        <TableView fx:id="flightsTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="751.0" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="flightIdCol" text="Flight ID" />
                 <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />

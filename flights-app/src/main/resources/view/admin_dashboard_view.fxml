@@ -23,7 +23,7 @@
         <Separator />
 
         <!-- flightTable -->
-        <TableView fx:id="flightTable" VBox.vgrow="ALWAYS">
+        <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="flightIdCol" text="Flight ID" />
                 <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />

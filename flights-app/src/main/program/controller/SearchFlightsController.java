@@ -14,8 +14,7 @@ public class SearchFlightsController {
     private final MainApp navigator;
     private final Customer customerModel;
 
-    @FXML
-    private ChoiceBox<String> arrivalCityList;
+    @FXML private ChoiceBox<String> arrivalCityList;
     @FXML private ChoiceBox<String> departureCityList;
     @FXML private Button logoutButton;
     @FXML private Button bookFlightsButton;
@@ -24,6 +23,7 @@ public class SearchFlightsController {
     @FXML private ChoiceBox<String> depTimeChoiceBox;
     @FXML private ChoiceBox<String> arrTimeChoiceBox;
 
+    @FXML
     private TableView<Flight> flightsTable;
     @FXML
     private TableColumn<Flight, Integer> flightIdCol;
