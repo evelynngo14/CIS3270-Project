@@ -4,6 +4,7 @@ import app.MainApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import model.Admin;
 import model.Flight;
 
@@ -26,6 +27,7 @@ public class UpdateFlightsController {
     @FXML private Button cancelButton;
     @FXML private Label errorLabel;
     @FXML private Button updateButton;
+    @FXML private Text flightId;
 
     @FXML private AdminDashboardController adminDashboardController;
 
@@ -36,6 +38,8 @@ public class UpdateFlightsController {
     }
 
     @FXML public void initialize() {
+
+        flightId.setText(Integer.toString(flightModel.getFlightId()));
 
         AddFlightController.populateTimeChoices(departureTimeChoice);
         AddFlightController.populateTimeChoices(arrivalTimeChoice);
@@ -58,6 +62,8 @@ public class UpdateFlightsController {
     private void handleUpdate(ActionEvent actionEvent) {
         LocalDate depDate = departureDatePicker.getValue();
         String depTime = departureTimeChoice.getValue();
+        LocalDate arrDate = arrivalDatePicker.getValue();
+        String arrTime = arrivalTimeChoice.getValue();
         String newCapacity = capacityField.getText();
 
         LocalDateTime updatedDepartureDateTime = depDate.atStartOfDay().plusHours(
@@ -65,8 +71,8 @@ public class UpdateFlightsController {
         ).plusMinutes(
                 Integer.parseInt(depTime.substring(3, 5))
         );
-        LocalDateTime updatedArrivalDateTime = depDate.atStartOfDay().plusHours(
-                Integer.parseInt(depTime.substring(0, 2))
+        LocalDateTime updatedArrivalDateTime = arrDate.atStartOfDay().plusHours(
+                Integer.parseInt(arrTime.substring(0, 2))
         ).plusMinutes(
                 Integer.parseInt(depTime.substring(3, 5))
         );
