@@ -38,18 +38,18 @@
             <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-               <DatePicker prefHeight="26.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               <DatePicker fx:id="depDateChoiceBox" prefHeight="26.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
               <ChoiceBox fx:id="departureCityList" prefHeight="26.0" prefWidth="208.0" GridPane.rowIndex="2" />
               <ChoiceBox fx:id="arrivalCityList" maxWidth="200.0" minWidth="0.0" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure City" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival City" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="arrDateChoiceBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Time" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Time" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ChoiceBox fx:id="depTimeChoiceBox" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="arrTimeChoiceBox" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
        <HBox alignment="CENTER" layoutX="63.0" layoutY="67.0" prefHeight="47.0" prefWidth="466.0">
