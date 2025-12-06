@@ -23,19 +23,19 @@ public class AdminDashboardController {
     @FXML
     private TableView<Flight> flightTable;
     @FXML
-    private TableColumn<Flight, Integer> flightIdCol;
+    private static TableColumn<Flight, Integer> flightIdCol;
     @FXML
-    private TableColumn<Flight, String> departureCityCol;
+    private static TableColumn<Flight, String> departureCityCol;
     @FXML
-    private TableColumn<Flight, String> arrivalCityCol;
+    private static TableColumn<Flight, String> arrivalCityCol;
     @FXML
-    private TableColumn<Flight, String> departureTimeCol;
+    private static TableColumn<Flight, String> departureTimeCol;
     @FXML
-    private TableColumn<Flight, String> arrivalTimeCol;
+    private static TableColumn<Flight, String> arrivalTimeCol;
     @FXML
-    private TableColumn<Flight, Integer> capacityCol;
+    private static TableColumn<Flight, Integer> capacityCol;
     @FXML
-    private TableColumn<Flight, Integer> bookedSeatsCol;
+    private static TableColumn<Flight, Integer> bookedSeatsCol;
     @FXML
     private Button addFlightButton;
     @FXML
@@ -55,7 +55,7 @@ public class AdminDashboardController {
     // FXMLLoader injects TableView obj into fx:id="flightTable"
     // called automatically by FXMLLoader after all @FXML fields are injected
     @FXML
-    public void initialize() {
+    public static void initialize() {
         // table cols
         // must match getters from Flight class
         flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
@@ -69,9 +69,6 @@ public class AdminDashboardController {
         // load data
         ObservableList<Flight> flights = adminModel.getAllFlights();
         flightTable.setItems(flights);
-
-        welcomeLabel.setText("Welcome to Admin Dashboard");
-
     }
 
     // shows the flight form

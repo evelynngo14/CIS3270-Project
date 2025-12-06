@@ -18,7 +18,7 @@
     <children>
 
         <!-- welcomeLabel -->
-        <Label fx:id="welcomeLabel" />
+        <Label fx:id="welcomeLabel" text="Admin Dashboard" />
 
         <Separator />
 

@@ -1,10 +1,15 @@
 package controller;
 
+import app.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import model.Admin;
+import model.Customer;
 import model.Flight;
 
 public class SearchFlightsController {
+    private final MainApp navigator;
+    private final Customer customerModel;
 
     @FXML
     private ChoiceBox<String> arrivalCityList;
@@ -32,6 +37,23 @@ public class SearchFlightsController {
     @FXML
     private TableColumn<Flight, Integer> bookedSeatsCol;
 
+    public SearchFlightsController(MainApp navigator, Customer model) {
+        this.navigator = navigator;
+        this.customerModel = model;
+    }
 
+    @FXML
+    public static void initialize() {
+        AdminDashboardController.initialize();
+    }
+
+    @FXML
+    private void handleSearchFlights() {
+        customerModel.searchFlights();
+    }
+
+    @FXML private void handleBookFlight() {
+        //customerModel.bookFlight();
+    }
 
 }
