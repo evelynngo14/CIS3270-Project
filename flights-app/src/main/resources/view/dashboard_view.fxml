@@ -7,7 +7,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
@@ -23,6 +25,7 @@
          <TableColumn prefWidth="129.0" text="Arrival Date&amp;Time" />
      </columns>
    </TableView>
+
    <Button mnemonicParsing="false" text="Search Flights" />
 
         <Button fx:id="logoutButton" onAction="#handleLogout" text="Logout" /> <!-- handleLogout() from DashboardController) -->

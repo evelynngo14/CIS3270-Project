@@ -1,32 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SearchFlightsView">
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchFlightsController">
    <children>
-      <TableView layoutX="32.0" layoutY="134.0" prefHeight="200.0" prefWidth="538.0">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search and Book Flights">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" />
+         </VBox.margin>
+      </Text>
+      <GridPane hgap="30.0" maxWidth="517.0" prefHeight="140.0" prefWidth="517.0" vgap="4.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="371.50439453125" minWidth="10.0" prefWidth="193.12548828125" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="243.62493896484375" minWidth="10.0" prefWidth="157.124755859375" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="113.75048828125" minWidth="10.0" prefWidth="106.875244140625" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+          <RowConstraints maxHeight="20.0" minHeight="20.0" prefHeight="6.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="39.37406921386719" valignment="TOP" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="20.0" minHeight="0.0" prefHeight="46.12593078613281" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" valignment="TOP" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+               <DatePicker prefHeight="26.0" prefWidth="185.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <ChoiceBox fx:id="departureCityList" prefHeight="26.0" prefWidth="208.0" GridPane.rowIndex="2" />
+              <ChoiceBox fx:id="arrivalCityList" maxWidth="200.0" minWidth="0.0" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure City" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival City" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Departure Time" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Time" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" />
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+       <HBox alignment="CENTER" layoutX="63.0" layoutY="67.0" prefHeight="47.0" prefWidth="466.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" text="Search Flights" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+       </HBox>
+
+       <HBox alignment="CENTER" />
+      <TableView layoutX="32.0" layoutY="134.0" maxWidth="863.0" prefHeight="365.0" prefWidth="863.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Flight ID" />
-          <TableColumn prefWidth="93.0" text="Departure City" />
-            <TableColumn prefWidth="116.0" text="Arrival City" />
-            <TableColumn prefWidth="132.0" text="Departure Date&amp;Time" />
-            <TableColumn prefWidth="121.0" text="Arrival Date&amp;Time" />
+          <TableColumn prefWidth="50.0" text="Flight ID" />
+          <TableColumn prefWidth="150.0" text="Departure City" />
+            <TableColumn prefWidth="150.0" text="Arrival City" />
+            <TableColumn prefWidth="140.0" text="Departure Date" />
+            <TableColumn maxWidth="400.0" prefWidth="100.0" text="Departure Time" />
+            <TableColumn prefWidth="140.0" text="Arrival Date" />
+            <TableColumn maxWidth="400.0" prefWidth="100.0" text="Arrival Time" />
         </columns>
       </TableView>
-      <Button fx:id="logoutButton" layoutX="274.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleLogout" text="Logout" />
-      <HBox layoutX="63.0" layoutY="67.0" prefHeight="47.0" prefWidth="466.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
-            <TextField prefHeight="26.0" prefWidth="184.0" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="67.0" text="Search" />
-            <DatePicker prefHeight="26.0" prefWidth="210.0" />
+            <Button fx:id="bookFlightButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleBookFlight" prefHeight="30.0" text="Book Flight" />
+            <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleLogout" prefHeight="30.0" text="Logout" />
          </children>
       </HBox>
    </children>
-</AnchorPane>
+</VBox>

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import app.MainApp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import model.Booking;
 import model.Customer;
@@ -17,6 +18,7 @@ public class DashboardController {
     @FXML private Button logoutButton;
     @FXML private Button searchButton;
     @FXML private Label welcomeLabel;
+
 
     public DashboardController(MainApp navigator, Customer model) {
         this.navigator = navigator;
