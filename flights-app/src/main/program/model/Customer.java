@@ -59,6 +59,10 @@ public class Customer extends User {
         return "customer";
     }
 
+    public int getUserId() {
+        return this.userId;
+    }
+
     public void searchFlights() {
 
     }
