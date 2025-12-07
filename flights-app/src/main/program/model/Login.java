@@ -8,14 +8,18 @@ public class Login {
 
     UserDAO userDAO = new UserDAO();
 
-    public boolean authenticate(String username, String password) {
+    public int authenticate(String username, String password) {
+        int userId;
+
         if (username == null || username.isEmpty() ||  password == null || password.isEmpty()) {
-            return false;
+            return -1;
         }
 
         // true: successful validation, false: incorrect user and password
         boolean isValid = LoginDAO.verifyCredentials(username, password);
-
-        return isValid;
+        if (isValid) {
+            return userId = userDAO.getUserId(username);
+        }
+        return -1;
     }
 }

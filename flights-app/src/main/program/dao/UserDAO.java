@@ -67,5 +67,23 @@ public class UserDAO implements DAO {
             System.out.println("Error updating password: " + e.getMessage());
         }
     }
+
+    public int getUserId(String username) {
+        String query = "SELECT userId FROM users WHERE username = ?";
+        int userId = -1;
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                // getInt({columnLabel})
+                userId = rs.getInt("userId");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error getting user id: " + e.getMessage());
+        }
+        return userId;
+    }
 }
 
