@@ -11,17 +11,30 @@ import javafx.scene.text.Text;
 import model.Booking;
 import model.Customer;
 import model.Flight;
+import model.UserSession;
 
 public class DashboardController {
 
     private final MainApp navigator;
     private final Customer model;
 
+    private int currentUserId;
+    private String currentUsername;
+
     @FXML private Button logoutButton;
     @FXML private Button searchButton;
     @FXML private Label welcomeLabel;
     @FXML private Text bookingSuccessLabel;
 
+    @FXML
+    private void initialize() {
+        UserSession session = UserSession.getInstance(0, "");
+
+        this.currentUserId = session.getUserId();
+        this.currentUsername = session.getUsername();
+
+        showBookings();
+    }
 
     public DashboardController(MainApp navigator, Customer model) {
         this.navigator = navigator;
@@ -34,7 +47,7 @@ public class DashboardController {
 
     @FXML
     private void showBookings() {
-        ObservableList<Booking> bookingList = model.getBookingsByUser();
+        ObservableList<Booking> bookingList = model.getBookingsByUser(this.currentUserId);
         //view.getBookingList.setItems(bookingList);
     }
 
@@ -49,6 +62,5 @@ public class DashboardController {
         System.out.println("Navigating to search flights screen");
         navigator.showSearchFlightsScreen(model);
     }
-
 
 }

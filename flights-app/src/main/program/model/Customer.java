@@ -9,17 +9,11 @@ import javafx.collections.ObservableList;
 
 public class Customer extends User {
 
-    protected int userId;
-
     BookingDAO bookingDAO = new BookingDAO();
     UserDAO userDAO = new UserDAO();
     RegistrationDAO registrationDAO = new RegistrationDAO();
 
     public Customer() {}
-
-    public Customer(int userId) {
-        this.userId = userId;
-    }
 
     public boolean registerNewUser(String firstName, String lastName, String address, String zip,
                                    String state, String username, String password, String email,
@@ -27,9 +21,9 @@ public class Customer extends User {
         return registrationDAO.register(firstName, lastName, address, zip, state, username, password, email, ssn, securityQuestion);
     }
 
-    public boolean bookFlight(int flightId, int userId, String seatNumber) {
-        //return bookingDAO.insertBooking(flightId, userId, seatNumber);
-        return false;
+    public boolean bookFlight(Flight flight) {
+        int currentUserId = UserSession.getInstance(0, "").getUserId();
+        return bookingDAO.insertBooking(flight.getFlightId(), currentUserId);
     }
 
     public boolean authenticateSsn(String ssn, String email, String username) {
@@ -41,7 +35,8 @@ public class Customer extends User {
     }
 
     public ObservableList<Booking> getBookingsByUser() {
-        return BookingDAO.getBookingsByUser(this.userId);
+        int currentUserId = UserSession.getInstance(0, "").getUserId();
+        return BookingDAO.getBookingsByUser(currentUserId);
     }
 
     public void resetPassword(String username, String newPassword) {
@@ -60,7 +55,7 @@ public class Customer extends User {
     }
 
     public int getUserId() {
-        return this.userId;
+        return UserSession.getInstance(0,"").getUserId();
     }
 
     public void searchFlights() {
@@ -69,9 +64,5 @@ public class Customer extends User {
 
     public ObservableList<Flight> getAllFlights() {
         return FlightDAO.getFlights();
-    }
-
-    public boolean bookFlight(Flight flight) {
-        return bookingDAO.insertBooking(flight.getFlightId(), userId);
     }
 }

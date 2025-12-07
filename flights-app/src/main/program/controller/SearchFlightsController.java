@@ -63,7 +63,6 @@ public class SearchFlightsController {
 
     @FXML
     private void handleBookFlight() {
-
         Flight selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
 
         if (selectedFlight == null) {
