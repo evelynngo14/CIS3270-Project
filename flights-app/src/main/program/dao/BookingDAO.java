@@ -62,7 +62,7 @@ public class BookingDAO implements DAO {
 
     public boolean insertBooking(int flightId, int userId) {
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
-            String query = "INSERT INTO bookings (flightId, userId) VALUES (?, ?, ?)" +
+            String query = "INSERT INTO bookings (flightId, userId) VALUES (?, ?)" +
                     "UPDATE flights SET bookedSeats = bookedSeats + 1 WHERE flightId = ?;";
             PreparedStatement stmt = conn.prepareStatement(query);
 
