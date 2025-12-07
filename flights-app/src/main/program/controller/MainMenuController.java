@@ -10,6 +10,7 @@ import model.Customer;
 import model.Login;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import model.UserSession;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -70,8 +71,9 @@ public class MainMenuController {
             navigator.showAdminDashboard(adminModel);
         }
 
-        boolean success = model.authenticate(username, password);
-        if (success) {
+        int userId = model.authenticate(username, password);
+        if (userId > 0) {
+            UserSession session = UserSession.getInstance(userId, username);
             System.out.println("login successful");
             navigator.showDashboard(customerModel);
         } else {

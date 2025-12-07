@@ -76,7 +76,7 @@ public class UserDAO implements DAO {
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                // getInt({columnLabel})
+                // gets integer from "userId" column
                 userId = rs.getInt("userId");
             }
 
