@@ -137,10 +137,10 @@ public class FlightDAO implements DAO {
     public static ObservableList<Flight> searchFlight(String departureCity, String arrivalCity, LocalDate departureDate, LocalDate arrivalDate) {
         ObservableList<Flight> flights = FXCollections.observableArrayList();
         String query = "SELECT * FROM flights " +
-                "WHERE (? IS NULL OR departureCity = ? " +
-                "AND (? IS NULL OR arrivalCity = ? " +
-                "AND (CAST(departureDateTime as DATE) = ? or ? IS NULL " +
-                "AND (CAST(arrivalDateTime as DATE) = ? OR ? IS NULL)";
+                "WHERE (? IS NULL OR departureCity = ?) " +
+                "AND (? IS NULL OR arrivalCity = ?) " +
+                "AND (CAST(departureDateTime AS DATE) = ? OR ? IS NULL) " +
+                "AND (CAST(arrivalDateTime AS DATE) = ? OR ? IS NULL)";
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, departureCity);

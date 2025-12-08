@@ -78,7 +78,7 @@ public class SearchFlightsController {
             statusLabel.setText("No flights found.");
         } else {
             int count = searchedFlights.size();
-            statusLabel.setText("Search complete " + count + "flight(s) found.");
+            statusLabel.setText("Search complete " + count + " flight(s) found.");
         }
     }
 
@@ -108,7 +108,9 @@ public class SearchFlightsController {
 
     private void populateCities(String cityType, ChoiceBox<String> cityChoiceBox) {
             ObservableList<String> citiesList = customerModel.getCityByType(cityType);
+            citiesList.add(0, "");
             cityChoiceBox.setItems(citiesList);
+            cityChoiceBox.getSelectionModel().select(0);
     }
 
 }

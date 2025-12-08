@@ -60,7 +60,10 @@ public class Customer extends User {
     }
 
     public ObservableList<Flight> searchFlights(String departureCity, String arrivalCity, LocalDate departureDate, LocalDate arrivalDate) {
-        return FlightDAO.searchFlight(departureCity, arrivalCity, departureDate, arrivalDate);
+        // convert empty strings to nulls for DAO to run IS NULL SQL logic
+        String cleanedDepCity = (departureCity != null && departureCity.isEmpty()) ? null : departureCity;
+        String cleanedArrCity = (arrivalCity != null && arrivalCity.isEmpty()) ? null : arrivalCity;
+        return FlightDAO.searchFlight(cleanedDepCity, cleanedArrCity, departureDate, arrivalDate);
     }
 
     public ObservableList<Flight> getAllFlights() {

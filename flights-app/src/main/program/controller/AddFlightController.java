@@ -78,12 +78,14 @@ public class AddFlightController {
     }
 
     static void populateTimeChoices(ChoiceBox<String> choiceBox) {
+        choiceBox.getItems().add("");
         for (int h = 0; h < 24; h++) {
             for (int m = 0; m < 60; m += 30) {
                 String time = String.format("%02d:%02d", h, m);
                 choiceBox.getItems().add(time);
             }
         }
+        choiceBox.getSelectionModel().select(0);
     }
 
     private LocalDateTime convertToLocalDateTime(DatePicker datePicker, ChoiceBox<String> timeChoice) {
