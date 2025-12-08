@@ -75,9 +75,9 @@
                 <TableColumn fx:id="bookedSeatsCol" prefWidth="100.0" text="Booked Seats" />
             </columns>
         </TableView>
-      <HBox prefHeight="23.0" prefWidth="1200.0">
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="23.0" prefWidth="603.0">
          <children>
-             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER">
+             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="167.0" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>

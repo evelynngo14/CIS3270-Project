@@ -28,7 +28,6 @@ public class BookingDAO implements DAO {
 
     public static ObservableList<Booking> getBookingsByUser(int userId) {
         ObservableList<Booking> bookings = FXCollections.observableArrayList();
-
         // b. = bookings table | f. = flights table
         String query =
                 "SELECT b.*, f.departureCity, f.arrivalCity, f.departureDateTime, f.arrivalDateTime, f.capacity, f.bookedSeats " +
