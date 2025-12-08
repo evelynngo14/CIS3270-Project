@@ -6,6 +6,8 @@ import dao.RegistrationDAO;
 import dao.UserDAO;
 import javafx.collections.ObservableList;
 
+import java.time.LocalDate;
+
 public class Customer extends User {
 
     BookingDAO bookingDAO = new BookingDAO();
@@ -57,8 +59,8 @@ public class Customer extends User {
         return UserSession.getInstance(0,"").getUserId();
     }
 
-    public void searchFlights() {
-
+    public ObservableList<Flight> searchFlights(String departureCity, String arrivalCity, LocalDate departureDate, LocalDate arrivalDate) {
+        return FlightDAO.searchFlight(departureCity, arrivalCity, departureDate, arrivalDate);
     }
 
     public ObservableList<Flight> getAllFlights() {

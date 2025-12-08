@@ -9,6 +9,7 @@ import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /*
@@ -132,6 +133,44 @@ public class FlightDAO implements DAO {
             return cities;
         }
     }
-    //public static boolean searchFlight(String departureCity, String arrivalCity, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {}
+
+    public static ObservableList<Flight> searchFlight(String departureCity, String arrivalCity, LocalDate departureDate, LocalDate arrivalDate) {
+        ObservableList<Flight> flights = FXCollections.observableArrayList();
+        String query = "SELECT * FROM flights " +
+                "WHERE (? IS NULL OR departureCity = ? " +
+                "AND (? IS NULL OR arrivalCity = ? " +
+                "AND (CAST(departureDateTime as DATE) = ? or ? IS NULL " +
+                "AND (CAST(arrivalDateTime as DATE) = ? OR ? IS NULL)";
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, departureCity);
+            stmt.setString(2, departureCity);
+            stmt.setString(3, arrivalCity);
+            stmt.setString(4, arrivalCity);
+            // handle null params
+            java.sql.Date sqlDepDate = (departureDate != null) ? java.sql.Date.valueOf(departureDate) : null;
+            java.sql.Date sqlArrDate = (arrivalDate != null) ? java.sql.Date.valueOf(arrivalDate) : null;
+            stmt.setDate(5, sqlDepDate);
+            stmt.setDate(6, sqlDepDate);
+            stmt.setDate(7, sqlArrDate);
+            stmt.setDate(8, sqlArrDate);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                flights.add(new Flight(
+                        rs.getInt("flightId"),
+                        rs.getString("departureCity"),
+                        rs.getString("arrivalCity"),
+                        rs.getTimestamp("departureDateTime").toLocalDateTime(),
+                        rs.getTimestamp("arrivalDateTime").toLocalDateTime(),
+                        rs.getInt("capacity"),
+                        rs.getInt("bookedSeats")
+                ));
+            }
+            return flights;
+        } catch (SQLException e) {
+            System.err.println("Error searching flights: " + e.getMessage());
+            return flights;
+        }
+    }
 
 }

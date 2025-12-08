@@ -11,6 +11,8 @@ import model.Admin;
 import model.Customer;
 import model.Flight;
 
+import java.time.LocalDate;
+
 public class SearchFlightsController {
     private final MainApp navigator;
     private final Customer customerModel;
@@ -24,6 +26,7 @@ public class SearchFlightsController {
     @FXML private ChoiceBox<String> depTimeChoiceBox;
     @FXML private ChoiceBox<String> arrTimeChoiceBox;
     @FXML private Button bookFlightButton;
+    @FXML private Button searchFlights;
     @FXML private Label statusLabel;
 
     @FXML
@@ -65,7 +68,18 @@ public class SearchFlightsController {
 
     @FXML
     private void handleSearchFlights() {
-        customerModel.searchFlights();
+        String departureCity = departureCityList.getSelectionModel().getSelectedItem();
+        String arrivalCity = arrivalCityList.getSelectionModel().getSelectedItem();
+        LocalDate departureDate = depDateChoiceBox.getValue();
+        LocalDate arrivalDate = arrDateChoiceBox.getValue();
+        ObservableList<Flight> searchedFlights = customerModel.searchFlights(departureCity, arrivalCity, departureDate, arrivalDate);
+        flightsTable.setItems(searchedFlights);
+        if(searchedFlights.isEmpty()) {
+            statusLabel.setText("No flights found.");
+        } else {
+            int count = searchedFlights.size();
+            statusLabel.setText("Search complete " + count + "flight(s) found.");
+        }
     }
 
     @FXML
