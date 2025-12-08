@@ -47,7 +47,7 @@ public class DashboardController {
 
     @FXML
     private void showBookings() {
-        ObservableList<Booking> bookingList = model.getBookingsByUser(this.currentUserId);
+        //ObservableList<Booking> bookingList = model.getBookingsByUser(this.currentUserId);
         //view.getBookingList.setItems(bookingList);
     }
 

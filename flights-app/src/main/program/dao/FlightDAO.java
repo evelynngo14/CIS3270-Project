@@ -116,6 +116,22 @@ public class FlightDAO implements DAO {
         }
     }
 
+    public static ObservableList<String> getCities(String cityType) {
+        ObservableList<String> cities = FXCollections.observableArrayList();
+        String query = "SELECT DISTINCT " + cityType + " FROM flights";
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                String cityName = rs.getString(1);
+                cities.add(cityName);
+            }
+            return cities;
+        } catch (SQLException e) {
+            System.err.println("Error getting cities: " + e.getMessage());
+            return cities;
+        }
+    }
     //public static boolean searchFlight(String departureCity, String arrivalCity, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {}
 
 }

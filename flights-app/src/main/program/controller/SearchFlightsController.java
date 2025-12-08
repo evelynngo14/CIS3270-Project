@@ -54,6 +54,11 @@ public class SearchFlightsController {
         FlightTableInitialize.initializeFlightTable(flightsTable, flightIdCol, departureCityCol, arrivalCityCol, departureTimeCol, arrivalTimeCol, capacityCol, bookedSeatsCol);
         ObservableList<Flight> flights = customerModel.getAllFlights();
         flightsTable.setItems(flights);
+
+        AddFlightController.populateTimeChoices(depTimeChoiceBox);
+        AddFlightController.populateTimeChoices(arrTimeChoiceBox);
+
+
     }
 
     @FXML
