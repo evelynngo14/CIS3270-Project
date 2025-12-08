@@ -4,7 +4,6 @@ import dao.BookingDAO;
 import dao.FlightDAO;
 import dao.RegistrationDAO;
 import dao.UserDAO;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Customer extends User {
@@ -64,5 +63,9 @@ public class Customer extends User {
 
     public ObservableList<Flight> getAllFlights() {
         return FlightDAO.getFlights();
+    }
+
+    public ObservableList<String> getCityByType(String cityType) {
+        return FlightDAO.getCities(cityType);
     }
 }

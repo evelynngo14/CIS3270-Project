@@ -58,6 +58,8 @@ public class SearchFlightsController {
         AddFlightController.populateTimeChoices(depTimeChoiceBox);
         AddFlightController.populateTimeChoices(arrTimeChoiceBox);
 
+        populateCities("arrivalCity", arrivalCityList);
+        populateCities("departureCity", departureCityList);
 
     }
 
@@ -88,6 +90,11 @@ public class SearchFlightsController {
 
     @FXML private void handleCancel() {
         navigator.showDashboard(customerModel);
+    }
+
+    private void populateCities(String cityType, ChoiceBox<String> cityChoiceBox) {
+            ObservableList<String> citiesList = customerModel.getCityByType(cityType);
+            cityChoiceBox.setItems(citiesList);
     }
 
 }
