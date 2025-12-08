@@ -64,7 +64,7 @@
 
        <HBox alignment="CENTER" />
 
-        <TableView fx:id="flightsTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="751.0" VBox.vgrow="ALWAYS">
+        <TableView fx:id="flightsTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="375.0" prefWidth="751.0" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="flightIdCol" text="Flight ID" />
                 <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />
@@ -75,9 +75,19 @@
                 <TableColumn fx:id="bookedSeatsCol" prefWidth="100.0" text="Booked Seats" />
             </columns>
         </TableView>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+      <HBox prefHeight="23.0" prefWidth="1200.0">
          <children>
-             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER" />
+             <Label fx:id="statusLabel" alignment="CENTER" contentDisplay="CENTER">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="61.0" prefWidth="1200.0" spacing="15.0">
+         <children>
             <Button fx:id="bookFlightButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleBookFlight" prefHeight="30.0" text="Book Flight" />
             <Button fx:id="cancelButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" text="Return to Dashboard" />
          </children>
