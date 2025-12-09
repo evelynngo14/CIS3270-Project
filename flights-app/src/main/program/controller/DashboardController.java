@@ -35,7 +35,6 @@ public class DashboardController {
     @FXML private TableColumn<Booking, String> departureTimeCol;
     @FXML private TableColumn<Booking, String> arrivalTimeCol;
     @FXML private TableColumn<Booking, Integer> capacityCol;
-    @FXML private TableColumn<Booking, Integer> bookedSeatsCol;
 
     @FXML
     private void initialize() {
@@ -45,8 +44,7 @@ public class DashboardController {
                 arrivalCityCol,
                 departureTimeCol,
                 arrivalTimeCol,
-                capacityCol,
-                bookedSeatsCol
+                capacityCol
         );
 
         departureCityCol.setCellValueFactory(cellData ->
@@ -62,18 +60,18 @@ public class DashboardController {
         );
 
         arrivalTimeCol.setCellValueFactory(cellData ->
-                new SimpleObjectProperty<>(cellData.getValue().getFlight().getArrivalTime().toString())
+                new SimpleObjectProperty<>(cellData.getValue().getFlight().getArrivalDateTime().toString())
         );
 
         capacityCol.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getFlight().getCapacity()).asObject()
         );
-        UserSession session = UserSession.getInstance(0, "");
+        UserSession session = UserSession.getInstance();
         this.currentUserId = session.getUserId();
         this.currentUsername = session.getUsername();
 
-        ObservableList<Booking> flights = model.getBookingsByUser();
-        bookingsTable.setItems(flights);
+        ObservableList<Booking> bookings = model.getBookingsByUser(this.currentUserId);
+        bookingsTable.setItems(bookings);
     }
 
     public DashboardController(MainApp navigator, Customer model) {
@@ -87,7 +85,7 @@ public class DashboardController {
 
     @FXML
     private void showBookings() {
-        ObservableList<Booking> bookingList = model.getBookingsByUser();
+        ObservableList<Booking> bookingList = model.getBookingsByUser(model.getUserId());
 
     }
 

@@ -35,9 +35,8 @@ public class Customer extends User {
         return (userDAO.verifySecurityAnswer(username, email, ssn));
     }
 
-    public ObservableList<Booking> getBookingsByUser() {
-        int currentUserId = UserSession.getInstance(0, "").getUserId();
-        return BookingDAO.getBookingsByUser(currentUserId);
+    public ObservableList<Booking> getBookingsByUser(int userId) {
+        return BookingDAO.getBookingsByUser(userId);
     }
 
     public void resetPassword(String username, String newPassword) {

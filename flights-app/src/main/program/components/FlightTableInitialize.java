@@ -33,8 +33,7 @@ public class FlightTableInitialize {
                                              TableColumn<Booking, String> arrivalCityCol,
                                              TableColumn<Booking, String> departureTimeCol,
                                              TableColumn<Booking, String> arrivalTimeCol,
-                                             TableColumn<Booking, Integer> capacityCol,
-                                             TableColumn<Booking, Integer> bookedSeatsCol) {
+                                             TableColumn<Booking, Integer> capacityCol) {
 
         // table cols
         // must match getters from Flight class
@@ -44,6 +43,5 @@ public class FlightTableInitialize {
         departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureDateTime"));
         arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalDateTime"));
         capacityCol.setCellValueFactory(new PropertyValueFactory<>("capacity"));
-        bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("bookedSeats"));
     }
 }

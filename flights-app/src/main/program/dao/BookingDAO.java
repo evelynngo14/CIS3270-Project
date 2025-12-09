@@ -31,7 +31,7 @@ public class BookingDAO implements DAO {
         // b. = bookings table | f. = flights table
         String query =
                 "SELECT b.*, f.departureCity, f.arrivalCity, f.departureDateTime, f.arrivalDateTime, f.capacity, f.bookedSeats " +
-                        "FROM bookings b JOIN flights f ON b.flightId = f.flightId " +
+                        "FROM bookings b INNER JOIN flights f ON b.flightId = f.flightId " +
                         "WHERE b.userId = ?";
 
         try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
@@ -44,13 +44,15 @@ public class BookingDAO implements DAO {
                 Flight flight =  mapResultSetToFlight(rs);
                 LocalDateTime bookingDate = rs.getTimestamp("bookingDate").toLocalDateTime();
 
-                bookings.add(new Booking(
+                Booking booking = new Booking(
                         rs.getInt("bookingId"),
                         rs.getInt("userId"),
                         rs.getInt("flightId"),
                         bookingDate,
                         flight
-                ));
+                );
+                booking.setFlight(flight);
+                bookings.add(booking);
             }
         } catch (SQLException e) {
             System.out.println("Error viewing booking: " + e.getMessage());

@@ -21,7 +21,6 @@
          <TableColumn fx:id="departureTimeCol" prefWidth="100.0" text="Departure Time" />
          <TableColumn fx:id="arrivalTimeCol" prefWidth="100.0" text="Arrival Time" />
          <TableColumn fx:id="capacityCol" prefWidth="100.0" text="Capacity" />
-         <TableColumn fx:id="bookedSeatsCol" prefWidth="100.0" text="Booked Seats" />
      </columns>
    </TableView>
 
