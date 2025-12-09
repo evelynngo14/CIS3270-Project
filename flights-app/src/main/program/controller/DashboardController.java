@@ -1,4 +1,7 @@
 package controller;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 import com.mysql.cj.xdevapi.Table;
 import components.FlightTableInitialize;
@@ -27,13 +30,12 @@ public class DashboardController {
     @FXML private Label welcomeLabel;
     @FXML private Text bookingSuccessLabel;
     @FXML private TableView<Booking> bookingsTable;
-    @FXML private TableColumn<Flight, String> departureCityCol;
-    @FXML private TableColumn<Flight, String> arrivalCityCol;
-    @FXML private TableColumn<Flight, String> departureTimeCol;
-    @FXML private TableColumn<Flight, String> arrivalTimeCol;
-    @FXML private TableColumn<Flight, Integer> capacityCol;
-    @FXML private TableColumn<Flight, Integer> bookedSeatsCol;
-
+    @FXML private TableColumn<Booking, String> departureCityCol;
+    @FXML private TableColumn<Booking, String> arrivalCityCol;
+    @FXML private TableColumn<Booking, String> departureTimeCol;
+    @FXML private TableColumn<Booking, String> arrivalTimeCol;
+    @FXML private TableColumn<Booking, Integer> capacityCol;
+    @FXML private TableColumn<Booking, Integer> bookedSeatsCol;
 
     @FXML
     private void initialize() {
@@ -47,13 +49,25 @@ public class DashboardController {
                 bookedSeatsCol
         );
 
-        departureCityCol.setCellValueFactory(new PropertyValueFactory<>("flight.departureCity"));
-        arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("flight.arrivalCity"));
-        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("flight.departureDateTime"));
-        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("flight.arrivalDateTime"));
-        capacityCol.setCellValueFactory(new PropertyValueFactory<>("flight.capacity"));
-        bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("flight.bookedSeats"));
+        departureCityCol.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getFlight().getDepartureCity())
+        );
 
+        arrivalCityCol.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getFlight().getArrivalCity())
+        );
+
+        departureTimeCol.setCellValueFactory(cellData ->
+                new SimpleObjectProperty<>(cellData.getValue().getFlight().getDepartureDateTime().toString())
+        );
+
+        arrivalTimeCol.setCellValueFactory(cellData ->
+                new SimpleObjectProperty<>(cellData.getValue().getFlight().getArrivalTime().toString())
+        );
+
+        capacityCol.setCellValueFactory(cellData ->
+                new SimpleIntegerProperty(cellData.getValue().getFlight().getCapacity()).asObject()
+        );
         UserSession session = UserSession.getInstance(0, "");
         this.currentUserId = session.getUserId();
         this.currentUsername = session.getUsername();
@@ -88,5 +102,7 @@ public class DashboardController {
         System.out.println("Navigating to search flights screen");
         navigator.showSearchFlightsScreen(model);
     }
+
+
 
 }

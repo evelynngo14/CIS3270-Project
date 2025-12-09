@@ -8,11 +8,10 @@ public class Booking {
     protected int userId;
     protected int flightId;
     protected LocalDateTime bookingDateTime;
-    protected String seatNumber;
 
     protected Flight flight;
 
-    public Booking(int bookingId, int userId, int flightId, LocalDateTime bookingDateTime, String seatNumber, Flight flight) {
+    public Booking(int bookingId, int userId, int flightId, LocalDateTime bookingDateTime, Flight flight) {
     }
 
     public Flight getFlight() {
@@ -26,6 +25,7 @@ public class Booking {
     public int getBookingId() {
         return bookingId;
     }
+
     public void setBookingId(int bookingId) {
         this.bookingId = bookingId;
     }
@@ -52,14 +52,6 @@ public class Booking {
 
     public void setBookingDateTime(LocalDateTime bookingDateTime) {
         this.bookingDateTime = bookingDateTime;
-    }
-
-    public String getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(String seatNumber) {
-        this.seatNumber = seatNumber;
     }
 
     public String getDepartureCity() {

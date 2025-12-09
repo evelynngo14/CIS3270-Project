@@ -42,14 +42,13 @@ public class BookingDAO implements DAO {
 
             while (rs.next()) {
                 Flight flight =  mapResultSetToFlight(rs);
-                LocalDateTime bookingDateTime = rs.getTimestamp("bookingDateTime").toLocalDateTime();
+                LocalDateTime bookingDate = rs.getTimestamp("bookingDate").toLocalDateTime();
 
                 bookings.add(new Booking(
                         rs.getInt("bookingId"),
                         rs.getInt("userId"),
                         rs.getInt("flightId"),
-                        bookingDateTime,
-                        rs.getString("seatNumber"),
+                        bookingDate,
                         flight
                 ));
             }

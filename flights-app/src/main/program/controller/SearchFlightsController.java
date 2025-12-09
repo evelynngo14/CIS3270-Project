@@ -118,5 +118,4 @@ public class SearchFlightsController {
             cityChoiceBox.setItems(citiesList);
             cityChoiceBox.getSelectionModel().select(0);
     }
-
 }
