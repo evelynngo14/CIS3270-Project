@@ -5,7 +5,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 
@@ -13,7 +16,21 @@
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-        <Label fx:id="welcomeLabel" text="Welcome to your Dashboard" />
+        <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="123.0" prefWidth="243.0" text="Welcome to your Dashboard">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+      <padding>
+         <Insets bottom="100.0" />
+      </padding>
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your  Bookings">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Text>
    <TableView fx:id="bookingsTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="669.0">
      <columns>
          <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />
@@ -23,8 +40,12 @@
          <TableColumn fx:id="capacityCol" prefWidth="100.0" text="Capacity" />
      </columns>
    </TableView>
-
-   <Button mnemonicParsing="false" onAction="#showSearchFlightsScreen" text="Search Flights" />
-
-        <Button fx:id="logoutButton" onAction="#handleLogout" text="Logout" /> <!-- handleLogout() from DashboardController) -->
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <children>
+      
+         <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#showSearchFlightsScreen" prefWidth="103.0" text="Search Flights" />
+      
+              <Button fx:id="logoutButton" alignment="CENTER" contentDisplay="CENTER" onAction="#handleLogout" prefHeight="26.0" prefWidth="103.0" text="Logout" />
+      </children>
+   </HBox> <!-- handleLogout() from DashboardController) -->
 </VBox>
