@@ -1,12 +1,13 @@
 package controller;
 
+import com.mysql.cj.xdevapi.Table;
+import components.FlightTableInitialize;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import app.MainApp;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import model.Booking;
 import model.Customer;
@@ -25,15 +26,40 @@ public class DashboardController {
     @FXML private Button searchButton;
     @FXML private Label welcomeLabel;
     @FXML private Text bookingSuccessLabel;
+    @FXML private TableView<Booking> bookingsTable;
+    @FXML private TableColumn<Flight, String> departureCityCol;
+    @FXML private TableColumn<Flight, String> arrivalCityCol;
+    @FXML private TableColumn<Flight, String> departureTimeCol;
+    @FXML private TableColumn<Flight, String> arrivalTimeCol;
+    @FXML private TableColumn<Flight, Integer> capacityCol;
+    @FXML private TableColumn<Flight, Integer> bookedSeatsCol;
+
 
     @FXML
     private void initialize() {
-        UserSession session = UserSession.getInstance(0, "");
+        FlightTableInitialize.initializeBookingTable(
+                bookingsTable,
+                departureCityCol,
+                arrivalCityCol,
+                departureTimeCol,
+                arrivalTimeCol,
+                capacityCol,
+                bookedSeatsCol
+        );
 
+        departureCityCol.setCellValueFactory(new PropertyValueFactory<>("flight.departureCity"));
+        arrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("flight.arrivalCity"));
+        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("flight.departureDateTime"));
+        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("flight.arrivalDateTime"));
+        capacityCol.setCellValueFactory(new PropertyValueFactory<>("flight.capacity"));
+        bookedSeatsCol.setCellValueFactory(new PropertyValueFactory<>("flight.bookedSeats"));
+
+        UserSession session = UserSession.getInstance(0, "");
         this.currentUserId = session.getUserId();
         this.currentUsername = session.getUsername();
 
-        showBookings();
+        ObservableList<Booking> flights = model.getBookingsByUser();
+        bookingsTable.setItems(flights);
     }
 
     public DashboardController(MainApp navigator, Customer model) {
@@ -47,8 +73,8 @@ public class DashboardController {
 
     @FXML
     private void showBookings() {
-        //ObservableList<Booking> bookingList = model.getBookingsByUser(this.currentUserId);
-        //view.getBookingList.setItems(bookingList);
+        ObservableList<Booking> bookingList = model.getBookingsByUser();
+
     }
 
     @FXML

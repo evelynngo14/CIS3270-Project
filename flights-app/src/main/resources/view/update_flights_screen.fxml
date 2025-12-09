@@ -30,7 +30,6 @@
       </children>
    </HBox>
 
-
     <GridPane alignment="CENTER" hgap="20.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="30.0" />

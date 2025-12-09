@@ -82,13 +82,18 @@ public class SearchFlightsController {
         }
     }
 
-    @FXML
-    private void handleBookFlight() {
+    @FXML private void handleBookFlight() {
         Flight selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
 
         if (selectedFlight == null) {
             System.err.println("Need to select a flight");
             statusLabel.setText("Select a flight to book.");
+            return;
+        }
+        // ensure flight is not full
+        if (selectedFlight.getBookedSeats() >= selectedFlight.getCapacity()) {
+            statusLabel.setText("Flight is fully booked. Please select another.");
+            return; // exit if full
         }
         boolean success = customerModel.bookFlight(selectedFlight);
         if (success) {
@@ -96,6 +101,7 @@ public class SearchFlightsController {
             navigator.showSearchFlightsScreen(customerModel);
             statusLabel.setText("Successfully booked flight.");
             flightsTable.refresh();
+            statusLabel.setText("Successfully booked flight to " + selectedFlight.getArrivalCity() + ".");
         } else {
             System.err.println("Error booking flight");
             statusLabel.setText("Error booking flight.");

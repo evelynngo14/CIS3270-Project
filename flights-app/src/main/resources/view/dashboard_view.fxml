@@ -7,8 +7,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <VBox alignment="CENTER" prefHeight="800.0" prefWidth="1200.0" spacing="20.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 
     <padding>
@@ -16,6 +14,16 @@
     </padding>
 
         <Label fx:id="welcomeLabel" text="Welcome to your Dashboard" />
+   <TableView fx:id="bookingsTable" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="669.0">
+     <columns>
+         <TableColumn fx:id="departureCityCol" prefWidth="150.0" text="Departure City" />
+         <TableColumn fx:id="arrivalCityCol" prefWidth="150.0" text="Arrival City" />
+         <TableColumn fx:id="departureTimeCol" prefWidth="100.0" text="Departure Time" />
+         <TableColumn fx:id="arrivalTimeCol" prefWidth="100.0" text="Arrival Time" />
+         <TableColumn fx:id="capacityCol" prefWidth="100.0" text="Capacity" />
+         <TableColumn fx:id="bookedSeatsCol" prefWidth="100.0" text="Booked Seats" />
+     </columns>
+   </TableView>
 
    <Button mnemonicParsing="false" onAction="#showSearchFlightsScreen" text="Search Flights" />
 

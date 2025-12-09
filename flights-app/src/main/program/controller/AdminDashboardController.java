@@ -59,6 +59,8 @@ public class AdminDashboardController {
     public void initialize() {
         FlightTableInitialize.initializeFlightTable(flightsTable, flightIdCol, departureCityCol, arrivalCityCol, departureTimeCol, arrivalTimeCol, capacityCol, bookedSeatsCol);
         ObservableList<Flight> flights = adminModel.getAllFlights();
+        flightIdCol.setCellValueFactory(new PropertyValueFactory<>("flightId"));
+
         flightsTable.setItems(flights);
     }
 
