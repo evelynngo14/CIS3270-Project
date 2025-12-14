@@ -27,6 +27,11 @@ public class Customer extends User {
         return bookingDAO.insertBooking(flight.getFlightId(), currentUserId);
     }
 
+    public boolean deleteBooking(Booking booking) {
+        int currentUserId = UserSession.getInstance(0, "").getUserId();
+        return bookingDAO.deleteBooking(booking.getBookingId(), currentUserId);
+    }
+
     public boolean authenticateSsn(String ssn, String email, String username) {
         return (userDAO.verifySsn(ssn, username, email));
     }

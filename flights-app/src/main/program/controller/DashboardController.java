@@ -17,6 +17,8 @@ import model.Customer;
 import model.Flight;
 import model.UserSession;
 
+import javax.swing.*;
+
 public class DashboardController {
 
     private final MainApp navigator;
@@ -101,6 +103,11 @@ public class DashboardController {
         navigator.showSearchFlightsScreen(model);
     }
 
-
+    @FXML
+    public void handleDeleteFlight(ActionEvent actionEvent) {
+        Booking selectedBooking = bookingsTable.getSelectionModel().getSelectedItem();
+        System.out.println("Deleting flight");
+        model.deleteBooking(selectedBooking);
+    }
 
 }

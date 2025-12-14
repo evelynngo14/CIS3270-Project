@@ -78,4 +78,18 @@ public class BookingDAO implements DAO {
             return false;
         }
     }
+
+    public boolean deleteBooking(int bookingId, int userId) {
+        try (Connection conn = DriverManager.getConnection(url, dbUser, dbPass)) {
+            String query = "DELETE FROM bookings WHERE bookingId = ? AND userId = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setInt(1, bookingId);
+            stmt.setInt(2, userId);
+            stmt.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error deleting booking: " + e.getMessage());
+            return false;
+        }
+    }
 }
